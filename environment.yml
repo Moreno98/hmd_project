@@ -1,0 +1,8 @@
+name: hmd_project
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - pip:
+    - typing-extensions

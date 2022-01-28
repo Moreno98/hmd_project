@@ -1,0 +1,5 @@
+Tasks:
+- Search/visualize products
+- Buy products
+- Info about products
+- Reviews (?)
