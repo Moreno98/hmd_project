@@ -34,4 +34,5 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: buy_product
+  - action: query_db
   - action: utter_buy

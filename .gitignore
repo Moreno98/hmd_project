@@ -91,3 +91,5 @@ rasa/keys
 models/*
 venv/*
 archive/*
+install_rasa.txt
+Examples.txt

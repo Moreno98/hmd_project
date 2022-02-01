@@ -90,20 +90,20 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
-- regex: product
+- lookup: product
   examples: |
-    - t-shirt
-    - shirt
-    - tshirt
-    - shirts
-    - jacket
-    - jackets
-    - jeans
-    - pants
-    - shorts
-    - skirt
-    - skirts
-    - dress
+   - t-shirt
+   - shirt
+   - tshirt
+   - shirts
+   - jacket
+   - jackets
+   - jeans
+   - pants
+   - shorts
+   - skirt
+   - skirts
+   - dress
   
 - regex: amount
   examples: |

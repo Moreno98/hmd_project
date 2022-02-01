@@ -28,10 +28,20 @@ slots:
     mappings:
     - type: from_entity
       entity: amount
+  product_query:
+    type: bool
+    influence_conversation: False
+    mappings:
+    - type: custom
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hello I am a conversational AI, ask me anything"
+  - text: "Hey, I am a conversational AI, how can I help you?"
+
+  utter_help:
+  - text: "What can I do for you?"
+  - text: "How can I help you?"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -50,8 +60,16 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
   utter_buy:
-  - text: "Ok, you would like to buy {product_to_buy}"
-  - text: "Ok, you would like to buy {product_to_buy} for {amount_to_buy} dollars"
+    - condition:
+        - type: slot
+          name: product_query
+          value: true
+      text: "I found the following products:"
+
+    - text: "I am sorry but I could not find a match with these parameters, do you have it's brand?"
+
+actions: 
+  - query_db
 
 session_config:
   session_expiration_time: 60
