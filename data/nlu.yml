@@ -1,5 +1,4 @@
-version: "3.0"
-
+version: "2.0"
 nlu:
 - intent: greet
   examples: |
@@ -9,14 +8,13 @@ nlu:
     - hello there
     - good morning
     - good evening
-    - moin
     - hey there
-    - let's go
-    - hey dude
     - goodmorning
     - goodevening
     - good afternoon
-
+    - Hello
+    - Hi
+    - hI
 - intent: goodbye
   examples: |
     - cu
@@ -29,7 +27,13 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
+    - see you soon
+    - see you
+    - cya
+    - cya later
+    - cya bye
+    - cya see you
+    - cya see you later
 - intent: affirm
   examples: |
     - yes
@@ -38,7 +42,50 @@ nlu:
     - of course
     - that sounds good
     - correct
-
+    - ok
+    - okay
+    - i understand
+    - i agree
+    - i understand that
+    - i agree that
+    - yeah
+    - yep
+    - yepyep
+    - yes, thanks
+    - yes, i do
+    - yes, i will
+    - yes, i will do
+    - yes, i will do that
+    - of course I will
+    - that is perfect
+    - that is correct
+    - yes, that sounds good
+    - yes, that is correct
+    - yes, that is perfect
+    - ok, that is correct
+    - Yes
+    - fine
+    - it's fine for me
+    - for me it's fine
+    - it's ok for me
+    - it's ok
+    - not bad
+    - not bad at all
+    - not bad at all for me
+    - good idea
+    - good idea for me
+    - go on
+    - go ahead
+    - go ahead for me
+    - good job
+    - good job for me
+    - good
+    - nice
+    - nice for me
+    - nice to hear
+    - nice to hear from me
+    - positive
+    - yES
 - intent: deny
   examples: |
     - no
@@ -48,67 +95,100 @@ nlu:
     - don't like that
     - no way
     - not really
-
-- intent: mood_great
+    - no thanks
+    - no thank you
+    - no, thanks
+    - no, thank you
+    - no, i don't think so
+    - nope
+    - nope nope
+    - No
+    - nop
+    - negative
+    - I don't want to
+    - I don't want to do that
+    - I don't want it
+    - I don't want that
+    - it is not good for me
+    - it is not good for me at all
+    - it is not good for me to do that
+    - it's not good
+    - it's not good for me
+    - it's not good for me to do that
+    - don't
+    - dont
+    - don't do that
+    - do not
+    - do not do that
+    - I dont want to
+    - I dont want to do that
+    - I dont want it
+    - I dont want that
+- intent: size_product
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
+    - The size [xl](size) is nice
+    - The size [xl](size) is good
+    - The size [xl](size) is perfect
+    - The size [xl](size) is awesome
+    - The size [xl](size) is fantastic
+    - The size [xl](size) is great
+    - [xl](size) is the best
+    - [xl](size) is nice
+    - [xl](size) is amazing
+    - [xl](size) is perfect
+    - [xl](size) is a good one
+    - [xl](size) is a perfect one
+    - [xl](size) is a great one
+    - [xl](size) is a fantastic one
+    - [xl](size) size
+    - [xl](size) size is nice
+    - [xl](size) size is good
+    - [xl](size) size is perfect
+    - [xl](size) size is awesome
+    - [xl](size) size is fantastic
+    - [xl](size) size is great
+    - [xl](size) size is the best
+    - Uh, sorry, then [xl](size)
+    - Then [xl](size)
+    - ok, [xl](size) is fine
+    - ok, [xl](size) is good
+    - [xl](size)
+    - [XL](size)
+    - [XS](size)
+    - [xxs](size)
+    - [xs](size)
+- intent: color_product
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
-
-- lookup: product
-  examples: |
-   - t-shirt
-   - shirt
-   - tshirt
-   - shirts
-   - jacket
-   - jackets
-   - jeans
-   - pants
-   - shorts
-   - skirt
-   - skirts
-   - dress
-  
-- regex: amount
-  examples: |
-    - \d
-
+    - [blue](color)
+    - I have [blue](color) in mind
+    - I want [blue](color)
+    - I was thinking about [blue](color)
+    - I would like it to be [blue](color)
+    - [blue](color) should be fine
+    - [blue](color) it is fine
+    - for the color [blue](color) is fine
+    - for the color [blue](color) is good
+    - for the color [blue](color) is perfect
+    - I like [blue](color)
+    - I like the color [blue](color)
+    - The color [blue](color) is nice
+    - The color [blue](color) is good
+    - The color [blue](color) is perfect
+    - The color [blue](color) is awesome
+    - The color [blue](color) is fantastic
+    - The color [blue](color) is great
+    - [blue](color) is the best
+    - [blue](color) is the nice
+    - [blue](color) is the amazing
+    - [blue](color) is the perfect
+    - [blue](color) is a good one
+    - the color [blue](color) should be fine
+    - Uh, sorry, then [blue](color)
+    - Then [blue](color)
+    - ok, [blue](color) is fine
+    - ok, [blue](color) is good
+    - [beige](color)
+    - [red](color)
 - intent: buy_product
   examples: |
     - can I buy a [t-shirt](product)?
@@ -119,10 +199,671 @@ nlu:
     - I would like to buy a [t-shirt](product), can I?
     - Buy me a [t-shirt](product)
     - I want to buy a [t-shirt](product)
-
+    - Can I buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
+    - Can  I buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
+    - can i buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
+- intent: buy_product_with_color
+  examples: |
+    - can I buy a [blue](color) [t-shirt](product)?
+    - do you have any [blue](color) [t-shirt](product)?
+    - can you show me some [blue](color) [t-shirt](product)?
+    - can you buy me a [blue](color) [t-shirt](product)?
+    - can you buy me a [blue](color) [t-shirt](product) for [$](amount)?
+    - I would like to buy a [blue](color) [t-shirt](product), can I?
+    - Buy me a [blue](color) [t-shirt](product)
+    - I want to buy a [blue](color) [t-shirt](product)
+    - I would like to see a [blue](color) [t-shirt](product)
+    - I would like to see a [t-shirt](product) [blue](color)
+    - I want to see a [blue](color) [t-shirt](product)
+    - I want to see a [t-shirt](product) which is [blue](color)
+    - Can I buy a [beige](color) [tshirt]{"entity": "product", "value": "t-shirt"}?
+    - Can I buy a [red](color) [tshirt]{"entity": "product", "value": "t-shirt"}?
+- intent: buy_product_with_color_size
+  examples: |
+    - can I buy a [blue](color) [t-shirt](product) with size [xl](size)?
+    - do you have any [blue](color) [t-shirt](product) with size [xl](size)?
+    - can you show me some [blue](color) [t-shirt](product) with size [xl](size)?
+    - can you buy me a [blue](color) [t-shirt](product) with size [xl](size)?
+    - I would like to buy a [blue](color) [t-shirt](product) with size [xl](size), can I?
+    - Buy me a [blue](color) [t-shirt](product) with size [xl](size)
+    - I want to buy a [blue](color) [t-shirt](product) with size [xl](size)
+    - I would like to see a [blue](color) [t-shirt](product) with size [xl](size)
+    - I would like to see a [t-shirt](product) [blue](color) with size [xl](size)
+    - I want to see a [blue](color) [t-shirt](product) with size [xl](size)
+    - I want to see a [t-shirt](product) which is [blue](color) with size [xl](size)
+    - Can I buy a [beige](color) [tshirt]{"entity": "product", "value": "t-shirt"} with size [xl](size)?
+    - Can I buy a [beige](color) [tshirt]{"entity": "product", "value": "t-shirt"} with size [XXS](size)?
+    - Can I buy a [red](color) [tshirt]{"entity": "product", "value": "t-shirt"} with size [xl](size)?
+- intent: buy_product_with_size
+  examples: |
+    - can I buy a [xl](size) [t-shirt](product)?
+    - do you have any [xl](size) [t-shirt](product)?
+    - can you show me some [xl](size) [t-shirt](product)?
+    - can you buy me a [xl](size) [t-shirt](product)?
+    - can you buy me a [xl](size) [t-shirt](product) for [$](amount)?
+    - I would like to buy a [xl](size) [t-shirt](product), can I?
+    - Buy me a [xl](size) [t-shirt](product)
+    - I want to buy a [xl](size) [t-shirt](product)
+    - I would like to see a [xl](size) [t-shirt](product)
+    - I would like to see a [t-shirt](product) [xl](size)
+    - I want to see a [xl](size) [t-shirt](product)
+    - I want to see a [t-shirt](product) which is [xl](size)
+    - can I buy a [t-shirt](product) with size [xl](size)?
+    - do you have any [t-shirt](product) with [xl](size)?
+    - I want to buy a [t-shirt](product) with [xl](size)
+    - I want to buy a [t-shirt](product) with size [xl](size)
+    - I would like to buy a [t-shirt](product) with [xl](size)
+    - I would like to buy a [t-shirt](product) with size [xl](size)
+    - Can I buy a [tshirt]{"entity": "product", "value": "t-shirt"} with size [xl](size)?
+    - Can I buy a [tshirt]{"entity": "product", "value": "t-shirt"} with size [XL](size)?
+    - Can I buy a [tshirt]{"entity": "product", "value": "t-shirt"} with size [XS](size)?
+- intent: by_number
+  examples: |
+    - The [first](number_on_the_list) should be fine
+    - The [first](number_on_the_list) should be good
+    - The [first](number_on_the_list) should be perfect
+    - The [first](number_on_the_list) should be awesome
+    - The [first](number_on_the_list) should be fantastic
+    - The [first](number_on_the_list) should be great
+    - The [first](number_on_the_list) is the best
+    - The [first](number_on_the_list) is the nice
+    - The [first](number_on_the_list) is the amazing
+    - The [first](number_on_the_list) is the perfect
+    - The [first](number_on_the_list) is a good one
+    - The [first](number_on_the_list) is a perfect one
+    - The [first](number_on_the_list)
+    - The [first](number_on_the_list) one
+    - I want the [first](number_on_the_list) one
+    - I want the [first](number_on_the_list)
+    - My favorite is the [first](number_on_the_list)
+    - My favorite is the [first](number_on_the_list) one
+    - [first](number_on_the_list) one
+    - the [first](number_on_the_list) one
+- intent: quantity_to_buy_intent
+  examples: |
+    - I would like to buy [1](quantity)
+    - [1](quantity)
+    - [1](quantity) suffices
+    - [1](quantity) is enough
+    - [1](quantity) is enough for me
+    - The quantity [1](quantity) is enough
+    - The quantity [1](quantity) is enough for me
+    - The quantity [1](quantity) suffices
+    - The quantity [1](quantity) suffices for me
+    - [1](quantity) is good
+    - just [1](quantity)
+- intent: visualize_cart
+  examples: |
+    - I would like to visualize my cart
+    - cart
+    - show me my cart
+    - show me my shopping cart
+    - Can I see my cart?
+    - Can I see my shopping cart?
+    - I would like to see my cart
+    - I would like to see my shopping cart
+    - I want to see my cart
+    - I want to see my shopping cart
+    - my cart
+    - my shopping cart
+    - shopping cart
+    - see cart
+    - see shopping cart
+    - show cart
+    - show shopping cart
+    - I need to see my cart
+    - I need to see my shopping cart
+    - Can i see my cart?
+    - I would like to change my cart
+    - I would like to change my shopping cart
+    - I would like to update my cart
+    - I would like to update my shopping cart
+    - I want to change my cart
+    - I want to change my shopping cart
+    - I want to update my cart
+    - I want to update my shopping cart
+    - Can I delete a product in my cart?
+    - Can I delete a product in my shopping cart?
+    - Delete product
+    - Delete product in cart
+    - Delete product in shopping cart
+    - Delete product in my cart
+    - Delete product in my shopping cart
+    - Can I update my cart?
+    - Can I update my shopping cart?
+    - Update cart
+    - Update shopping cart
+    - Update my cart
+    - Update my shopping cart
+    - Can I see the cart?
+    - Can I update the cart?
+- intent: choice_changeAccountInfo
+  examples: |
+    - change my account info
+    - change my acount information
+    - change my account information in the website
+    - change my info
+    - change my information in the website
+    - change my information in the ecommerce
+    - modify my account infon
+    - modify my information
+    - i want to change my account info
+    - i want to change my acount information
+    - i want to change my account information in the website
+    - i want to change my account information in the ecommerce
+    - i want to change my info
+    - i want to change my information
+    - i want to change my information in the website
+    - can i change my account info
+    - can i change my acount information
+    - can i change my account information in the website
+    - can i change my account information in the ecommerce
+    - can i change my info
+    - can i change my information
+    - can i change my information in the website
+    - can i change my information in the ecommerce
+    - I want to change my account information
+    - I want to modify my account info
+    - I want to change something on my account
+    - I want to change information on my account
+    - I wanna change smething on my account
+    - I want to change my account info
+    - i want to change an info on my account
+    - i want to change an information in my account
+    - i want to change na information on my account
+    - i want to change an information on my account
+- intent: choice_createNewAccount
+  examples: |
+    - create an account
+    - create account
+    - create new account
+    - create my new account
+    - create personal account
+    - create new personal account
+    - i want to create an account
+    - i want to create account
+    - i want to create new account
+    - i want to create my new account
+    - i want to create personal account
+    - i want to create new personal account
+    - i want to register
+    - can i register?
+    - register
+    - register?
+    - registration
+    - registration?
+    - can i create an account?
+    - can i create account?
+    - can i create a new account?
+    - can i create my new account?
+    - can i create a personal account?
+    - how to create an account?
+    - how to subscribe?
+    - how to enroll?
+    - how to signup
+    - i want to register on the website
+    - i want to create an account on the website
+    - register on the website
+    - register on the website?
+    - can i register on the website?
+    - how to register on the website?
+    - register on the website pls
+    - register on the website please
+    - create an account on the website
+    - create an account on the website?
+    - can i create an account on the website
+    - how to create an accounton the website?
+    - create an account on the website pls
+    - create an account on the website please
+    - Can i create an account
+    - Crete an account
+    - Create a new account
+    - Create new account
+    - create a new account
+- intent: choice_askInfoAboutEcommerce
+  examples: |
+    - tell me something about the shop
+    - tell me somethig about the ecommerce
+    - Give me information about the online shop
+    - give me info about the ecommerce
+    - info about ecommerce
+    - info about shop
+    - Tell me something about the ecommerce
+    - Tell me somthing about the ecommerce
+- intent: give_firstName
+  examples: |
+    - my first name is [Amine](PERSON)
+    - [Francesco](PERSON)
+    - here : [Leonardo](PERSON)
+    - here is my first name : [Andrea](PERSON)
+    - here [Steve](PERSON)
+    - here is my first name [Giulia](PERSON)
+    - they call me [Moreno](PERSON)
+    - people call me [Giuseppe](PERSON)
+    - i am called [Luna](PERSON)
+    - i'm called [Camilla](PERSON)
+    - my friends often call me [Martina](PERSON)
+    - i think that my name is [Simone](PERSON)
+    - yes, it's [Luigi](PERSON)
+    - i remember, it is [Davide](PERSON)
+    - yes, [Giovanni](PERSON)
+    - here it is : [Giorgio](PERSON)
+    - [Katia](PERSON)
+    - [Sofia](PERSON)
+    - [Aara](PERSON) is my name
+    - [Antonio](PERSON) is my first name
+    - [Reda](PERSON) is what my parents have told me
+    - [Edgar](PERSON) is my name
+    - the name is [Benoit](PERSON)
+    - [Valentin](PERSON) should be enough
+    - my name is [Salma](PERSON)
+    - m name is [Kenza](PERSON)
+    - [Issam](PERSON) is what my parents call me
+    - [Anass](PERSON)
+    - [Ines](PERSON)
+    - [Benjamin](PERSON)
+    - everyone calls me [Flores](PERSON)
+    - [Hasnaa](PERSON)
+    - [Federico](PERSON)
+    - [Giorgio](PERSON)
+    - it's [Federico](PERSON)
+    - [Stefania](PERSON)
+    - [Giovanni](PERSON)
+    - [francesco](PERSON)
+- intent: give_emailAddress
+  examples: |
+    - It's [francesco@gmail.com](email)
+    - it's [federico@mail.com](email)
+    - my email address is [example@mail.com]{"entity": "email", "value": "fexample@mail.com"}
+    - my mail address is [example@domain.com](email)
+    - my mail is [e.xample@mail.com](email)
+    - my e-mail address is [example@mail.fr](email)
+    - my e-mail is [example@domain.fr](email)
+    - [e.xample@mail.fr](email)
+    - [francesco@gmail.com](email)
+    - [fra@gmail.com](email)
+    - [abcd@hotmail.it](surname)
+    - [andrea.avesani@gmail.com](email)
+    - it's [fedeciro.povia@gmail.com](email)
+    - it's [federicopovia@gmail.com](email)
+    - [ferriniorso@hotmail.it](email)
+    - [ferriniorso@gmail.com](email)
+    - [franc@gmail.com](email)
+    - it's [abcd@hotmail.it](email)
+    - abcd@gmail.com
+- intent: give_address
+  examples: |
+    - It's [Via dele magnolie 11 Negrar Verona](address)
+    - of course it's [vicolo 4 spade, verona](address)
+    - [piazza melone 6 roma](address)
+    - Is [sottopassaggio napoleone 5](address)
+    - [Via delle magnolie 17 negrar](address)
+    - [via delle magnolie 17 negrar](address)
+- intent: say_firstName
+  examples: |
+    - name
+    - first name
+    - my name
+    - my first name
+    - the name
+    - the first name
+    - First name
+    - My FIRST NAME
+    - first nme
+- intent: say_surname
+  examples: |
+    - surname
+    - my surname
+    - suname
+    - srname
+    - the surname
+    - Surname
+    - The surname
+    - only the surname
+    - Only the surname
+    - only surname
+- intent: say_emailAddress
+  examples: |
+    - email
+    - e-mail
+    - email address
+    - e-mail address
+    - email adress
+    - e-mail adress
+    - the email
+    - the e-mail
+    - the email address
+    - the e-mail address
+    - the email adress
+    - the e-mail adress
+    - my email
+    - my e-mail
+    - my email address
+    - my e-mail address
+    - my email adress
+    - my e-mail adress
+- intent: say_birthDate
+  examples: |
+    - My birthdate
+    - my birth date
+    - the birthdate
+    - Birthdate
+    - date of birth
+    - My date of birth
+    - The date I was born
+    - my birthdate
+    - My birth date please
+- intent: say_address
+  examples: |
+    - My address
+    - home address
+    - my house address
+    - address please
+    - My address please
+    - address
+    - my address
+- intent: choice_askInfoAboutAccount
+  examples: |
+    - I want to ask information about my account
+    - Can you give me info about account?
+    - can you tell me something about my account?
+    - Tell me something about my account
+    - give me info about my account
+    - give info about my account
+    - tell me about my account
+    - i want know about my account
+    - i want info about my account
+    - Ask info about account
+    - Ask information about my account
+    - Ask info on account
+    - ask information on account
+    - ask account info
+    - ask account information
+    - Know info about my account
+    - know account info
+    - info about my account
+    - information about account
+    - information abt account
+    - information on account
+    - information about my account
+    - accout info
+    - account info
+    - i want to ask an information on my account
+    - i want to ask an info on my account
+- intent: give_birthDate
+  examples: |
+    - My birthdate is the first of november 2001
+    - It' 4 5 1978
+    - 19 march 1997
+    - 1 january 1999
+    - 21 december 1987
+    - 26 december 1965
+    - 19 march 1998
+- intent: choice_additionalHelp
+  examples: |
+    - i need more help
+    - need more help
+    - more help
+    - additional help
+    - further help
+    - i need more help please
+    - need more help please
+    - more help please
+    - additional help please
+    - further help please
+    - i need more help pls
+    - need more help pls
+    - more help pls
+    - additional help pls
+    - further help pls
+    - i want more help
+    - i want additional help
+    - i want further help
+    - i want some more help
+    - i want some additional help
+    - i want some further help
+    - i want more help please
+    - i want additional help please
+    - i want further help please
+    - i want more help pls
+    - i want additional help pls
+    - i want further help pls
+    - i need something else
+    - i need smtg else
+    - i want something else
+    - i want smtg else
+    - something else
+    - smtg else
+- intent: chitchat/askHowAreYou
+  examples: |
+    - how are you?
+    - are you fine?
+    - you fine?
+    - are you okay?
+    - are you k?
+    - you okay?
+    - you k?
+    - are you ok?
+    - you ok?
+    - you good?
+    - what's up?
+    - what's up boy?
+    - what's up girl?
+    - fine and you?
+    - good and you?
+    - not good and you?
+    - fine you?
+    - good you?
+    - not good you?
+    - you?
+    - and you?
+    - fine and y?
+    - good and y?
+- intent: chitchat/askJoke
+  examples: |
+    - Tell me a joke
+    - Do you know a joke?
+    - Joke please
+    - I want to hear a joke from you
+    - I want to listen a joke from you
+    - Please I want to hear a joke
+    - Please joke thanks
+    - Joke thanks
+    - Now tell me a joke
+    - Joke now
+- intent: chitchat/askLoveMe
+  examples: |
+    - Do you love me?
+    - Love me?
+    - I love you
+    - Love you
+    - Love me
+    - Lv me
+    - Are you in love with me?
+    - Are you loving me?
+- intent: chitchat/askMarryMe
+  examples: |
+    - Will you marry me?
+    - Want to marry me'
+    - Marry me
+    - We can marry
+    - Can we marry?
+    - I want you to marry me
+    - Wedding between us
+    - Prepare our wedding
+- intent: chitchat/askHobby
+  examples: |
+    - Do you have an hobby?
+    - Have an hobby?
+    - Hobby?
+    - Hobby
+    - What do you like to do?
+    - What is your hobby?
+    - what is your favourite activity?
+    - what is your favourite hobby?
+- intent: give_surname
+  examples: |
+    - [ferrini](PERSON)
+    - it's[Vitale](PERSON)
+    - My surname is: [D'Inca](PERSON)
+    - my surnname [Riccardi](PERSON)
+    - this is my surname [Passerini](PERSON)
+    - surname here [raza](PERSON)
+    - my second name is [Ruud](PERSON)
+    - surname is [Smith](PERSON)
 - synonym: t-shirt
+  examples: |
+    - tshirt
+    - shirt
+    - shirts
+    - tshirts
+    - t-shirts
+- synonym: fexample@mail.com
+  examples: |
+    - example@mail.com
+- synonym: Ottaviani
+  examples: |
+    - ottaviani
+- synonym: Pasquetto
+  examples: |
+    - Pasetto
+- regex: address
+  examples: |
+    - '\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|trail|trl|drive|dr|court|ct|park|parkway|pkwy|circle|cir|boulevard|blvd)\W?(?=\s|$)'
+    - /\d+(\s+\w+){1,}\s+(?:st(?:\.|rada)?|dr(?:\.|ive)?|pl(?:\.|ace)?|ave(?:\.|nue)?|via|viale|largo|sito|piazza|piazzale|piazzetta|foro|vicolo|galleria|corso|pasaggio|sottopassaggio|bastioni|portici)/
+- lookup: product
   examples: |
     - t-shirt
     - shirt
     - tshirt
     - shirts
+    - jacket
+    - jackets
+    - jeans
+    - pants
+    - shorts
+    - skirt
+    - skirts
+    - dress
+    - Computers
+    - Laptops
+    - Tablets
+    - Smartphones
+    - Cameras
+    - Computer
+    - Laptop
+    - Tablet
+    - Smartphone
+    - Camera
+    - Smartwatch
+    - Mobile phones
+    - Entertainment equipment, such as an Xbox or PlayStation
+    - Cameras
+    - Household furniture
+    - Washing machines and dishwashers
+    - Clothing
+    - Sports equipment
+    - Kitchen utensils, plates, pots and pans
+    - plates
+    - pans
+    - Choice of restaurants
+    - Hotels and airlines
+    - Luggage
+    - Getting a pet
+    - Joining a gym
+    - Hairdresser and beautician
+    - Car repairs
+    - Plants for the yard
+    - Perfumes and cosmetics
+    - Running shoes
+    - Everyday jewelry
+    - Kid’s bicycles
+    - Internet provider
+    - Everyday home loans and credit cards
+    - House repairs, paint, tools
+    - Regular doctor and dentist
+    - handbag
+    - shoes
+    - bra
+    - pant
+- lookup: size
+  examples: |
+    - xxs
+    - xs
+    - s
+    - m
+    - l
+    - xl
+    - xxl
+    - xxxl
+    - XXS
+    - XS
+    - S
+    - M
+    - L
+    - XL
+    - XXL
+    - XXXL
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 35
+    - 36
+    - 37
+    - 38
+    - 39
+    - 40
+    - 41
+    - 42
+    - 43
+    - 44
+    - 45
+    - 46
+    - 47
+    - 48
+    - 49
+    - 50
+    - 51
+    - 52
+    - 53
+    - 54
+    - 55
+    - 56
+    - 57
+    - 58
+    - 59
+    - 60
+- lookup: color
+  examples: |
+    - blue
+    - yellow
+    - green
+    - navy blue
+    - pink
+    - grey
+    - light grey
+    - pearl
+    - black
+    - white
+    - azure
+    - red
+    - beige
+    - orange
+- lookup: number_on_the_list
+  examples: |
+    - first
+    - second
+    - third
+    - fourth
+    - fifth
+    - sixth
+    - seventh
+- lookup: quantity
+  examples: |
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5

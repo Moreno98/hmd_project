@@ -1,38 +1,3183 @@
-version: "3.0"
-
+version: "2.0"
 stories:
-
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
-- story: buy product
+- story: buy_product_1_fail
   steps:
   - intent: greet
   - action: utter_greet
   - intent: buy_product
-  - action: query_db
-  - action: utter_buy
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+- story: buy_product_2_fail
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+- story: buy_product_3_fail
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+- story: buy_product_4_fail
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+- story: buy_product_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: db_buy_product
+- story: buy_product_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: db_buy_product
+- story: buy_product_1_2_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: db_buy_product
+- story: buy_product_1_3_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: db_buy_product
+- story: buy_product_2_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: db_buy_product
+- story: buy_product_2_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: db_buy_product
+- story: buy_product_3_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: db_buy_product
+- story: buy_product_3_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: db_buy_product
+- story: buy_product_4_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: db_buy_product
+- story: interactive_3
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: interactive_2
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: red
+  - action: reset_info_product_no_color
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+- story: interactive_1
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: third
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - out_range: true
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+- story: buy_product_1_0_fail_color
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: red
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+- story: buy_product_1_2_fail
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+- story: buy_product_2_0_fail
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+- story: buy_product_3_0_fail
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+- story: full
+  steps:
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: jacket
+    - product: jacket
+  - slot_was_set:
+    - product_to_buy: jacket
+  - action: reset_info_product
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - slot_was_set:
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+    - product: t-shirt
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: red
+    - color: red
+  - slot_was_set:
+    - color_to_buy: red
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+  - slot_was_set:
+    - color_to_buy: null
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - slot_was_set:
+    - color_to_buy: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: XS
+    - size: XS
+  - slot_was_set:
+    - size_to_buy: XS
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: size_product
+    entities:
+    - size: XL
+    - size: XL
+  - slot_was_set:
+    - size_to_buy: XL
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: red
+    - color: red
+    - product: t-shirt
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - color_to_buy: red
+  - action: reset_info_product_no_color
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+    - color: beige
+    - product: t-shirt
+  - slot_was_set:
+    - color_to_buy: beige
+  - action: reset_info_product_no_color
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: third
+    - number_on_the_list: third
+    - time: '2022-03-03T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: third
+  - slot_was_set:
+    - time: '2022-03-03T00:00:00.000+01:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - out_range: true
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - slot_was_set:
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: XL
+    - size: XL
+  - slot_was_set:
+    - size_to_buy: XL
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: XS
+    - product: t-shirt
+    - size: XS
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - size_to_buy: XS
+  - action: reset_info_product_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: XL
+    - product: t-shirt
+    - size: XL
+  - slot_was_set:
+    - size_to_buy: XL
+  - action: reset_info_product_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - slot_was_set:
+    - color_to_buy: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - size: XL
+    - color: red
+    - color: red
+    - product: t-shirt
+    - size: XL
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - color_to_buy: red
+  - slot_was_set:
+    - size_to_buy: XL
+  - action: reset_info_product_no_color_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - size: XL
+    - color: beige
+    - color: beige
+    - product: t-shirt
+    - size: XL
+  - slot_was_set:
+    - color_to_buy: beige
+  - action: reset_info_product_no_color_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product
+    entities:
+    - product: skirt
+    - product: skirt
+  - slot_was_set:
+    - product_to_buy: skirt
+  - action: reset_info_product
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - slot_was_set:
+    - number_to_buy: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: Tiger Tooth Pencil Skirt
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: 38, 40, 42, 44, 48, 50
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: '38'
+    - size: '38'
+  - slot_was_set:
+    - size_to_buy: '38'
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: all went well
+  steps:
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+    - color: beige
+    - product: t-shirt
+  - action: reset_info_product_no_color
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - size: xl
+    - color: red
+    - color: red
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - size: XXS
+    - color: beige
+    - color: beige
+    - product: t-shirt
+    - size: XXS
+  - action: reset_info_product_no_color_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - size: xl
+    - color: beige
+    - color: beige
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: buy_product_1_0_fail_size
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+- story: buy_product_2_0_fail
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+- story: buy_product_3_0_fail
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+- story: Story from Conversation ID 1f2eb05a75ac49eea8522493b634b117
+  steps:
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: XL
+    - product: t-shirt
+    - size: XL
+  - action: reset_info_product_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: XL
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: XS
+    - product: t-shirt
+    - size: XS
+  - action: reset_info_product_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: XL
+    - product: t-shirt
+    - size: XL
+  - action: reset_info_product_no_size
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: XL
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: red
+    - color: red
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+  - slot_was_set:
+    - color_to_buy: null
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+    - color: beige
+    - product: t-shirt
+  - action: reset_info_product_no_color
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: third
+    - number_on_the_list: third
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - out_range: true
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xs
+    - size: xs
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - amount_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: cart affirm
+  steps:
+  - intent: visualize_cart
+  - action: db_visualize_cart
+  - intent: affirm
+  - action: utter_which_to_delete
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
+- story: cart deny
+  steps:
+  - intent: visualize_cart
+  - action: db_visualize_cart
+  - intent: deny
+  - action: utter_anything_else
+- story: cart
+  steps:
+  - intent: visualize_cart
+  - action: db_visualize_cart
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
+- story: Story from Conversation ID bf10b66000914dd5b0ad06275ffd7e91
+  steps:
+  - intent: visualize_cart
+  - action: db_visualize_cart
+  - intent: affirm
+  - action: utter_which_to_delete
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
+- story: Story from Conversation ID dd2f2f1e9880454aad373bb004707f89
+  steps:
+  - intent: visualize_cart
+  - action: db_visualize_cart
+  - intent: deny
+  - action: utter_anything_else
+- story: Story from Conversation ID 5705d7d8f18f4037865ec637caee37d8
+  steps:
+  - intent: visualize_cart
+  - action: db_visualize_cart
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
+- story: Ask info about ecommerce
+  steps:
+  - intent: choice_askInfoAboutEcommerce
+  - action: utter_informAboutEcommerce
+  - action: utter_askAdditionalHelp
+
+- story: Create new account
+  steps:
+  - intent: choice_createNewAccount
+  - action: utter_startRegistration
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: franc@gmail.com
+    - email: franc@gmail.com
+  - slot_was_set:
+    - email: franc@gmail.com
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1998-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1998-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - address: Via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: Via delle magnolie 17 negrar
+  - action: action_createNewAccount
+  - action: utter_howCanIhelpYou
+
+- story: Change account info user not registered that does not want register
+  steps:
+  - intent: choice_changeAccountInfo
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: fed@live.com
+    - email: fed@live.com
+  - slot_was_set:
+    - email: fed@live.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: False
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_howCanIhelpYou
+
+- story: Change account info user not registered that wants register
+  steps:
+  - intent: choice_changeAccountInfo
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: fed@live.com
+    - email: fed@live.com
+  - slot_was_set:
+    - email: fed@live.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: False
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: utter_askAdditionalHelp
+
+- story: Registered user wants change first name
+  steps:
+  - intent: choice_changeAccountInfo
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: abcd@hotmail.it
+    - email: abcd@hotmail.it
+  - slot_was_set:
+    - email: abcd@hotmail.it
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_askAccountInformationToChange
+  - intent: say_firstName
+  - action: utter_sayNewInfoYouWant
+  - intent: give_firstName
+    entities:
+    - PERSON: Federico
+  - slot_was_set:
+    - PERSON: Federico
+  - action: action_updateUserFirstName
+  - action: utter_askAdditionalHelp
+
+- story: Registered user wants change surname
+  steps:
+  - intent: choice_changeAccountInfo
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: abcd@hotmail.it
+    - email: abcd@hotmail.it
+  - slot_was_set:
+    - email: abcd@hotmail.it
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_askAccountInformationToChange
+  - intent: say_surname
+  - action: utter_sayNewInfoYouWant
+  - intent: give_surname #
+    entities:
+    - PERSON: Orso
+  - slot_was_set:
+    - surname_PERSON: Orso
+  - action: action_updateUserSurname
+  - action: utter_askAdditionalHelp
+
+
+- story: Registered user wants change birth date
+  steps:
+  - intent: choice_changeAccountInfo
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: abcd@hotmail.it
+    - email: abcd@hotmail.it
+  - slot_was_set:
+    - email: abcd@hotmail.it
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_askAccountInformationToChange
+  - intent: say_birthDate
+  - action: utter_sayNewInfoYouWant
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_updateUserBirthDate
+  - action: utter_askAdditionalHelp
+
+
+- story: Registered user wants change addres
+  steps:
+  - intent: choice_changeAccountInfo
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: abcd@hotmail.it
+    - email: abcd@hotmail.it
+  - slot_was_set:
+    - email: abcd@hotmail.it
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_askAccountInformationToChange
+  - intent: say_address
+  - action: utter_sayNewInfoYouWant
+  - intent: give_address
+    entities:
+    - address: Via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: Via delle magnolie 17 negrar
+  - action: action_updateUserAddress
+  - action: utter_askAdditionalHelp
+
+
+- story: User ask info about account but it's not registered adn does not want register
+  steps:
+  - intent: choice_askInfoAboutAccount
+  - action: utter_userAskInfoAboutAccount
+  - intent: give_emailAddress
+    entities:
+    - email: federico.pio@gmail.com
+    - email: federico.pio@gmail.com
+  - slot_was_set: 
+    - email: federico.pio@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: False
+  - action: utter_checkingRegistration
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_askAdditionalHelp
+
+- story: User ask info about account but it's not registered and wants register
+  steps:
+  - intent: choice_askInfoAboutAccount
+  - action: utter_userAskInfoAboutAccount
+  - intent: give_emailAddress
+    entities:
+    - email: federico.pio@gmail.com
+    - email: federico.pio@gmail.com
+  - slot_was_set: 
+    - email: federico.pio@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: False
+  - action: utter_checkingRegistration
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askAdditionalHelp
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: utter_askAdditionalHelp
+
+
+- story: User ask info about account (first name)
+  steps:
+  - intent: choice_askInfoAboutAccount
+  - action: utter_userAskInfoAboutAccount
+  - intent: give_emailAddress
+    entities:
+    - email: federico.pio@gmail.com
+    - email: federico.pio@gmail.com
+  - slot_was_set: 
+    - email: federico.pio@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: True
+  - action: utter_checkingRegistration
+  - action: action_whichInfoAsked
+  - slot_was_set: 
+    - accountInfoAsked: True
+  - intent: say_firstName
+  - action: action_retrieveFirstName
+  - action: utter_askAdditionalHelp
+
+- story: User ask info about account (surname)
+  steps:
+  - intent: choice_askInfoAboutAccount
+  - action: utter_userAskInfoAboutAccount
+  - intent: give_emailAddress
+    entities:
+    - email: federico.pio@gmail.com
+    - email: federico.pio@gmail.com
+  - slot_was_set: 
+    - email: federico.pio@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: True
+  - action: utter_checkingRegistration
+  - action: action_whichInfoAsked
+  - slot_was_set: 
+    - accountInfoAsked: True
+  - intent: say_surname
+  - action: action_retrieveSurname
+  - action: utter_askAdditionalHelp
+
+- story: User ask info about account (birthdate)
+  steps:
+  - intent: choice_askInfoAboutAccount
+  - action: utter_userAskInfoAboutAccount
+  - intent: give_emailAddress
+    entities:
+    - email: federico.pio@gmail.com
+    - email: federico.pio@gmail.com
+  - slot_was_set: 
+    - email: federico.pio@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: True
+  - action: utter_checkingRegistration
+  - action: action_whichInfoAsked
+  - slot_was_set: 
+    - accountInfoAsked: True
+  - intent: say_birthDate
+  - action: action_retrieveBirthDate
+  - action: utter_askAdditionalHelp
+
+- story: User ask info about account (address)
+  steps:
+  - intent: choice_askInfoAboutAccount
+  - action: utter_userAskInfoAboutAccount
+  - intent: give_emailAddress
+    entities:
+    - email: federico.pio@gmail.com
+    - email: federico.pio@gmail.com
+  - slot_was_set: 
+    - email: federico.pio@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: True
+  - action: utter_checkingRegistration
+  - action: action_whichInfoAsked
+  - slot_was_set: 
+    - accountInfoAsked: True
+  - intent: say_address
+  - action: action_retrieveAddress
+  - action: utter_askAdditionalHelp
+
+
+- story: Registered user wants change info and then ask info about account
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: choice_changeAccountInfo
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: abcd@hotmail.it
+    - email: abcd@hotmail.it
+  - slot_was_set:
+    - email: abcd@hotmail.it
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_askAccountInformationToChange
+  - intent: say_firstName
+  - action: utter_sayNewInfoYouWant
+  - intent: give_firstName
+    entities:
+    - PERSON: Giovanni
+  - slot_was_set:
+    - PERSON: Giovanni
+  - action: action_updateUserFirstName
+  - slot_was_set:
+    - PERSON: null
+  - action: utter_askAdditionalHelp
+  - intent: choice_askInfoAboutAccount
+  - action: utter_userAskInfoAboutAccount
+  - intent: give_emailAddress
+    entities:
+    - email: abcd@hotmail.it
+    - email: abcd@hotmail.it
+  - slot_was_set:
+    - email: abcd@hotmail.it
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_checkingRegistration
+  - action: action_whichInfoAsked
+  - slot_was_set:
+    - accountInfoAsked: true
+  - intent: say_birthDate
+  - action: action_retrieveBirthDate
+  - action: utter_askAdditionalHelp

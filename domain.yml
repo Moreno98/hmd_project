@@ -1,76 +1,305 @@
-version: "3.0"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - buy_product
-
-entities:
-  - name
-  - surname
-  - card_id
-  - product
-  - amount
-
-slots:
-  product_to_buy:
-    type: text
-    mappings:
-    - type: from_entity
-      entity: product
-  amount_to_buy:
-    type: float
-    mappings:
-    - type: from_entity
-      entity: amount
-  product_query:
-    type: bool
-    influence_conversation: False
-    mappings:
-    - type: custom
-
-responses:
-  utter_greet:
-  - text: "Hello I am a conversational AI, ask me anything"
-  - text: "Hey, I am a conversational AI, how can I help you?"
-
-  utter_help:
-  - text: "What can I do for you?"
-  - text: "How can I help you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
-  utter_buy:
-    - condition:
-        - type: slot
-          name: product_query
-          value: true
-      text: "I found the following products:"
-
-    - text: "I am sorry but I could not find a match with these parameters, do you have it's brand?"
-
-actions: 
-  - query_db
-
+version: '2.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- affirm
+- bot_challenge
+- buy_product
+- buy_product_with_color
+- buy_product_with_color_size
+- buy_product_with_size
+- by_number
+- chitchat
+- choice_additionalHelp
+- choice_askInfoAboutAccount
+- choice_askInfoAboutEcommerce
+- choice_askInfoAboutProduct
+- choice_changeAccountInfo
+- choice_createNewAccount
+- choice_noMoreHelp
+- color_product
+- deny
+- give_address
+- give_birthDate
+- give_emailAddress
+- give_firstName
+- give_surname
+- goodbye
+- greet
+- nlu_fallback
+- quantity_to_buy_intent
+- say_address
+- say_birthDate
+- say_emailAddress
+- say_firstName
+- say_surname
+- size_product
+- visualize_cart
+entities:
+- first_name
+- email
+- surname
+- gender
+- time
+- address
+- card_id
+- product
+- amount
+- brand
+- price
+- color
+- size
+- number_on_the_list
+- quantity
+- product_name
+- color_available
+- size_available
+- delete_product
+- number_to_delete
+- PERSON
+slots:
+  product_to_buy:
+    type: text
+    influence_conversation: true
+  amount_to_buy:
+    type: float
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
+  product_query:
+    type: bool
+    influence_conversation: false
+  brand_to_buy:
+    type: text
+    influence_conversation: true
+  price_to_buy:
+    type: float
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
+  gender_to_buy:
+    type: text
+    influence_conversation: true
+  color_to_buy:
+    type: text
+    influence_conversation: true
+  size_to_buy:
+    type: text
+    influence_conversation: true
+  number_to_buy:
+    type: text
+    influence_conversation: true
+  number_to_delete:
+    type: text
+    influence_conversation: true
+  quantity_to_buy:
+    type: text
+    influence_conversation: true
+  product_to_buy_name:
+    type: text
+    influence_conversation: true
+  color_available_slot:
+    type: text
+    influence_conversation: true
+  color_check:
+    type: bool
+    influence_conversation: true
+  size_available_slot:
+    type: text
+    influence_conversation: true
+  size_check:
+    type: bool
+    influence_conversation: true
+  color_exist:
+    type: bool
+    influence_conversation: true
+  size_exist:
+    type: bool
+    influence_conversation: true
+  out_range:
+    type: bool
+    influence_conversation: true
+  product_exist:
+    type: bool
+    influence_conversation: true
+  email:
+    type: text
+    influence_conversation: true
+  PERSON:
+    type: text
+    influence_conversation: true
+  surname_PERSON:
+    type: text
+    influence_conversation: true
+  userIsRegistered:
+    type: bool
+    influence_conversation: true
+  accountInfoAsked:
+    type: bool
+    influence_conversation: true
+  time:
+    type: any
+    influence_conversation: false
+  address:
+    type: text
+    influence_conversation: true
+responses:
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request.
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
+  utter_greet:
+  - text: Hello I am a conversational AI, ask me anything
+  - text: Hey, I am a conversational AI, how can I help you?
+  utter_help:
+  - text: What can I do for you?
+  - text: How can I help you?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_color_to_buy:
+  - text: do you have a color in mind?
+  utter_size_to_buy:
+  - text: please, specify the size you want
+  utter_quantity_to_buy:
+  - text: how many do you need?
+  utter_success_buy:
+  - text: Congrats, your purchase has been made!
+  utter_buy_something:
+  - text: which one do you want?
+  utter_visualize_product:
+  - custom:
+      products: '{products}'
+      text: 'I found the following products:'
+  utter_fail_buy_product:
+  - text: I'm sorry, I couldn't find the product you were looking for.
+  utter_no_product:
+  - text: I am sorry but we don't have this product in our store.
+  utter_fail_buy:
+  - text: I'm sorry, an internal error occured, please formulate again what you'd like to buy.
+  utter_selection_out_range:
+  - text: I'm sorry, the number you selected is out of range, try with a proper one.
+  utter_anything_else:
+  - text: Anything else?
+  - text: Do you want anything else?
+  utter_color_not_available:
+  - text: "I'm sorry, the color you selected is not available, the available colors are: {colors}"
+  utter_size_not_available:
+  - text: "I'm sorry, the size you selected is not available, the available sizes are: {sizes}"
+  utter_no_color_available:
+  - text: I'm sorry, we don't have this color in our store, would you like to search something else?
+  utter_no_size_available:
+  - text: I'm sorry, we don't have this size in our store, would you like to search something else?
+  utter_no_specified_product:
+  - text: I'm sorry, we don't have the product with these specifications in our store.
+  utter_search_something_else:
+  - text: please search something else
+  utter_cart_empty:
+  - text: Your cart is empty, do you want to buy something?
+  utter_cart_visualize:
+  - custom:
+      products: '{products}'
+      text: 'Here is your cart:'
+  utter_change_cart:
+  - text: do you want to delete something?
+  utter_which_to_delete:
+  - text: Which one do you want to delete?
+  utter_cart_deleted:
+  - text: The product has been deleted from your cart.
+  utter_fail_delete:
+  - text: I'm sorry, an error occured during the deletion process, please try again later.
+  utter_howCanIhelpYou:
+  - text: Hey there, how can I help you?
+  utter_askRegisteredEmail:
+  - text: Please tell me the email address you used to register
+  utter_askNotRegisteredEmail:
+  - text: Please, write the email
+  utter_askAccountInformationToChange:
+  - text: Could you please tell me which information would you like to change?
+  utter_sayNewInfoYouWant:
+  - text: Write the new information please
+  utter_allSaved:
+  - text: Perfect, all the information are saved
+  utter_askEmail:
+  - text: Please tell me your email address
+  utter_askFirstName:
+  - text: Please tell me your first name
+  - text: And your first name please
+  utter_askSurname:
+  - text: Please tell me our surname
+  - text: And tour surname please
+  utter_askBirthDate:
+  - text: What is your birthdate?
+  utter_askAddress:
+  - text: Please tell me your address
+  utter_answerBirthDate:
+  - text: 'Your birthdate is: {birth_date}'
+  utter_askAdditionalHelp:
+  - text: Do you need additional help?
+  utter_askCreateNewAccount:
+  - text: It seems the email you gave, does not belong to any account. Do you want to create one?
+  utter_userRegistered:
+  - text: User correctly registered
+  utter_startRegistration:
+  - text: Perfect, in order to register on the website i need to colect some information about you.
+  utter_userAskInfoAboutAccount:
+  - text: Sure, please tell me your email address in order to check your registration
+  utter_whichInfoAsked:
+  - text: Which information about your accoutn do you want to know?
+  utter_checkingRegistration:
+  - text: I'm checking your registration
+  utter_chitchat/askHowAreYou:
+  - text: I'm good mate
+  - text: Not bad thanks
+  - text: I can't complain, thank you
+  utter_chitchat/askJoke:
+  - text: Not implemented yet
+  utter_chitchat/askLoveMe:
+  - text: You know I admire you a lot
+  - text: You know I respect you a lot
+  utter_chitchat/askMarryMe:
+  - text: I'm not a wedding kind of bot
+  utter_chitchat/askHobby:
+  - text: My favourite activity is to help people in ordering on this ecommerce
+  utter_informAboutEcommerce:
+  - text: E AI is a new type of ecommerce where a user can do everything using his own voice.
+  - text: Welcome on E AI, a cutting edge ecommerce that is able to satisfy everyone
+actions:
+- db_retrieve_product
+- db_info_colors
+- db_buy_product
+- db_visualize_cart
+- db_delete_cart
+- set_product_info
+- check_color
+- check_size
+- reset_info_product
+- reset_info_product_no_color
+- reset_info_product_no_size
+- reset_info_product_no_color_no_size
+- query_registeredAccounts
+- action_updateUserFirstName
+- action_updateUserEmailAddress
+- action_updateUserSurname
+- action_updateUserBirthDate
+- action_updateUserAddress
+- action_checkIfUserIsRegistered
+- action_createNewAccount
+- action_retrieveFirstName
+- action_retrieveSurname
+- action_retrieveBirthDate
+- action_retrieveAddress
+- action_emptySlots
+- action_whichInfoAsked
+- action_SetSlot_askAccountInfo
