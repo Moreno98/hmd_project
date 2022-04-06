@@ -275,6 +275,8 @@ responses:
   utter_informAboutEcommerce:
   - text: E AI is a new type of ecommerce where a user can do everything using his own voice.
   - text: Welcome on E AI, a cutting edge ecommerce that is able to satisfy everyone
+  utter_pleaseLogin:
+  - text: Plese login with your email
 actions:
 - db_retrieve_product
 - db_info_colors

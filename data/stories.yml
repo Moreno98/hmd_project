@@ -52,7 +52,7 @@ stories:
   - slot_was_set:
     - product_exist: false
   - action: utter_search_something_else
-- story: buy_product_1_0_fine
+- story: buy_product_1_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -99,8 +99,93 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: utter_pleaseLogin 
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
-- story: buy_product_1_1_fine
+- story: buy_product_1_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: utter_pleaseLogin 
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: db_buy_product
+- story: buy_product_1_1_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -140,6 +225,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
 - story: buy_product_1_2_fine
   steps:
@@ -181,6 +271,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
 - story: buy_product_1_3_fine
   steps:
@@ -215,6 +310,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
 - story: buy_product_2_0_fine
   steps:
@@ -255,6 +355,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
 - story: buy_product_2_1_fine
   steps:
@@ -288,6 +393,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
 - story: buy_product_3_0_fine
   steps:
@@ -328,6 +438,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
 - story: buy_product_3_1_fine
   steps:
@@ -361,6 +476,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
 - story: buy_product_4_0_fine
   steps:
@@ -393,6 +513,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
 - story: interactive_3
   steps:
@@ -486,6 +611,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -612,6 +742,11 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -969,6 +1104,11 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -1115,6 +1255,11 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -1297,6 +1442,11 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -1455,6 +1605,11 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -1605,6 +1760,11 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -1718,6 +1878,11 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -1839,6 +2004,11 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -1958,6 +2128,11 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -2149,6 +2324,11 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -2383,6 +2563,11 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -2552,6 +2737,11 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -2697,6 +2887,11 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
