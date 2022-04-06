@@ -47,7 +47,7 @@ class Connection(Action):
 
     def __init__(self) -> None:
         super(Connection, self).__init__()
-        self.conn = self.create_connection("database.db")
+        self.conn = self.create_connection("db/database.db")
     
     def name(self) -> Text:
         return "db_connection"
@@ -80,7 +80,6 @@ class Reset_info_product(Action):
         
         return [
             # SlotSet("product_to_buy", None), cannot reset this slot
-            SlotSet("amount_to_buy", None),
             SlotSet("brand_to_buy", None),
             SlotSet("price_to_buy", None),
             SlotSet("gender_to_buy", None),
@@ -112,7 +111,6 @@ class Reset_info_product_no_color(Action):
         
         return [
             # SlotSet("product_to_buy", None), cannot reset this slot
-            SlotSet("amount_to_buy", None),
             SlotSet("brand_to_buy", None),
             SlotSet("price_to_buy", None),
             SlotSet("gender_to_buy", None),
@@ -143,7 +141,6 @@ class Reset_info_product_no_size(Action):
         
         return [
             # SlotSet("product_to_buy", None), cannot reset this slot
-            SlotSet("amount_to_buy", None),
             SlotSet("brand_to_buy", None),
             SlotSet("price_to_buy", None),
             SlotSet("gender_to_buy", None),
@@ -174,7 +171,6 @@ class Reset_info_product_no_color_no_size(Action):
         
         return [
             # SlotSet("product_to_buy", None), cannot reset this slot
-            SlotSet("amount_to_buy", None),
             SlotSet("brand_to_buy", None),
             SlotSet("price_to_buy", None),
             SlotSet("gender_to_buy", None),
@@ -515,6 +511,27 @@ class Check_color(Action):
                 SlotSet("color_to_buy", None)
             ]
 
+class Set_quantity_slot(Action):
+
+    def __init__(self) -> None:
+        super(Set_quantity_slot, self).__init__()
+        self.conn = Connection().conn
+    
+    def name(self) -> Text:
+        return "set_quantity_slot"
+    
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
+        domain: "DomainDict") -> List[Dict[Text, Any]]:
+        
+        quantity = None
+        entities = tracker.latest_message['entities']
+        for ent in entities:
+            if ent['entity'] == 'quantity':
+                quantity = ent['value']
+                break
+
+        return [SlotSet("quantity_to_buy", quantity)]
+
 class Buy_product(Action):
 
     def __init__(self) -> None:
@@ -527,13 +544,7 @@ class Buy_product(Action):
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
         domain: "DomainDict") -> List[Dict[Text, Any]]:
         
-        quantity = None
-        entities = tracker.latest_message['entities']
-        for ent in entities:
-            if ent['entity'] == 'quantity':
-                quantity = ent['value']
-                break
-
+        quantity = tracker.get_slot("quantity_to_buy")
         color = tracker.get_slot("color_to_buy")
         size = tracker.get_slot("size_to_buy")
         if(size != None):
@@ -552,12 +563,28 @@ class Buy_product(Action):
             cur.execute(product_id_query, (name,))
             rows = cur.fetchall()
             product_id = rows[0][0]
+            
+            ID = tracker.get_slot("ID_logged")
+
+            if(ID == None):
+                print("ID is None")
+                dispatcher.utter_message(
+                    response = "utter_pleaseLogin"
+                )
+                return []
+
+            query = "SELECT Address from account where ID = ?"
+
+            cur.execute(query, (ID,))
+            rows = cur.fetchall()
+            address = rows[0][0]
 
             query = "INSERT INTO purchase (quantity, size, color, 'shipping address', date, 'product ID', 'account ID') VALUES (?, ?, ?, ?, ?, ?, ?)"
 
             today = str(datetime.date.today())
 
-            params = (int(quantity), size, color, "", today, product_id, 1)
+
+            params = (int(quantity), size, color, address, today, product_id, ID)
             
             try:
                 cur.execute(query, params)
@@ -578,7 +605,6 @@ class Buy_product(Action):
             
             return [
                 SlotSet("product_to_buy", None), 
-                SlotSet("amount_to_buy", None),
                 SlotSet("brand_to_buy", None),
                 SlotSet("price_to_buy", None),
                 SlotSet("gender_to_buy", None),
@@ -857,7 +883,7 @@ class CheckIfUserIsRegistered(Action):
         #linkCursor = link.cursor()
         
         slot_emailAddress = tracker.get_slot("email")
-        stmt = "SELECT email FROM account WHERE email = ?" 
+        stmt = "SELECT ID, email FROM account WHERE email = ?" 
         cur.execute(stmt, (slot_emailAddress, ))
         result = cur.fetchone()
         print("action_checkifuserisregistered")
@@ -865,9 +891,10 @@ class CheckIfUserIsRegistered(Action):
         #print(slot_emailAddress)
 
         if result != None:
-            return [SlotSet("userIsRegistered", True)]
-        else:
-            return [SlotSet("userIsRegistered", False)]
+            ID = result[0]
+            return [SlotSet("userIsRegistered", True), SlotSet("ID_logged", ID)]
+        else:            
+            return [SlotSet("userIsRegistered", False), SlotSet("ID_logged", None)]
 
 class CreatenNewAccount(Action):
 

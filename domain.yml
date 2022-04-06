@@ -62,11 +62,6 @@ slots:
   product_to_buy:
     type: text
     influence_conversation: true
-  amount_to_buy:
-    type: float
-    influence_conversation: true
-    max_value: 1.0
-    min_value: 0.0
   product_query:
     type: bool
     influence_conversation: false
@@ -142,6 +137,9 @@ slots:
     type: any
     influence_conversation: false
   address:
+    type: text
+    influence_conversation: true
+  ID_logged:
     type: text
     influence_conversation: true
 responses:
@@ -277,6 +275,8 @@ responses:
   - text: Welcome on E AI, a cutting edge ecommerce that is able to satisfy everyone
   utter_pleaseLogin:
   - text: Plese login with your email
+  utter_sign_up_mandatory:
+  - text: You must sign up to use buy products.
 actions:
 - db_retrieve_product
 - db_info_colors
@@ -305,3 +305,4 @@ actions:
 - action_emptySlots
 - action_whichInfoAsked
 - action_SetSlot_askAccountInfo
+- set_quantity_slot

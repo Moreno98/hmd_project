@@ -99,6 +99,7 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin 
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -152,6 +153,7 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin 
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -225,13 +227,138 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
   - action: db_buy_product
-- story: buy_product_1_2_fine
+- story: buy_product_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: db_buy_product
+- story: buy_product_1_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_1_2_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -271,13 +398,139 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
   - action: db_buy_product
-- story: buy_product_1_3_fine
+- story: buy_product_1_2_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: db_buy_product
+- story: buy_product_1_2_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_1_3_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -310,13 +563,125 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
   - action: db_buy_product
-- story: buy_product_2_0_fine
+- story: buy_product_1_3_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: db_buy_product
+- story: buy_product_1_3_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_2_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -355,13 +720,137 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
   - action: db_buy_product
-- story: buy_product_2_1_fine
+- story: buy_product_2_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: db_buy_product
+- story: buy_product_2_0_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_2_1_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -393,13 +882,123 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
   - action: db_buy_product
-- story: buy_product_3_0_fine
+- story: buy_product_2_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: db_buy_product
+- story: buy_product_2_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_3_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -438,13 +1037,137 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
   - action: db_buy_product
-- story: buy_product_3_1_fine
+- story: buy_product_3_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: db_buy_product
+- story: buy_product_3_0_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_3_1_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -476,13 +1199,123 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
   - action: db_buy_product
-- story: buy_product_4_0_fine
+- story: buy_product_3_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: db_buy_product
+- story: buy_product_3_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_4_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -513,20 +1346,126 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
   - action: db_buy_product
+- story: buy_product_4_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  - action: utter_askSurname
+  - intent: give_surname #
+    entities:
+    - PERSON: Ferrini
+  - slot_was_set:
+    - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities: 
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities: 
+    - address: via delle magnolie 17 negrar
+  - slot_was_set:
+    - address: via delle magnolie 17 negrar
+  - action: utter_userRegistered
+  - action: db_buy_product
+- story: buy_product_4_0_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
 - story: interactive_3
   steps:
   - intent: buy_product
     entities:
     - product: t-shirt
   - action: reset_info_product
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -611,6 +1550,7 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -619,8 +1559,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -658,8 +1596,6 @@ stories:
     - product: t-shirt
   - action: reset_info_product
   - slot_was_set:
-    - amount_to_buy: null
-  - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
     - price_to_buy: null
@@ -742,6 +1678,7 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -750,8 +1687,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -787,8 +1722,6 @@ stories:
     - product: t-shirt
     - color: red
   - action: reset_info_product_no_color
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -827,8 +1760,6 @@ stories:
     entities:
     - product: t-shirt
   - action: reset_info_product
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1041,8 +1972,6 @@ stories:
     - product_to_buy: jacket
   - action: reset_info_product
   - slot_was_set:
-    - amount_to_buy: null
-  - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
     - price_to_buy: null
@@ -1104,6 +2033,7 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -1112,8 +2042,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1151,8 +2079,6 @@ stories:
   - slot_was_set:
     - product_to_buy: t-shirt
   - action: reset_info_product
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1255,6 +2181,7 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -1263,8 +2190,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1307,8 +2232,6 @@ stories:
     - color_to_buy: red
   - action: reset_info_product_no_color
   - slot_was_set:
-    - amount_to_buy: null
-  - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
     - price_to_buy: null
@@ -1348,8 +2271,6 @@ stories:
   - slot_was_set:
     - color_to_buy: beige
   - action: reset_info_product_no_color
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1442,6 +2363,7 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -1450,8 +2372,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1494,8 +2414,6 @@ stories:
     - size_to_buy: XS
   - action: reset_info_product_no_size
   - slot_was_set:
-    - amount_to_buy: null
-  - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
     - price_to_buy: null
@@ -1535,8 +2453,6 @@ stories:
   - slot_was_set:
     - size_to_buy: XL
   - action: reset_info_product_no_size
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1605,6 +2521,7 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -1613,8 +2530,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1661,8 +2576,6 @@ stories:
     - size_to_buy: XL
   - action: reset_info_product_no_color_no_size
   - slot_was_set:
-    - amount_to_buy: null
-  - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
     - price_to_buy: null
@@ -1702,8 +2615,6 @@ stories:
   - slot_was_set:
     - color_to_buy: beige
   - action: reset_info_product_no_color_no_size
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1760,6 +2671,7 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -1768,8 +2680,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1807,8 +2717,6 @@ stories:
   - slot_was_set:
     - product_to_buy: skirt
   - action: reset_info_product
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1878,6 +2786,7 @@ stories:
     - quantity: '1'
   - slot_was_set:
     - quantity_to_buy: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -1886,8 +2795,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -1927,8 +2834,6 @@ stories:
     - product: t-shirt
     - size: xl
   - action: reset_info_product_no_size
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2004,6 +2909,7 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -2012,8 +2918,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2051,8 +2955,6 @@ stories:
     - color: beige
     - product: t-shirt
   - action: reset_info_product_no_color
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2128,6 +3030,7 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -2136,8 +3039,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2178,8 +3079,6 @@ stories:
     - size: xl
   - action: reset_info_product_no_color_no_size
   - slot_was_set:
-    - amount_to_buy: null
-  - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
     - price_to_buy: null
@@ -2219,8 +3118,6 @@ stories:
     - size: XXS
   - action: reset_info_product_no_color_no_size
   - slot_was_set:
-    - amount_to_buy: null
-  - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
     - price_to_buy: null
@@ -2259,8 +3156,6 @@ stories:
     - product: t-shirt
     - size: xl
   - action: reset_info_product_no_color_no_size
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2324,6 +3219,7 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -2332,8 +3228,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2487,8 +3381,6 @@ stories:
     - size: XL
   - action: reset_info_product_no_size
   - slot_was_set:
-    - amount_to_buy: null
-  - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
     - price_to_buy: null
@@ -2563,6 +3455,7 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -2571,8 +3464,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2610,8 +3501,6 @@ stories:
     - product: t-shirt
     - size: XS
   - action: reset_info_product_no_size
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2651,8 +3540,6 @@ stories:
     - product: t-shirt
     - size: XL
   - action: reset_info_product_no_size
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2737,6 +3624,7 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -2745,8 +3633,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2784,8 +3670,6 @@ stories:
     - color: beige
     - product: t-shirt
   - action: reset_info_product_no_color
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:
@@ -2887,6 +3771,7 @@ stories:
     entities:
     - quantity: '1'
     - quantity: '1'
+  - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
   - action: action_checkIfUserIsRegistered
@@ -2895,8 +3780,6 @@ stories:
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
-  - slot_was_set:
-    - amount_to_buy: null
   - slot_was_set:
     - brand_to_buy: null
   - slot_was_set:

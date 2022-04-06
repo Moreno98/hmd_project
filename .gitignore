@@ -93,3 +93,5 @@ venv/*
 archive/*
 install_rasa.txt
 Examples.txt
+db/images/*
+*.db.sqbpro
