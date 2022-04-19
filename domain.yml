@@ -17,6 +17,7 @@ intents:
 - choice_askInfoAboutProduct
 - choice_changeAccountInfo
 - choice_createNewAccount
+- choice_iwantsaymyaddress
 - choice_noMoreHelp
 - color_product
 - deny
@@ -24,7 +25,6 @@ intents:
 - give_birthDate
 - give_emailAddress
 - give_firstName
-- give_surname
 - goodbye
 - greet
 - nlu_fallback
@@ -37,12 +37,7 @@ intents:
 - size_product
 - visualize_cart
 entities:
-- first_name
-- email
-- surname
-- gender
 - time
-- address
 - card_id
 - product
 - amount
@@ -58,6 +53,12 @@ entities:
 - delete_product
 - number_to_delete
 - PERSON
+- STREET
+- ZIP_CODE
+- CITY
+- STATE
+- COUNTRY
+- email
 slots:
   product_to_buy:
     type: text
@@ -124,9 +125,6 @@ slots:
   PERSON:
     type: text
     influence_conversation: true
-  surname_PERSON:
-    type: text
-    influence_conversation: true
   userIsRegistered:
     type: bool
     influence_conversation: true
@@ -137,6 +135,21 @@ slots:
     type: any
     influence_conversation: false
   address:
+    type: text
+    influence_conversation: true
+  STREET:
+    type: text
+    influence_conversation: true
+  ZIP_CODE:
+    type: text
+    influence_conversation: true
+  CITY:
+    type: text
+    influence_conversation: true
+  STATE:
+    type: text
+    influence_conversation: true
+  COUNTRY:
     type: text
     influence_conversation: true
   ID_logged:
@@ -234,9 +247,6 @@ responses:
   utter_askFirstName:
   - text: Please tell me your first name
   - text: And your first name please
-  utter_askSurname:
-  - text: Please tell me our surname
-  - text: And tour surname please
   utter_askBirthDate:
   - text: What is your birthdate?
   utter_askAddress:
@@ -306,3 +316,4 @@ actions:
 - action_whichInfoAsked
 - action_SetSlot_askAccountInfo
 - set_quantity_slot
+- action_userGaveAddress

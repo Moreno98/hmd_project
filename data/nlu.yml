@@ -15,6 +15,7 @@ nlu:
     - Hello
     - Hi
     - hI
+    - JO
 - intent: goodbye
   examples: |
     - cu
@@ -372,6 +373,7 @@ nlu:
     - i want to change an information in my account
     - i want to change na information on my account
     - i want to change an information on my account
+    - I want to change an information on my account
 - intent: choice_createNewAccount
   examples: |
     - create an account
@@ -420,6 +422,10 @@ nlu:
     - Create a new account
     - Create new account
     - create a new account
+    - I want to create an account
+    - I want to create a new account
+    - Create [aj](PERSON) account
+    - Create an account
 - intent: choice_askInfoAboutEcommerce
   examples: |
     - tell me something about the shop
@@ -482,7 +488,6 @@ nlu:
     - [e.xample@mail.fr](email)
     - [francesco@gmail.com](email)
     - [fra@gmail.com](email)
-    - [abcd@hotmail.it](surname)
     - [andrea.avesani@gmail.com](email)
     - it's [fedeciro.povia@gmail.com](email)
     - it's [federicopovia@gmail.com](email)
@@ -490,15 +495,25 @@ nlu:
     - [ferriniorso@gmail.com](email)
     - [franc@gmail.com](email)
     - it's [abcd@hotmail.it](email)
-    - abcd@gmail.com
+    - My email is [federicores@gmail.com](email)
+    - [francesco1@gmail.com](email)
+    - [abcd@hotmail.it](email)
+    - [franci@gmail.com](email)
+    - [fede@gmail.com](email)
+    - [Francesco321@gmail.com](email)
+    - [fed1234@gmail.com](email)
+    - [fede123@gmail.com](email)
 - intent: give_address
   examples: |
-    - It's [Via dele magnolie 11 Negrar Verona](address)
-    - of course it's [vicolo 4 spade, verona](address)
-    - [piazza melone 6 roma](address)
-    - Is [sottopassaggio napoleone 5](address)
-    - [Via delle magnolie 17 negrar](address)
-    - [via delle magnolie 17 negrar](address)
+    - It's [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE) [USA](COUNTRY)
+    - of course it's [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE) [USA](COUNTRY)
+    - [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
+    - Is [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
+    - It is [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE) [USA](COUNTRY)
+    - My address is [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
+    - Yes of course, the address is [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
+    - address: [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
+    - [344 Robinson Court](STREET) [37024](ZIP_CODE) [portland](CITY) [oregon](STATE)
 - intent: say_firstName
   examples: |
     - name
@@ -510,18 +525,6 @@ nlu:
     - First name
     - My FIRST NAME
     - first nme
-- intent: say_surname
-  examples: |
-    - surname
-    - my surname
-    - suname
-    - srname
-    - the surname
-    - Surname
-    - The surname
-    - only the surname
-    - Only the surname
-    - only surname
 - intent: say_emailAddress
   examples: |
     - email
@@ -562,6 +565,13 @@ nlu:
     - My address please
     - address
     - my address
+- intent: choice_iwantsaymyaddress
+  examples: |
+    - i wannnt tell you my address
+    - i wanna say my address
+    - please save my address
+    - record my address
+    - record my  address
 - intent: choice_askInfoAboutAccount
   examples: |
     - I want to ask information about my account
@@ -701,16 +711,6 @@ nlu:
     - What is your hobby?
     - what is your favourite activity?
     - what is your favourite hobby?
-- intent: give_surname
-  examples: |
-    - [ferrini](PERSON)
-    - it's[Vitale](PERSON)
-    - My surname is: [D'Inca](PERSON)
-    - my surnname [Riccardi](PERSON)
-    - this is my surname [Passerini](PERSON)
-    - surname here [raza](PERSON)
-    - my second name is [Ruud](PERSON)
-    - surname is [Smith](PERSON)
 - synonym: t-shirt
   examples: |
     - tshirt
@@ -721,16 +721,116 @@ nlu:
 - synonym: fexample@mail.com
   examples: |
     - example@mail.com
-- synonym: Ottaviani
+- lookup: STREET
   examples: |
-    - ottaviani
-- synonym: Pasquetto
+    - 344 Robinson Court
+    - 4343 Briarwood Drive
+    - 5467 Columbia Boulevard
+    - 2314 Thrash Trail
+    - 234 Jenna Lane
+    - 987 Patterson Street
+    - 6754 Haven Lane
+    - 2211 Walton Street
+    - 1133 Lewis Street
+    - 567 Zappia Drive
+    - 453 Boone Crockett Lane
+    - 467 Emma Street
+    - 8956 Cabell Avenue
+    - 5473 Myra Street
+    - 7690 Creekside Lane
+    - 1023Edington Drive
+    - 1034 State Street
+    - 1111 Powder House Road
+    - 145 Whiteman Street
+    - 546 Conaway Street
+    - 457 Chatham Way
+    - 901 Oakdale Avenue
+    - 456 O Conner Street
+    - 5678 Jim Rosa Lane
+    - 453 amden Street
+    - 905 Sunny Day Drive
+    - 958 Joseph Street
+    - 2123 Kemper Lane
+    - 211 Heavens Way
+- lookup: ZIP_CODE
   examples: |
-    - Pasetto
-- regex: address
+    - 123456
+    - 122211
+    - 234789
+    - 988876
+    - 234523
+    - 345633
+    - 901234
+    - 456555
+    - 989087
+- lookup: CITY
   examples: |
-    - '\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|trail|trl|drive|dr|court|ct|park|parkway|pkwy|circle|cir|boulevard|blvd)\W?(?=\s|$)'
-    - /\d+(\s+\w+){1,}\s+(?:st(?:\.|rada)?|dr(?:\.|ive)?|pl(?:\.|ace)?|ave(?:\.|nue)?|via|viale|largo|sito|piazza|piazzale|piazzetta|foro|vicolo|galleria|corso|pasaggio|sottopassaggio|bastioni|portici)/
+    - New York
+    - Palo Alto
+    - Washington
+- lookup: STATE
+  examples: |
+    - Alabama
+    - Alaska
+    - Arizona
+    - Arkansas
+    - California
+    - Colorado
+    - Connecticut
+    - Delaware
+    - Florida
+    - Georgia
+    - Hawaii
+    - Idaho
+    - Illinois
+    - Indiana
+    - Iowa
+    - Kansas
+    - Kentucky
+    - Louisiana
+    - Maine
+    - Maryland
+    - Massachusetts
+    - Michigan
+    - Minnesota
+    - Mississippi
+    - Missouri
+    - Montana
+    - Nebraska
+    - Nevada
+    - New Hampshire
+    - New Jersey
+    - New Mexico
+    - New York
+    - North Carolina
+    - North Dakota
+    - Ohio
+    - Oklahoma
+    - Oregon
+    - Pennsylvania
+    - Rhode Island
+    - South Carolina
+    - South Dakota
+    - Tennessee
+    - Texas
+    - Utah
+    - Vermont
+    - Virginia
+    - Washington
+    - West Virginia
+    - Wisconsin
+    - Wyoming
+    - Puerto Rico
+    - Virgin Islands
+    - Washington, D.C.
+    - US Armed Forces Pacific
+    - American Samoa
+    - Guam
+    - Palau
+    - Federated States of Micronesia
+    - Northern Mariana Islands
+    - Marshall Islands
+    - US Armed Forces Europe
 - lookup: product
   examples: |
     - t-shirt

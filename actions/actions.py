@@ -769,38 +769,38 @@ class UpdateUserFirstName(Action):
         return [SlotSet("PERSON", None)]
 
 
-class UpdateUserSurname(Action):
+# class UpdateUserSurname(Action):
 
-    def __init__(self) -> None:
-        super(UpdateUserSurname, self).__init__()
-        self.conn = Connection().conn
+#     def __init__(self) -> None:
+#         super(UpdateUserSurname, self).__init__()
+#         self.conn = Connection().conn
 
-    def name (self) -> Text:
-        return "action_updateUserSurname"
+#     def name (self) -> Text:
+#         return "action_updateUserSurname"
     
-    def run(self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+#     def run(self,
+#             dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
+#         cur = self.conn.cursor()
+#         #link = sqlite3.connect("database.db")
+#         #linkCursor = link.cursor()
         
-        slot_Surname = tracker.get_slot("surname_PERSON")
-        slot_emailAddress = tracker.get_slot("email")
+#         slot_Surname = tracker.get_slot("surname_PERSON")
+#         slot_emailAddress = tracker.get_slot("email")
         
-        stmt = "UPDATE account SET Surname = ? WHERE Email = ?" 
-        print(stmt, (slot_Surname, slot_emailAddress))
-        cur.execute(stmt)
+#         stmt = "UPDATE account SET Surname = ? WHERE Email = ?" 
+#         print(stmt, (slot_Surname, slot_emailAddress))
+#         cur.execute(stmt)
 
-        print("action_updateUserSurname")
+        # print("action_updateUserSurname")
         
-        resultDisplayed = "Surname changed"
+        # resultDisplayed = "Surname changed"
 
-        dispatcher.utter_message(text=resultDisplayed)
+        # dispatcher.utter_message(text=resultDisplayed)
 
-        return [SlotSet("surname_PERSON", None)]
+        # return [SlotSet("surname_PERSON", None)]
 
 class UpdateUserBirthDate(Action):
 
@@ -850,9 +850,34 @@ class UpdateUserAddress(Action):
         #link = sqlite3.connect("database.db")
         #linkCursor = link.cursor()
         
-        slot_address = tracker.get_slot("address")
         slot_emailAddress = tracker.get_slot("email")
+        slot_street = tracker.get_slot("STREET")
+        slot_zipCode = tracker.get_slot("ZIP_CODE")
+        slot_city = tracker.get_slot("CITY")
+        slot_country = tracker.get_slot("COUNTRY")
+        slot_state = tracker.get_slot("STATE")
+
+        slot_address = ''
+        if slot_street != None:
+            slot_address = slot_address + slot_street
+        if slot_zipCode != None and slot_address != '':
+            slot_address = slot_address + ' ' + str(slot_zipCode)
+        elif slot_zipCode != None and slot_address == '':
+            slot_address = slot_address + str(slot_zipCode)
+        if slot_city != None and slot_address != '':
+            slot_address = slot_address + ' ' + slot_city
+        elif slot_city != None and slot_address == '':
+            slot_address = slot_address + slot_city
+        if slot_state != None and slot_address != '':
+            slot_address = slot_address + ' ' + slot_state
+        elif slot_state != None and slot_address == '':
+            slot_address = slot_address + slot_state
+        if slot_country != None and slot_address != '':
+            slot_address = slot_address + ' ' + slot_country
+        elif slot_country != None and slot_address == '':
+            slot_address = slot_address + slot_country
         
+
         stmt = "UPDATE account SET Address = ? WHERE Email = ?"
         cur.execute(stmt, (slot_address, slot_emailAddress, ))
         self.conn.commit()
@@ -916,10 +941,35 @@ class CreatenNewAccount(Action):
         
         slot_emailAddress = tracker.get_slot("email")
         slot_firstName = tracker.get_slot("PERSON")
-        slot_surname = tracker.get_slot("surname_PERSON")
+        # slot_surname = tracker.get_slot("surname_PERSON")
         slot_birthDate = tracker.get_slot("time")
         birth_date = slot_birthDate[:10]
-        slot_address = tracker.get_slot("address")
+        slot_street = tracker.get_slot("STREET")
+        slot_zipCode = tracker.get_slot("ZIP_CODE")
+        slot_city = tracker.get_slot("CITY")
+        slot_country = tracker.get_slot("COUNTRY")
+        slot_state = tracker.get_slot("STATE")
+
+        slot_address = ''
+        if slot_street != None:
+            slot_address = slot_address + slot_street
+        if slot_zipCode != None and slot_address != '':
+            slot_address = slot_address + ' ' + str(slot_zipCode)
+        elif slot_zipCode != None and slot_address == '':
+            slot_address = slot_address + str(slot_zipCode)
+        if slot_city != None and slot_address != '':
+            slot_address = slot_address + ' ' + slot_city
+        elif slot_city != None and slot_address == '':
+            slot_address = slot_address + slot_city
+        if slot_state != None and slot_address != '':
+            slot_address = slot_address + ' ' + slot_state
+        elif slot_state != None and slot_address == '':
+            slot_address = slot_address + slot_state
+        if slot_country != None and slot_address != '':
+            slot_address = slot_address + ' ' + slot_country
+        elif slot_country != None and slot_address == '':
+            slot_address = slot_address + slot_country
+        
         # need to know the number of rows in order to add the next ID in the table
         stmt = "SELECT email FROM account"
         cur.execute(stmt)
@@ -927,17 +977,22 @@ class CreatenNewAccount(Action):
         id = len(result) + 1
 
 
-        stmt1 = "INSERT INTO account VALUES (?, ?, ?, ?, ?, 'None', ?)" 
-        cur.execute(stmt1, (id, slot_firstName, slot_surname, birth_date, slot_emailAddress, slot_address, ))
+        stmt1 = "INSERT INTO account VALUES (?, ?, ?, ?, ?)" 
+        cur.execute(stmt1, (id, slot_firstName, birth_date, slot_emailAddress, slot_address, ))
         print("action_createNewAccount")
 
         resultDisplayed = "User correctly registered"
         dispatcher.utter_message(text=resultDisplayed)
             
         return [SlotSet("PERSON", None), 
-                SlotSet("surname_PERSON", None), 
+                #SlotSet("surname_PERSON", None), 
                 SlotSet("time", None),
-                SlotSet("address", None)]
+                SlotSet("address", None),
+                SlotSet("STREET", None), 
+                SlotSet("ZIP_CODE", None), 
+                SlotSet("CITY", None),
+                SlotSet("CITY", None),
+                SlotSet("COUNTRY", None)]
 
 class RetrieveFirstName(Action):
 
@@ -969,36 +1024,36 @@ class RetrieveFirstName(Action):
         
         print("action_retrieveFirstName")
 
-class RetrieveSurname(Action):
+# class RetrieveSurname(Action):
 
-    def __init__(self) -> None:
-        super(RetrieveSurname, self).__init__()
-        self.conn = Connection().conn
+#     def __init__(self) -> None:
+#         super(RetrieveSurname, self).__init__()
+#         self.conn = Connection().conn
 
-    def name(self) -> Text:
-        return "action_retrieveSurname"
+#     def name(self) -> Text:
+#         return "action_retrieveSurname"
     
-    def run(self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+#     def run(self,
+#             dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
+#         cur = self.conn.cursor()
+#         #link = sqlite3.connect("database.db")
+#         #linkCursor = link.cursor()
         
-        slot_emailAddress = tracker.get_slot("email")
+#         slot_emailAddress = tracker.get_slot("email")
 
-        # need to know the number of rows in order to add the next ID in the table
-        stmt = "SELECT Surname FROM account WHERE Email = ?"
-        cur.execute(stmt, (slot_emailAddress, ))
-        result = cur.fetchone()
+#         # need to know the number of rows in order to add the next ID in the table
+#         stmt = "SELECT Surname FROM account WHERE Email = ?"
+#         cur.execute(stmt, (slot_emailAddress, ))
+#         result = cur.fetchone()
 
-        resultDisplayed = "The surname for your account is: " + result[0]
+#         resultDisplayed = "The surname for your account is: " + result[0]
 
-        dispatcher.utter_message(text=resultDisplayed)
+#         dispatcher.utter_message(text=resultDisplayed)
         
-        print("action_retrieveSurname")
+#         print("action_retrieveSurname")
 
 class RetrieveBirthDate(Action):
 
@@ -1131,3 +1186,34 @@ class action_whichInfoAsked_true(Action):
             dispatcher.utter_message(text=resultDisplayed)
 
             return [SlotSet("accountInfoAsked", True)]
+
+
+
+class action_userGaveAddress(Action):
+
+    def __init__(self) -> None:
+        super(action_userGaveAddress, self).__init__()
+        self.conn = Connection().conn
+
+    def name(self) -> Text:
+        return "action_userGaveAddress"
+    
+    def run(self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+            print("action_userGaveAddress")
+
+            cur = self.conn.cursor()
+        
+        
+            slot_street = tracker.get_slot("STREET")
+            slot_zipCode = tracker.get_slot("ZIP_CODE")
+            slot_city = tracker.get_slot("CITY")
+            slot_country = tracker.get_slot("COUNTRY")
+            slot_state = tracker.get_slot("STATE")
+
+            print(slot_street, slot_zipCode, slot_city, slot_country, slot_state)
+
+            

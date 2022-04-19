@@ -1,5 +1,12 @@
 version: "2.0"
 stories:
+# - story: simply_give_surname
+#   steps:
+#   - intent: give_surname
+#     entities:
+#     - surname_PERSON: ferrini
+#   - slot_was_set:
+#     - surname_PERSON: ferrini
 - story: buy_product_1_fail
   steps:
   - intent: greet
@@ -100,8 +107,12 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
-  - action: utter_pleaseLogin 
+  - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -154,8 +165,12 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
-  - action: utter_pleaseLogin 
+  - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -167,24 +182,32 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: db_buy_product
 - story: buy_product_1_1_0_fine
@@ -230,6 +253,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -276,6 +303,10 @@ stories:
     - quantity: 1
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -287,24 +318,32 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: db_buy_product
 - story: buy_product_1_1_1_deny
@@ -350,6 +389,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -401,6 +444,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -448,6 +495,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -459,24 +510,32 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: db_buy_product
 - story: buy_product_1_2_1_deny
@@ -522,6 +581,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -566,6 +629,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -606,6 +673,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -617,24 +688,32 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: db_buy_product
 - story: buy_product_1_3_1_deny
@@ -673,6 +752,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -723,6 +806,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -769,6 +856,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -780,24 +871,32 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: db_buy_product
 - story: buy_product_2_0_1_deny
@@ -842,6 +941,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -885,6 +988,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -924,6 +1031,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -935,24 +1046,32 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: db_buy_product
 - story: buy_product_2_1_1_deny
@@ -990,6 +1109,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1040,6 +1163,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -1086,6 +1213,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1097,24 +1228,32 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: db_buy_product
 - story: buy_product_3_0_1_deny
@@ -1159,6 +1298,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1202,6 +1345,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -1241,6 +1388,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1252,24 +1403,32 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: db_buy_product
 - story: buy_product_3_1_1_deny
@@ -1307,6 +1466,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1349,6 +1512,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -1387,6 +1554,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1398,24 +1569,32 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: db_buy_product
 - story: buy_product_4_0_1_deny
@@ -1452,6 +1631,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1553,6 +1736,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -1681,6 +1868,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -2036,6 +2227,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -2184,6 +2379,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -2366,6 +2565,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -2524,6 +2727,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -2674,6 +2881,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -2789,6 +3000,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -2912,6 +3127,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -3033,6 +3252,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -3222,6 +3445,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -3458,6 +3685,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -3627,6 +3858,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -3774,6 +4009,10 @@ stories:
   - action: set_quantity_slot
   - action: utter_pleaseLogin
   - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
@@ -3869,7 +4108,6 @@ stories:
   - intent: choice_askInfoAboutEcommerce
   - action: utter_informAboutEcommerce
   - action: utter_askAdditionalHelp
-
 - story: Create new account
   steps:
   - intent: choice_createNewAccount
@@ -3878,7 +4116,6 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: franc@gmail.com
-    - email: franc@gmail.com
   - slot_was_set:
     - email: franc@gmail.com
   - action: utter_askFirstName
@@ -3887,12 +4124,12 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -3902,12 +4139,19 @@ stories:
   - action: utter_askAddress
   - intent: give_address
     entities:
-    - address: Via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: Via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: action_createNewAccount
   - action: utter_howCanIhelpYou
-
 - story: Change account info user not registered that does not want register
   steps:
   - intent: choice_changeAccountInfo
@@ -3915,16 +4159,14 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: fed@live.com
-    - email: fed@live.com
   - slot_was_set:
     - email: fed@live.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
-    - userIsRegistered: False
+    - userIsRegistered: false
   - action: utter_askCreateNewAccount
   - intent: deny
   - action: utter_howCanIhelpYou
-
 - story: Change account info user not registered that wants register
   steps:
   - intent: choice_changeAccountInfo
@@ -3932,12 +4174,11 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: fed@live.com
-    - email: fed@live.com
   - slot_was_set:
     - email: fed@live.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
-    - userIsRegistered: False
+    - userIsRegistered: false
   - action: utter_askCreateNewAccount
   - intent: affirm
   - action: utter_askFirstName
@@ -3946,34 +4187,40 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: utter_askAdditionalHelp
-
 - story: Registered user wants change first name
   steps:
   - intent: choice_changeAccountInfo
   - action: utter_askEmail
   - intent: give_emailAddress
     entities:
-    - email: abcd@hotmail.it
     - email: abcd@hotmail.it
   - slot_was_set:
     - email: abcd@hotmail.it
@@ -3990,39 +4237,34 @@ stories:
     - PERSON: Federico
   - action: action_updateUserFirstName
   - action: utter_askAdditionalHelp
-
-- story: Registered user wants change surname
-  steps:
-  - intent: choice_changeAccountInfo
-  - action: utter_askEmail
-  - intent: give_emailAddress
-    entities:
-    - email: abcd@hotmail.it
-    - email: abcd@hotmail.it
-  - slot_was_set:
-    - email: abcd@hotmail.it
-  - action: action_checkIfUserIsRegistered
-  - slot_was_set:
-    - userIsRegistered: true
-  - action: utter_askAccountInformationToChange
-  - intent: say_surname
-  - action: utter_sayNewInfoYouWant
-  - intent: give_surname #
-    entities:
-    - PERSON: Orso
-  - slot_was_set:
-    - surname_PERSON: Orso
-  - action: action_updateUserSurname
-  - action: utter_askAdditionalHelp
-
-
+# - story: Registered user wants change surname
+#   steps:
+#   - intent: choice_changeAccountInfo
+#   - action: utter_askEmail
+#   - intent: give_emailAddress
+#     entities:
+#     - email: abcd@hotmail.it
+#   - slot_was_set:
+#     - email: abcd@hotmail.it
+#   - action: action_checkIfUserIsRegistered
+#   - slot_was_set:
+#     - userIsRegistered: true
+#   - action: utter_askAccountInformationToChange
+#   - intent: say_surname
+#   - action: utter_sayNewInfoYouWant
+#   - intent: give_surname
+#     entities:
+#     - surname_PERSON: Orso
+#   - slot_was_set:
+#     - surname_PERSON: Orso
+#   - action: action_updateUserSurname
+#   - action: utter_askAdditionalHelp
 - story: Registered user wants change birth date
   steps:
   - intent: choice_changeAccountInfo
   - action: utter_askEmail
   - intent: give_emailAddress
     entities:
-    - email: abcd@hotmail.it
     - email: abcd@hotmail.it
   - slot_was_set:
     - email: abcd@hotmail.it
@@ -4039,15 +4281,12 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: action_updateUserBirthDate
   - action: utter_askAdditionalHelp
-
-
 - story: Registered user wants change addres
   steps:
   - intent: choice_changeAccountInfo
   - action: utter_askEmail
   - intent: give_emailAddress
     entities:
-    - email: abcd@hotmail.it
     - email: abcd@hotmail.it
   - slot_was_set:
     - email: abcd@hotmail.it
@@ -4059,13 +4298,19 @@ stories:
   - action: utter_sayNewInfoYouWant
   - intent: give_address
     entities:
-    - address: Via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: Via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: action_updateUserAddress
   - action: utter_askAdditionalHelp
-
-
 - story: User ask info about account but it's not registered adn does not want register
   steps:
   - intent: choice_askInfoAboutAccount
@@ -4073,17 +4318,15 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: federico.pio@gmail.com
-    - email: federico.pio@gmail.com
-  - slot_was_set: 
+  - slot_was_set:
     - email: federico.pio@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
-    - userIsRegistered: False
+    - userIsRegistered: false
   - action: utter_checkingRegistration
   - action: utter_askCreateNewAccount
   - intent: deny
   - action: utter_askAdditionalHelp
-
 - story: User ask info about account but it's not registered and wants register
   steps:
   - intent: choice_askInfoAboutAccount
@@ -4091,12 +4334,11 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: federico.pio@gmail.com
-    - email: federico.pio@gmail.com
-  - slot_was_set: 
+  - slot_was_set:
     - email: federico.pio@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
-    - userIsRegistered: False
+    - userIsRegistered: false
   - action: utter_checkingRegistration
   - action: utter_askCreateNewAccount
   - intent: affirm
@@ -4107,28 +4349,34 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  - action: utter_askSurname
-  - intent: give_surname #
-    entities:
-    - PERSON: Ferrini
-  - slot_was_set:
-    - surname_PERSON: Ferrini
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
-    entities: 
+    entities:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
   - action: utter_askAddress
   - intent: give_address
-    entities: 
-    - address: via delle magnolie 17 negrar
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - address: via delle magnolie 17 negrar
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - action: utter_userRegistered
   - action: utter_askAdditionalHelp
-
-
 - story: User ask info about account (first name)
   steps:
   - intent: choice_askInfoAboutAccount
@@ -4136,20 +4384,18 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: federico.pio@gmail.com
-    - email: federico.pio@gmail.com
-  - slot_was_set: 
+  - slot_was_set:
     - email: federico.pio@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
-    - userIsRegistered: True
+    - userIsRegistered: true
   - action: utter_checkingRegistration
   - action: action_whichInfoAsked
-  - slot_was_set: 
-    - accountInfoAsked: True
+  - slot_was_set:
+    - accountInfoAsked: true
   - intent: say_firstName
   - action: action_retrieveFirstName
   - action: utter_askAdditionalHelp
-
 - story: User ask info about account (surname)
   steps:
   - intent: choice_askInfoAboutAccount
@@ -4157,20 +4403,18 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: federico.pio@gmail.com
-    - email: federico.pio@gmail.com
-  - slot_was_set: 
+  - slot_was_set:
     - email: federico.pio@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
-    - userIsRegistered: True
+    - userIsRegistered: true
   - action: utter_checkingRegistration
   - action: action_whichInfoAsked
-  - slot_was_set: 
-    - accountInfoAsked: True
+  - slot_was_set:
+    - accountInfoAsked: true
   - intent: say_surname
   - action: action_retrieveSurname
   - action: utter_askAdditionalHelp
-
 - story: User ask info about account (birthdate)
   steps:
   - intent: choice_askInfoAboutAccount
@@ -4178,20 +4422,18 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: federico.pio@gmail.com
-    - email: federico.pio@gmail.com
-  - slot_was_set: 
+  - slot_was_set:
     - email: federico.pio@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
-    - userIsRegistered: True
+    - userIsRegistered: true
   - action: utter_checkingRegistration
   - action: action_whichInfoAsked
-  - slot_was_set: 
-    - accountInfoAsked: True
+  - slot_was_set:
+    - accountInfoAsked: true
   - intent: say_birthDate
   - action: action_retrieveBirthDate
   - action: utter_askAdditionalHelp
-
 - story: User ask info about account (address)
   steps:
   - intent: choice_askInfoAboutAccount
@@ -4199,21 +4441,18 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: federico.pio@gmail.com
-    - email: federico.pio@gmail.com
-  - slot_was_set: 
+  - slot_was_set:
     - email: federico.pio@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
-    - userIsRegistered: True
+    - userIsRegistered: true
   - action: utter_checkingRegistration
   - action: action_whichInfoAsked
-  - slot_was_set: 
-    - accountInfoAsked: True
+  - slot_was_set:
+    - accountInfoAsked: true
   - intent: say_address
   - action: action_retrieveAddress
   - action: utter_askAdditionalHelp
-
-
 - story: Registered user wants change info and then ask info about account
   steps:
   - intent: greet
@@ -4222,7 +4461,6 @@ stories:
   - action: utter_askEmail
   - intent: give_emailAddress
     entities:
-    - email: abcd@hotmail.it
     - email: abcd@hotmail.it
   - slot_was_set:
     - email: abcd@hotmail.it
@@ -4246,7 +4484,6 @@ stories:
   - intent: give_emailAddress
     entities:
     - email: abcd@hotmail.it
-    - email: abcd@hotmail.it
   - slot_was_set:
     - email: abcd@hotmail.it
   - action: action_checkIfUserIsRegistered
@@ -4259,3 +4496,231 @@ stories:
   - intent: say_birthDate
   - action: action_retrieveBirthDate
   - action: utter_askAdditionalHelp
+- story: Story from Conversation ID 980d42e8dd21446aa39a379caa6eb983
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: chitchat
+    entities:
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: blue
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+  - slot_was_set:
+    - color_to_buy: null
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 19
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: Create new account 2
+  steps:
+  - intent: choice_createNewAccount
+  - action: utter_startRegistration
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: franc@gmail.com
+  - slot_was_set:
+    - email: franc@gmail.com
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1998-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1998-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: action_createNewAccount
+  - action: utter_howCanIhelpYou
+
+- story: example story for addresses
+  steps:
+  - intent: choice_iwantsaymyaddress
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: action_userGaveAddress
+- story: example 2 story for addresses
+  steps:
+  - intent: choice_iwantsaymyaddress
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 344 Gateway Road
+    - ZIP_CODE: 97232
+    - CITY: Portland
+    - STATE: Oregion
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 344 Gateway Road
+    - ZIP_CODE: 97232
+    - CITY: Portland
+    - STATE: Oregon
+    - COUNTRY: USA
+  - action: action_userGaveAddress

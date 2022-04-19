@@ -42,8 +42,10 @@ pipeline:
   - name: "SpacyFeaturizer"
   - name: "SpacyEntityExtractor"
     dimensions: ["PERSON"]
+  - name: "RegexFeaturizer"
+  - name: "RegexEntityExtractor"
   - name: DIETClassifier
-    epochs: 300
+    epochs: 100
     constrain_similarities: true
   - name: EntitySynonymMapper
   - name: FallbackClassifier
@@ -51,7 +53,7 @@ pipeline:
     ambiguity_threshold: 0.05
   - name: "DucklingEntityExtractor"
     url: "http://localhost:8000"
-    dimensions: ["time", "email"]
+    dimensions: ["time", "email", "quantity"]
     locale: "en_EN"
     timezone: "Europe/Rome"
     timeout : 3
