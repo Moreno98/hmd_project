@@ -4108,7 +4108,7 @@ stories:
   - intent: choice_askInfoAboutEcommerce
   - action: utter_informAboutEcommerce
   - action: utter_askAdditionalHelp
-- story: Create new account
+- story: Create new account user not already registered
   steps:
   - intent: choice_createNewAccount
   - action: utter_startRegistration
@@ -4118,6 +4118,9 @@ stories:
     - email: franc@gmail.com
   - slot_was_set:
     - email: franc@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
   - action: utter_askFirstName
   - intent: give_firstName
     entities:
@@ -4151,6 +4154,22 @@ stories:
     - STATE: Alaska
     - COUNTRY: USA
   - action: action_createNewAccount
+  - action: utter_howCanIhelpYou
+  - action: utter_askAdditionalHelp
+- story: Create new account user already registered
+  steps:
+  - intent: choice_createNewAccount
+  - action: utter_startRegistration
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: franc@gmail.com
+  - slot_was_set:
+    - email: franc@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_userIsAlreadyRegistered
   - action: utter_howCanIhelpYou
 - story: Change account info user not registered that does not want register
   steps:
@@ -4653,6 +4672,9 @@ stories:
     - email: franc@gmail.com
   - slot_was_set:
     - email: franc@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
   - action: utter_askFirstName
   - intent: give_firstName
     entities:
@@ -4724,3 +4746,14 @@ stories:
     - STATE: Oregon
     - COUNTRY: USA
   - action: action_userGaveAddress
+- story: user wants see purchases
+  steps:
+  - intent: choice_askToSeePurchases
+  - action: utter_askToSeePurchases
+  - intent: give_emailAddress
+    entities:
+    - email: framcesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_userAskedPurchases
+  - action: utter_howCanIhelpYou

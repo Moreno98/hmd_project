@@ -436,6 +436,16 @@ nlu:
     - info about shop
     - Tell me something about the ecommerce
     - Tell me somthing about the ecommerce
+- intent: choice_askToSeePurchases
+  examples: |
+    - can i see my purchases?
+    - i want to see my purchases
+    - see purchases
+    - watch purchases
+    - purchase
+    - Let me see my purchases
+    - I wanna see purchases
+    - I want see purchases
 - intent: give_firstName
   examples: |
     - my first name is [Amine](PERSON)

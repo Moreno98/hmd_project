@@ -15,6 +15,7 @@ intents:
 - choice_askInfoAboutAccount
 - choice_askInfoAboutEcommerce
 - choice_askInfoAboutProduct
+- choice_askToSeePurchases
 - choice_changeAccountInfo
 - choice_createNewAccount
 - choice_iwantsaymyaddress
@@ -193,6 +194,10 @@ responses:
   - custom:
       products: '{products}'
       text: 'I found the following products:'
+  utter_visualize_purchases:
+  - custom:
+      purchases: '{purchases}'
+      text: These are the purchases for your account
   utter_fail_buy_product:
   - text: I'm sorry, I couldn't find the product you were looking for.
   utter_no_product:
@@ -259,6 +264,8 @@ responses:
   - text: It seems the email you gave, does not belong to any account. Do you want to create one?
   utter_userRegistered:
   - text: User correctly registered
+  utter_userIsAlreadyRegistered:
+  - text: The email you are using now is alreay registered in our database. Choose another one or perform a different operation
   utter_startRegistration:
   - text: Perfect, in order to register on the website i need to colect some information about you.
   utter_userAskInfoAboutAccount:
@@ -287,6 +294,8 @@ responses:
   - text: Plese login with your email
   utter_sign_up_mandatory:
   - text: You must sign up to use buy products.
+  utter_askToSeePurchases:
+  - text: In order to show your purchases, please tell me your email address
 actions:
 - db_retrieve_product
 - db_info_colors
@@ -317,3 +326,4 @@ actions:
 - action_SetSlot_askAccountInfo
 - set_quantity_slot
 - action_userGaveAddress
+- action_userAskedPurchases

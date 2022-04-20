@@ -1217,3 +1217,79 @@ class action_userGaveAddress(Action):
             print(slot_street, slot_zipCode, slot_city, slot_country, slot_state)
 
             
+  
+
+class action_userAskedPurchases(Action):
+
+    def __init__(self) -> None:
+        super(action_userAskedPurchases, self).__init__()
+        self.conn = Connection().conn
+
+    def name(self) -> Text:
+        return "action_userAskedPurchases"
+    
+    def run(self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+            print("action_userAskedPurchases")
+
+            slot_emailAddress = tracker.get_slot("email")
+            cur = self.conn.cursor()
+            stmt = "SELECT ID FROM account WHERE Email = ?"
+            cur.execute(stmt, (slot_emailAddress, ))
+            result = cur.fetchone()
+            
+            if not result:
+                resultDisplayed = "There aren't account with this email address"
+                dispatcher.utter_message(text=resultDisplayed)
+            else:
+                ID = result[0]
+                query = "SELECT * FROM purchase WHERE Account_ID = ?"
+                cur.execute(query, (ID, ))
+                rows = cur.fetchall()
+                purchases = []
+                response = []
+
+                if len(rows) == 0:
+                    resultDisplayed = "There aren't purchases for this account"
+                    dispatcher.utter_message(text=resultDisplayed)
+                else:
+                    for i, purchase in enumerate(rows):
+                        purchase_id = purchase[6] # retrieve the id of the purchase
+                        query = "SELECT Name, Price, Information FROM product WHERE ID = ?"
+                        cur.execute(query, (purchase_id, ))
+                        product = cur.fetchall()
+                        
+                        product_name = product[0][0]
+                        product_price = product[0][1]
+                        product_info = product[0][2]
+                        #print(product_name)
+                        response.append(
+                            {
+                                "name": product_name,
+                                "price": product_price,
+                                "info": product_info,
+                                "quantity": purchase[1],
+                                "size": purchase[2],
+                                "color": purchase[3],
+                                "delivery address": purchase[4],
+                                "delivery date": purchase[5]
+                            }
+                        )
+                        
+                if(len(rows) != 0):
+                    dispatcher.utter_message(
+                        response = "utter_visualize_purchases",
+                        purchases = response
+                    )
+            
+
+
+
+                
+            
+            # if len(rows) == 0:
+            #     resultDisplayed = "There aren't purchases for this account"
+            #     dispatcher.utter_message(text=resultDisplayed)
