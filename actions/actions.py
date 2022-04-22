@@ -579,7 +579,7 @@ class Buy_product(Action):
             rows = cur.fetchall()
             address = rows[0][0]
 
-            query = "INSERT INTO purchase (quantity, size, color, 'shipping address', date, 'product ID', 'account ID') VALUES (?, ?, ?, ?, ?, ?, ?)"
+            query = "INSERT INTO purchase (quantity, size, color, 'shipping address', date, 'product ID', 'account_ID') VALUES (?, ?, ?, ?, ?, ?, ?)"
 
             today = str(datetime.date.today())
 
@@ -633,29 +633,39 @@ class Visualize_cart(Action):
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
         domain: "DomainDict") -> List[Dict[Text, Any]]:
         
+        slot_emailAddress = tracker.get_slot("email")
         cur = self.conn.cursor()
+        stmt = "SELECT ID FROM account WHERE Email = ?"
+        cur.execute(stmt, (slot_emailAddress, ))
+        result = cur.fetchone()
 
-        query = "SELECT * FROM cart JOIN product ON cart.Product_id = product.id JOIN brand ON product.Brand = brand.ID"
-    
-        cur.execute(query)
-        rows = cur.fetchall()
-
-        if(len(rows) == 0):
-            dispatcher.utter_message(
-                response = "utter_cart_empty"
-            )
+        if not result:
+            resultDisplayed = "There aren't account with this email address"
+            dispatcher.utter_message(text=resultDisplayed)
         else:
-            response = []
-            for product in rows:
-                quantity = product[1]
-                size = product[2]
-                color = product[3]
-                product_name = product[7]
-                gender = product[8]
-                price = product[9]
-                brand = product[17]
-                image = product[14]
+            ID = result[0]
+            query = "SELECT * FROM cart JOIN product ON cart.Product_id = product.ID JOIN brand ON product.Brand = brand.ID WHERE Account_ID = ?"
+            cur.execute(query, (ID, ))
+            rows = cur.fetchall()
+            cart = []
+    
 
+            if len(rows) == 0:
+                    dispatcher.utter_message(
+                        response = "utter_cart_empty"
+                    )
+            else:
+                response = []
+                for product in rows:
+                    quantity = product[1]
+                    size = product[2]
+                    color = product[3]
+                    product_name = product[7]
+                    gender = product[8]
+                    price = product[9]
+                    brand = product[17]
+                    image = product[14]
+                    
                 response.append(
                     {
                         "name": product_name,
@@ -668,16 +678,17 @@ class Visualize_cart(Action):
                         "image": image
                     }
                 )
-            
-            dispatcher.utter_message(
-                response = "utter_cart_visualize",
-                products = response
-            )
-            dispatcher.utter_message(
-                response = "utter_change_cart"
-            )
 
-class Delete_cart(Action):
+                dispatcher.utter_message(
+                    response = "utter_cart_visualize",
+                    products = response
+                )
+                dispatcher.utter_message(
+                    response = "utter_change_cart"
+                )
+        return [SlotSet("user_logged", True)]                      
+
+class Delete_cart(Action):  
     def __init__(self) -> None:
         super(Delete_cart, self).__init__()
         self.conn = Connection().conn
@@ -766,7 +777,7 @@ class UpdateUserFirstName(Action):
 
         dispatcher.utter_message(text=resultDisplayed)
 
-        return [SlotSet("PERSON", None)]
+        return [SlotSet("PERSON", None), SlotSet("user_logged", True)]
 
 
 # class UpdateUserSurname(Action):
@@ -830,7 +841,7 @@ class UpdateUserBirthDate(Action):
 
         dispatcher.utter_message(text=resultDisplayed)
 
-        return [SlotSet("time", None)]
+        return [SlotSet("time", None), SlotSet("user_logged", True)]
 
 class UpdateUserAddress(Action):
 
@@ -886,7 +897,12 @@ class UpdateUserAddress(Action):
 
         dispatcher.utter_message(text=resultDisplayed)
 
-        return [SlotSet("address", None)]
+        return [SlotSet("STREET", None),
+                SlotSet("ZIP_CODE", None),
+                SlotSet("CITY", None),
+                SlotSet("COUNTRY", None),
+                SlotSet("STATE", None),
+                SlotSet("user_logged", True)]
 
 
 class CheckIfUserIsRegistered(Action):
@@ -917,7 +933,7 @@ class CheckIfUserIsRegistered(Action):
 
         if result != None:
             ID = result[0]
-            return [SlotSet("userIsRegistered", True), SlotSet("ID_logged", ID)]
+            return [SlotSet("userIsRegistered", True), SlotSet("ID_logged", ID), SlotSet("user_logged", True)]
         else:            
             return [SlotSet("userIsRegistered", False), SlotSet("ID_logged", None)]
 
@@ -992,7 +1008,8 @@ class CreatenNewAccount(Action):
                 SlotSet("ZIP_CODE", None), 
                 SlotSet("CITY", None),
                 SlotSet("CITY", None),
-                SlotSet("COUNTRY", None)]
+                SlotSet("COUNTRY", None),
+                SlotSet("user_logged", True)]
 
 class RetrieveFirstName(Action):
 
@@ -1023,6 +1040,8 @@ class RetrieveFirstName(Action):
         dispatcher.utter_message(text=resultDisplayed)
         
         print("action_retrieveFirstName")
+
+        return [SlotSet("user_logged", True)]
 
 # class RetrieveSurname(Action):
 
@@ -1086,6 +1105,8 @@ class RetrieveBirthDate(Action):
         
         print("action_retrieveBirthDate")
 
+        return [SlotSet("user_logged", True)]
+
 class RetrieveAddress(Action):
 
     def __init__(self) -> None:
@@ -1116,6 +1137,8 @@ class RetrieveAddress(Action):
         dispatcher.utter_message(text=resultDisplayed)
         
         print("action_retrieveAddress")
+
+        return [SlotSet("user_logged", True)]
 
 # class EmptySlots(Action):
 
@@ -1293,3 +1316,87 @@ class action_userAskedPurchases(Action):
             # if len(rows) == 0:
             #     resultDisplayed = "There aren't purchases for this account"
             #     dispatcher.utter_message(text=resultDisplayed)
+
+class put_in_cart(Action):
+
+    def __init__(self) -> None:
+        super(put_in_cart, self).__init__()
+        self.conn = Connection().conn
+
+    def name(self) -> Text:
+        return "db_put_in_cart"
+    
+    def run(self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        quantity = tracker.get_slot("quantity_to_buy")
+        color = tracker.get_slot("color_to_buy")
+        size = tracker.get_slot("size_to_buy")
+        if(size != None and type(size) != int):
+            size = size.upper()
+        name = tracker.get_slot("product_to_buy_name")
+
+        if(name == None):
+            dispatcher.utter_message(
+                response = "utter_fail_buy"
+            )
+        else:
+            cur = self.conn.cursor()
+
+            slot_emailAddress = tracker.get_slot("email")
+            
+            #retrieve account id
+            stmt = "SELECT ID FROM account WHERE Email = ?"
+            cur.execute(stmt, (slot_emailAddress, ))
+            result = cur.fetchone()
+            account_id = result[0]
+
+
+            #retrieve product id
+            product_id_query = "SELECT ID FROM product WHERE name = ?"
+            cur.execute(product_id_query, (name, ))
+            result = cur.fetchone()
+            product_id = result[0]
+
+            # insert item in cart table
+            query = "INSERT INTO cart (quantity, size, color, account_id, product_id) VALUES (?, ?, ?, ?, ?)"
+            params = (int(quantity), size, color, account_id, product_id)
+                
+            try:
+                cur.execute(query, params)
+                rows = cur.fetchall()
+                self.conn.commit()
+                dispatcher.utter_message(
+                    response = "utter_success_put_in_cart"
+                )
+
+                dispatcher.utter_message(
+                    response = "utter_anything_else"
+                )
+            except Exception as e:
+                print(e)
+                dispatcher.utter_message(
+                    response = "utter_fail_buy"
+                )
+                
+            return [
+                SlotSet("product_to_buy", None), 
+                SlotSet("brand_to_buy", None),
+                SlotSet("price_to_buy", None),
+                SlotSet("gender_to_buy", None),
+                SlotSet("color_to_buy", None),
+                SlotSet("size_to_buy", None),
+                SlotSet("number_to_buy", None),
+                SlotSet("quantity_to_buy", None),
+                SlotSet("product_to_buy_name", None),
+                SlotSet("color_available_slot", None),
+                SlotSet("size_available_slot", None),
+                SlotSet("color_exist", None),
+                SlotSet("size_exist", None),
+                SlotSet("color_check", None),
+                SlotSet("size_check", None),
+                SlotSet("product_exist", None),
+                SlotSet("user_logged", True)
+            ]

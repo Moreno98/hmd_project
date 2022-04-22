@@ -22,6 +22,7 @@ intents:
 - choice_noMoreHelp
 - color_product
 - deny
+- direct_buy
 - give_address
 - give_birthDate
 - give_emailAddress
@@ -29,6 +30,7 @@ intents:
 - goodbye
 - greet
 - nlu_fallback
+- put_in_cart
 - quantity_to_buy_intent
 - say_address
 - say_birthDate
@@ -156,6 +158,9 @@ slots:
   ID_logged:
     type: text
     influence_conversation: true
+  user_logged:
+    type: bool
+    influence_conversation: true
 responses:
   utter_out_of_scope:
   - text: Sorry, I can't handle that request.
@@ -227,6 +232,10 @@ responses:
   - custom:
       products: '{products}'
       text: 'Here is your cart:'
+  utter_userWantsVisualizeCart:
+  - text: In order to show your cart I need your email address
+  utter_directOrderOrPutInCart:
+  - text: Do you prefer directly order the item or do you want me to put it in your cart?
   utter_change_cart:
   - text: do you want to delete something?
   utter_which_to_delete:
@@ -296,12 +305,15 @@ responses:
   - text: You must sign up to use buy products.
   utter_askToSeePurchases:
   - text: In order to show your purchases, please tell me your email address
+  utter_success_put_in_cart:
+  - text: Congrats, the product is in your cart now!
 actions:
 - db_retrieve_product
 - db_info_colors
 - db_buy_product
 - db_visualize_cart
 - db_delete_cart
+- db_put_in_cart
 - set_product_info
 - check_color
 - check_size

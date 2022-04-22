@@ -293,6 +293,28 @@ nlu:
     - The quantity [1](quantity) suffices for me
     - [1](quantity) is good
     - just [1](quantity)
+- intent: put_in_cart
+  examples: |
+    - Put in cart
+    - put in my cart
+    - in my cart
+    - put items in my cart
+    - put items in cart
+    - move items in cart
+    - move in cart
+    - move it in the cart
+    - put on my cart
+    - put in cart
+- intent: direct_buy
+  examples: |
+    - buy it
+    - directly
+    - directly buy it
+    - i want buy it
+    - order it
+    - i want order it
+    - directly order
+    - direct order
 - intent: visualize_cart
   examples: |
     - I would like to visualize my cart

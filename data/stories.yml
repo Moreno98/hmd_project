@@ -59,7 +59,7 @@ stories:
   - slot_was_set:
     - product_exist: false
   - action: utter_search_something_else
-- story: buy_product_1_0_0_fine
+- story: buy_product_1_0_0_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -107,7 +107,9 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
-  - action: utter_pleaseLogin
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin 
   - intent: give_emailAddress
     entities:
     - email: francesco@gmail.com
@@ -116,8 +118,10 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_1_0_1_fine
+- story: buy_product_1_0_0_0_1_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -165,6 +169,370 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_1_0_0_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_0_0_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_0_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_pleaseLogin #####
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_1_0_1_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_1_0_1_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -209,8 +577,101 @@ stories:
     - STATE: Alaska
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: db_buy_product
-- story: buy_product_1_1_0_fine
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_0_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_1_0_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -251,6 +712,8 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -260,8 +723,10 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_1_1_1_fine
+- story: buy_product_1_1_0_0_1_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -301,6 +766,161 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_1_1_0_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_1_0_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_1_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -345,7 +965,264 @@ stories:
     - STATE: Alaska
     - COUNTRY: USA
   - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
+- story: buy_product_1_1_1_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_1_1_1_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_1_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
 - story: buy_product_1_1_1_deny
   steps:
   - intent: greet
@@ -387,6 +1264,8 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -401,7 +1280,58 @@ stories:
   - action: utter_sign_up_mandatory
   - action: reset_info_product
   - action: utter_anything_else
-- story: buy_product_1_2_0_fine
+- story: buy_product_1_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_1_2_0_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -442,6 +1372,8 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -451,8 +1383,10 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_1_2_1_fine
+- story: buy_product_1_2_0_0_1_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -493,6 +1427,161 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_1_2_0_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_2_0_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_2_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -537,8 +1626,10 @@ stories:
     - STATE: Alaska
     - COUNTRY: USA
   - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_1_2_1_deny
+- story: buy_product_1_2_1_0_1_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -579,65 +1670,50 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
-  - action: utter_pleaseLogin
-  - intent: give_emailAddress
-    entities:
-    - email: francesco@gmail.com
   - slot_was_set:
-    - email: francesco@gmail.com
+    - user_logged: true ######
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
   - action: utter_askCreateNewAccount
-  - intent: deny
-  - action: utter_sign_up_mandatory
-  - action: reset_info_product
-  - action: utter_anything_else
-- story: buy_product_1_3_0_fine
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: buy_product
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
     entities:
-    - product: t-shirt
-  - action: reset_info_product
-  - action: db_retrieve_product
+    - PERSON: Francesco
   - slot_was_set:
-    - product_exist: true
-  - intent: by_number
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
     entities:
-    - number_on_the_list: first
-  - action: set_product_info
+    - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
-    - product_to_buy_name: filled
-  - slot_was_set:
-    - product_to_buy: filled
-  - slot_was_set:
-    - out_range: false
-  - slot_was_set:
-    - color_to_buy: null
-  - slot_was_set:
-    - size_to_buy: null
-  - slot_was_set:
-    - color_exist: false
-  - slot_was_set:
-    - size_exist: false
-  - action: utter_quantity_to_buy
-  - intent: quantity_to_buy_intent
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
     entities:
-    - quantity: 1
-  - action: set_quantity_slot
-  - action: utter_pleaseLogin
-  - intent: give_emailAddress
-    entities:
-    - email: francesco@gmail.com
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - email: francesco@gmail.com
-  - action: action_checkIfUserIsRegistered
-  - slot_was_set:
-    - userIsRegistered: true
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_1_3_1_fine
+- story: buy_product_1_2_1_1_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -665,12 +1741,21 @@ stories:
   - slot_was_set:
     - color_exist: false
   - slot_was_set:
-    - size_exist: false
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
   - action: utter_quantity_to_buy
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -715,8 +1800,202 @@ stories:
     - STATE: Alaska
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: db_buy_product
-- story: buy_product_1_3_1_deny
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_2_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_2_1_0_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_1_2_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_1_3_0_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -750,60 +2029,8 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
-  - action: utter_pleaseLogin
-  - intent: give_emailAddress
-    entities:
-    - email: francesco@gmail.com
   - slot_was_set:
-    - email: francesco@gmail.com
-  - action: action_checkIfUserIsRegistered
-  - slot_was_set:
-    - userIsRegistered: false
-  - action: utter_askCreateNewAccount
-  - intent: deny
-  - action: utter_sign_up_mandatory
-  - action: reset_info_product
-  - action: utter_anything_else
-- story: buy_product_2_0_0_fine
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: buy_product_with_color
-    entities:
-    - product: t-shirt
-    - color: beige
-  - action: reset_info_product_no_color
-  - action: db_retrieve_product
-  - slot_was_set:
-    - product_exist: true
-  - intent: by_number
-    entities:
-    - number_on_the_list: first
-  - action: set_product_info
-  - slot_was_set:
-    - product_to_buy_name: filled
-  - slot_was_set:
-    - product_to_buy: filled
-  - slot_was_set:
-    - out_range: false
-  - slot_was_set:
-    - color_to_buy: beige
-  - slot_was_set:
-    - size_to_buy: null
-  - slot_was_set:
-    - size_exist: true
-  - action: utter_size_to_buy
-  - intent: size_product
-    entities:
-    - size: xl
-  - action: check_size
-  - slot_was_set:
-    - size_check: true
-  - action: utter_quantity_to_buy
-  - intent: quantity_to_buy_intent
-    entities:
-    - quantity: 1
-  - action: set_quantity_slot
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -813,16 +2040,17 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_2_0_1_fine
+- story: buy_product_1_3_0_0_1_fine
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: buy_product_with_color
+  - intent: buy_product
     entities:
     - product: t-shirt
-    - color: beige
-  - action: reset_info_product_no_color
+  - action: reset_info_product
   - action: db_retrieve_product
   - slot_was_set:
     - product_exist: true
@@ -837,23 +2065,152 @@ stories:
   - slot_was_set:
     - out_range: false
   - slot_was_set:
-    - color_to_buy: beige
+    - color_to_buy: null
   - slot_was_set:
     - size_to_buy: null
   - slot_was_set:
-    - size_exist: true
-  - action: utter_size_to_buy
-  - intent: size_product
-    entities:
-    - size: xl
-  - action: check_size
+    - color_exist: false
   - slot_was_set:
-    - size_check: true
+    - size_exist: false
   - action: utter_quantity_to_buy
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_1_3_0_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_3_0_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_3_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -898,16 +2255,17 @@ stories:
     - STATE: Alaska
     - COUNTRY: USA
   - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_2_0_1_deny
+- story: buy_product_1_3_1_0_1_fine
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: buy_product_with_color
+  - intent: buy_product
     entities:
     - product: t-shirt
-    - color: beige
-  - action: reset_info_product_no_color
+  - action: reset_info_product
   - action: db_retrieve_product
   - slot_was_set:
     - product_exist: true
@@ -922,89 +2280,69 @@ stories:
   - slot_was_set:
     - out_range: false
   - slot_was_set:
-    - color_to_buy: beige
+    - color_to_buy: null
   - slot_was_set:
     - size_to_buy: null
   - slot_was_set:
-    - size_exist: true
-  - action: utter_size_to_buy
-  - intent: size_product
-    entities:
-    - size: xl
-  - action: check_size
+    - color_exist: false
   - slot_was_set:
-    - size_check: true
+    - size_exist: false
   - action: utter_quantity_to_buy
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
   - action: set_quantity_slot
-  - action: utter_pleaseLogin
-  - intent: give_emailAddress
-    entities:
-    - email: francesco@gmail.com
   - slot_was_set:
-    - email: francesco@gmail.com
+    - user_logged: true ######
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
   - action: utter_askCreateNewAccount
-  - intent: deny
-  - action: utter_sign_up_mandatory
-  - action: reset_info_product
-  - action: utter_anything_else
-- story: buy_product_2_1_0_fine
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: buy_product_with_color
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
     entities:
-    - product: t-shirt
-    - color: beige
-  - action: reset_info_product_no_color
-  - action: db_retrieve_product
+    - PERSON: Francesco
   - slot_was_set:
-    - product_exist: true
-  - intent: by_number
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
     entities:
-    - number_on_the_list: first
-  - action: set_product_info
+    - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
-    - product_to_buy_name: filled
-  - slot_was_set:
-    - product_to_buy: filled
-  - slot_was_set:
-    - out_range: false
-  - slot_was_set:
-    - color_to_buy: beige
-  - slot_was_set:
-    - size_to_buy: null
-  - slot_was_set:
-    - size_exist: false
-  - action: utter_quantity_to_buy
-  - intent: quantity_to_buy_intent
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
     entities:
-    - quantity: 1
-  - action: set_quantity_slot
-  - action: utter_pleaseLogin
-  - intent: give_emailAddress
-    entities:
-    - email: francesco@gmail.com
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - email: francesco@gmail.com
-  - action: action_checkIfUserIsRegistered
-  - slot_was_set:
-    - userIsRegistered: true
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_2_1_1_fine
+- story: buy_product_1_3_1_1_0_fine
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: buy_product_with_color
+  - intent: buy_product
     entities:
     - product: t-shirt
-    - color: beige
-  - action: reset_info_product_no_color
+  - action: reset_info_product
   - action: db_retrieve_product
   - slot_was_set:
     - product_exist: true
@@ -1019,9 +2357,11 @@ stories:
   - slot_was_set:
     - out_range: false
   - slot_was_set:
-    - color_to_buy: beige
+    - color_to_buy: null
   - slot_was_set:
     - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
   - slot_was_set:
     - size_exist: false
   - action: utter_quantity_to_buy
@@ -1029,6 +2369,8 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1073,8 +2415,835 @@ stories:
     - STATE: Alaska
     - COUNTRY: USA
   - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_3_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_1_3_1_0_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_1_3_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_2_0_0_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_2_1_1_deny
+- story: buy_product_2_0_0_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_2_0_0_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_2_0_0_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_2_0_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_2_0_1_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_2_0_1_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_2_0_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_2_0_1_0_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_2_0_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_2_1_0_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -1107,6 +3276,500 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_2_1_0_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_2_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_2_1_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_2_1_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_2_1_1_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_2_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_2_1_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_2_1_1_0_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1121,7 +3784,50 @@ stories:
   - action: utter_sign_up_mandatory
   - action: reset_info_product
   - action: utter_anything_else
-- story: buy_product_3_0_0_fine
+- story: buy_product_2_1_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_3_0_0_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -1161,6 +3867,8 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1170,8 +3878,10 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_3_0_1_fine
+- story: buy_product_3_0_0_0_1_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -1211,52 +3921,15 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
-  - action: utter_pleaseLogin
-  - intent: give_emailAddress
-    entities:
-    - email: francesco@gmail.com
   - slot_was_set:
-    - email: francesco@gmail.com
+    - user_logged: true ######
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
-    - userIsRegistered: false
-  - action: utter_askCreateNewAccount
-  - intent: affirm
-  - action: utter_askFirstName
-  - intent: give_firstName
-    entities:
-    - PERSON: Francesco
-  - slot_was_set:
-    - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
-  - action: utter_askBirthDate
-  - intent: give_birthDate
-    entities:
-    - time: '1997-03-19T00:00:00.000-08:00'
-  - slot_was_set:
-    - time: '1997-03-19T00:00:00.000-08:00'
-  - action: utter_askAddress
-  - intent: give_address
-    entities:
-    - STREET: 567 Zappia Drive
-    - ZIP_CODE: 234789
-    - CITY: New York
-    - STATE: Alaska
-    - COUNTRY: USA
-  - slot_was_set:
-    - STREET: 567 Zappia Drive
-    - ZIP_CODE: 234789
-    - CITY: New York
-    - STATE: Alaska
-    - COUNTRY: USA
-  - action: utter_userRegistered
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_3_0_1_deny
+- story: buy_product_3_0_0_1_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -1296,53 +3969,8 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
-  - action: utter_pleaseLogin
-  - intent: give_emailAddress
-    entities:
-    - email: francesco@gmail.com
   - slot_was_set:
-    - email: francesco@gmail.com
-  - action: action_checkIfUserIsRegistered
-  - slot_was_set:
-    - userIsRegistered: false
-  - action: utter_askCreateNewAccount
-  - intent: deny
-  - action: utter_sign_up_mandatory
-  - action: reset_info_product
-  - action: utter_anything_else
-- story: buy_product_3_1_0_fine
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: buy_product_with_size
-    entities:
-    - product: t-shirt
-    - size: xl
-  - action: reset_info_product_no_size
-  - action: db_retrieve_product
-  - slot_was_set:
-    - product_exist: true
-  - intent: by_number
-    entities:
-    - number_on_the_list: first
-  - action: set_product_info
-  - slot_was_set:
-    - product_to_buy_name: filled
-  - slot_was_set:
-    - product_to_buy: filled
-  - slot_was_set:
-    - out_range: false
-  - slot_was_set:
-    - color_to_buy: null
-  - slot_was_set:
-    - size_to_buy: xl
-  - slot_was_set:
-    - color_exist: false
-  - action: utter_quantity_to_buy
-  - intent: quantity_to_buy_intent
-    entities:
-    - quantity: 1
-  - action: set_quantity_slot
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1352,8 +3980,10 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: db_buy_product
-- story: buy_product_3_1_1_fine
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_3_0_0_1_1_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -1380,12 +4010,69 @@ stories:
   - slot_was_set:
     - size_to_buy: xl
   - slot_was_set:
-    - color_exist: false
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
   - action: utter_quantity_to_buy
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_3_0_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1430,8 +4117,10 @@ stories:
     - STATE: Alaska
     - COUNTRY: USA
   - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_3_1_1_deny
+- story: buy_product_3_0_1_0_1_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -1458,78 +4147,71 @@ stories:
   - slot_was_set:
     - size_to_buy: xl
   - slot_was_set:
-    - color_exist: false
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
   - action: utter_quantity_to_buy
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
   - action: set_quantity_slot
-  - action: utter_pleaseLogin
-  - intent: give_emailAddress
-    entities:
-    - email: francesco@gmail.com
   - slot_was_set:
-    - email: francesco@gmail.com
+    - user_logged: true ######
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
   - action: utter_askCreateNewAccount
-  - intent: deny
-  - action: utter_sign_up_mandatory
-  - action: reset_info_product
-  - action: utter_anything_else
-- story: buy_product_4_0_0_fine
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: buy_product_with_color_size
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
     entities:
-    - product: t-shirt
-    - color: beige
-    - size: xl
-  - action: reset_info_product_no_color_no_size
-  - action: db_retrieve_product
+    - PERSON: Francesco
   - slot_was_set:
-    - product_exist: true
-  - intent: by_number
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
     entities:
-    - number_on_the_list: first
-  - action: set_product_info
+    - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
-    - product_to_buy_name: filled
-  - slot_was_set:
-    - product_to_buy: filled
-  - slot_was_set:
-    - out_range: false
-  - slot_was_set:
-    - color_to_buy: beige
-  - slot_was_set:
-    - size_to_buy: xl
-  - action: utter_quantity_to_buy
-  - intent: quantity_to_buy_intent
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
     entities:
-    - quantity: 1
-  - action: set_quantity_slot
-  - action: utter_pleaseLogin
-  - intent: give_emailAddress
-    entities:
-    - email: francesco@gmail.com
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
   - slot_was_set:
-    - email: francesco@gmail.com
-  - action: action_checkIfUserIsRegistered
-  - slot_was_set:
-    - userIsRegistered: true
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_4_0_1_fine
+- story: buy_product_3_0_1_1_0_fine
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: buy_product_with_color_size
+  - intent: buy_product_with_size
     entities:
     - product: t-shirt
-    - color: beige
     - size: xl
-  - action: reset_info_product_no_color_no_size
+  - action: reset_info_product_no_size
   - action: db_retrieve_product
   - slot_was_set:
     - product_exist: true
@@ -1544,14 +4226,25 @@ stories:
   - slot_was_set:
     - out_range: false
   - slot_was_set:
-    - color_to_buy: beige
+    - color_to_buy: null
   - slot_was_set:
     - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
   - action: utter_quantity_to_buy
   - intent: quantity_to_buy_intent
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1596,8 +4289,783 @@ stories:
     - STATE: Alaska
     - COUNTRY: USA
   - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_3_0_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: True ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_3_0_1_0_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_3_0_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_3_1_0_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
-- story: buy_product_4_0_1_deny
+- story: buy_product_3_1_0_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_3_1_0_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_3_1_0_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_3_1_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_3_1_1_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_3_1_1_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_3_1_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_3_1_1_0_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_3_1_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: xl
+  - slot_was_set:
+    - color_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: buy_product_4_0_0_0_0_fine
   steps:
   - intent: greet
   - action: utter_greet
@@ -1629,6 +5097,492 @@ stories:
     entities:
     - quantity: 1
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_4_0_0_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_4_0_0_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_4_0_0_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_4_0_1_0_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_4_0_1_0_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+- story: buy_product_4_0_1_1_0_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_4_0_1_1_1_fine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: affirm
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Francesco
+  - slot_was_set:
+    - PERSON: Francesco
+  # - action: utter_askSurname
+  # - intent: give_surname
+  #   entities:
+  #   - surname_PERSON: Ferrini
+  # - slot_was_set:
+  #   - surname_PERSON: Ferrini
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - slot_was_set:
+    - time: '1997-03-19T00:00:00.000-08:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - slot_was_set:
+    - STREET: 567 Zappia Drive
+    - ZIP_CODE: 234789
+    - CITY: New York
+    - STATE: Alaska
+    - COUNTRY: USA
+  - action: utter_userRegistered
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+- story: buy_product_4_0_1_0_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1643,7 +5597,49 @@ stories:
   - action: utter_sign_up_mandatory
   - action: reset_info_product
   - action: utter_anything_else
-- story: interactive_3
+- story: buy_product_4_0_1_1_deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: filled
+  - slot_was_set:
+    - product_to_buy: filled
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: 1
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - action: utter_askCreateNewAccount
+  - intent: deny
+  - action: utter_sign_up_mandatory
+  - action: reset_info_product
+  - action: utter_anything_else
+- story: interactive_3_0_0
   steps:
   - intent: buy_product
     entities:
@@ -1734,6 +5730,8 @@ stories:
     entities:
     - quantity: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1743,6 +5741,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -1776,7 +5776,407 @@ stories:
     - size_check: null
   - slot_was_set:
     - product_exist: null
-- story: interactive_2
+- story: interactive_3_0_1
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: interactive_3_1_0
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: interactive_3_1_1
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: interactive_2_0_0
   steps:
   - intent: buy_product
     entities:
@@ -1866,6 +6266,8 @@ stories:
     entities:
     - quantity: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false #####
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1875,7 +6277,349 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: red
+  - action: reset_info_product_no_color
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+- story: interactive_2_0_1
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: true ######
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: red
+  - action: reset_info_product_no_color
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - action: utter_search_something_else
+- story: interactive_2_1
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
   - slot_was_set:
     - product_to_buy: null
   - slot_was_set:
@@ -2152,7 +6896,7 @@ stories:
   - action: check_color
   - slot_was_set:
     - color_check: false
-- story: full
+- story: full_0
   steps:
   - action: utter_greet
   - intent: buy_product
@@ -2225,6 +6969,8 @@ stories:
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2234,6 +6980,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -2377,6 +7125,8 @@ stories:
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2386,6 +7136,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -2563,6 +7315,8 @@ stories:
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2572,6 +7326,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -2725,6 +7481,8 @@ stories:
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2734,6 +7492,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -2879,6 +7639,8 @@ stories:
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2888,6 +7650,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -2998,6 +7762,8 @@ stories:
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3007,7 +7773,921 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: full_1
+  steps:
+  - action: utter_greet
+  - intent: buy_product
+    entities:
+    - product: jacket
+    - product: jacket
+  - slot_was_set:
+    - product_to_buy: jacket
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - slot_was_set:
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+    - product: t-shirt
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: red
+    - color: red
+  - slot_was_set:
+    - color_to_buy: red
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+  - slot_was_set:
+    - color_to_buy: null
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - slot_was_set:
+    - color_to_buy: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: XS
+    - size: XS
+  - slot_was_set:
+    - size_to_buy: XS
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: size_product
+    entities:
+    - size: XL
+    - size: XL
+  - slot_was_set:
+    - size_to_buy: XL
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: red
+    - color: red
+    - product: t-shirt
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - color_to_buy: red
+  - action: reset_info_product_no_color
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+    - color: beige
+    - product: t-shirt
+  - slot_was_set:
+    - color_to_buy: beige
+  - action: reset_info_product_no_color
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: third
+    - number_on_the_list: third
+    - time: '2022-03-03T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: third
+  - slot_was_set:
+    - time: '2022-03-03T00:00:00.000+01:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - out_range: true
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - slot_was_set:
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: XL
+    - size: XL
+  - slot_was_set:
+    - size_to_buy: XL
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: XS
+    - product: t-shirt
+    - size: XS
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - size_to_buy: XS
+  - action: reset_info_product_no_size
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: XL
+    - product: t-shirt
+    - size: XL
+  - slot_was_set:
+    - size_to_buy: XL
+  - action: reset_info_product_no_size
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - slot_was_set:
+    - color_to_buy: beige
+  - action: check_color
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - size: XL
+    - color: red
+    - color: red
+    - product: t-shirt
+    - size: XL
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - color_to_buy: red
+  - slot_was_set:
+    - size_to_buy: XL
+  - action: reset_info_product_no_color_no_size
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: false
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - size: XL
+    - color: beige
+    - color: beige
+    - product: t-shirt
+    - size: XL
+  - slot_was_set:
+    - color_to_buy: beige
+  - action: reset_info_product_no_color_no_size
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-03-01T00:00:00.000+01:00'
+  - slot_was_set:
+    - number_to_buy: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product
+    entities:
+    - product: skirt
+    - product: skirt
+  - slot_was_set:
+    - product_to_buy: skirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - slot_was_set:
+    - number_to_buy: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: Tiger Tooth Pencil Skirt
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: 38, 40, 42, 44, 48, 50
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: '38'
+    - size: '38'
+  - slot_was_set:
+    - size_to_buy: '38'
+  - action: check_size
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
   - slot_was_set:
     - product_to_buy: null
   - slot_was_set:
@@ -3125,6 +8805,8 @@ stories:
     - quantity: '1'
     - quantity: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3134,6 +8816,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -3250,6 +8934,8 @@ stories:
     - quantity: '1'
     - quantity: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3259,6 +8945,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -3443,6 +9131,8 @@ stories:
     - quantity: '1'
     - quantity: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3452,6 +9142,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -3683,6 +9375,8 @@ stories:
     - quantity: '1'
     - quantity: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3692,6 +9386,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -3856,6 +9552,8 @@ stories:
     - quantity: '1'
     - quantity: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3865,6 +9563,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -4007,6 +9707,8 @@ stories:
     - quantity: '1'
     - quantity: '1'
   - action: set_quantity_slot
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -4016,6 +9718,8 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
     - product_to_buy: null
@@ -4049,60 +9753,75 @@ stories:
     - size_check: null
   - slot_was_set:
     - product_exist: null
-- story: cart affirm
+- story: visualize cart not logged user
   steps:
   - intent: visualize_cart
-  - action: db_visualize_cart
-  - intent: affirm
-  - action: utter_which_to_delete
-  - intent: by_number
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_userWantsVisualizeCart
+  - intent: give_emailAddress
     entities:
-    - number_on_the_list: first
-  - action: db_delete_cart
-  - action: utter_anything_else
-- story: cart deny
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: db_visualize_cart
+- story: visualize cart user logged
   steps:
   - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: true
   - action: db_visualize_cart
-  - intent: deny
-  - action: utter_anything_else
-- story: cart
-  steps:
-  - intent: visualize_cart
-  - action: db_visualize_cart
-  - intent: by_number
-    entities:
-    - number_on_the_list: first
-  - action: db_delete_cart
-  - action: utter_anything_else
-- story: Story from Conversation ID bf10b66000914dd5b0ad06275ffd7e91
-  steps:
-  - intent: visualize_cart
-  - action: db_visualize_cart
-  - intent: affirm
-  - action: utter_which_to_delete
-  - intent: by_number
-    entities:
-    - number_on_the_list: first
-    - number_on_the_list: first
-  - action: db_delete_cart
-  - action: utter_anything_else
-- story: Story from Conversation ID dd2f2f1e9880454aad373bb004707f89
-  steps:
-  - intent: visualize_cart
-  - action: db_visualize_cart
-  - intent: deny
-  - action: utter_anything_else
-- story: Story from Conversation ID 5705d7d8f18f4037865ec637caee37d8
-  steps:
-  - intent: visualize_cart
-  - action: db_visualize_cart
-  - intent: by_number
-    entities:
-    - number_on_the_list: first
-    - number_on_the_list: first
-  - action: db_delete_cart
-  - action: utter_anything_else
+  ########
+  # - intent: affirm
+  # - action: utter_which_to_delete
+  # - intent: by_number
+    # entities:
+    # - number_on_the_list: first
+  # - action: db_delete_cart
+  # - action: utter_anything_else
+# - story: cart deny
+  # steps:
+  # - intent: visualize_cart
+  # - action: db_visualize_cart
+  # - intent: deny
+  # - action: utter_anything_else
+# - story: cart
+  # steps:
+  # - intent: visualize_cart
+  # - action: db_visualize_cart
+  # - intent: by_number
+    # entities:
+    # - number_on_the_list: first
+  # - action: db_delete_cart
+  # - action: utter_anything_else
+# - story: Story from Conversation ID bf10b66000914dd5b0ad06275ffd7e91
+  # steps:
+  # - intent: visualize_cart
+  # - action: db_visualize_cart
+  # - intent: affirm
+  # - action: utter_which_to_delete
+  # - intent: by_number
+    # entities:
+    # - number_on_the_list: first
+    # - number_on_the_list: first
+  # - action: db_delete_cart
+  # - action: utter_anything_else
+# - story: Story from Conversation ID dd2f2f1e9880454aad373bb004707f89
+  # steps:
+  # - intent: visualize_cart
+  # - action: db_visualize_cart
+  # - intent: deny
+  # - action: utter_anything_else
+# - story: Story from Conversation ID 5705d7d8f18f4037865ec637caee37d8
+  # steps:
+  # - intent: visualize_cart
+  # - action: db_visualize_cart
+  # - intent: by_number
+    # entities:
+    # - number_on_the_list: first
+    # - number_on_the_list: first
+  # - action: db_delete_cart
+  # - action: utter_anything_else
 - story: Ask info about ecommerce
   steps:
   - intent: choice_askInfoAboutEcommerce
@@ -4618,6 +10337,8 @@ stories:
   - action: set_quantity_slot
   - slot_was_set:
     - quantity_to_buy: '1'
+  - slot_was_set:
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -4629,7 +10350,160 @@ stories:
     - userIsRegistered: true
   - slot_was_set:
     - ID_logged: 19
+  - action: utter_directOrderOrPutInCart ###
+  - intent: direct_buy
   - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: Story from Conversation ID 980d42e8dd21446aa39a379caa6eb983_1
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: chitchat
+    entities:
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: blue
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+  - slot_was_set:
+    - color_to_buy: null
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 19
+  - action: utter_directOrderOrPutInCart ####
+  - intent: put_in_cart
+  - action: db_put_in_cart
   - slot_was_set:
     - product_to_buy: null
   - slot_was_set:
