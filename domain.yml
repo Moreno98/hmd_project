@@ -4,6 +4,8 @@ session_config:
   carry_over_slots_to_new_session: true
 intents:
 - affirm
+- ask_bot_abilities
+- ask_purchases
 - bot_challenge
 - buy_product
 - buy_product_with_color
@@ -307,6 +309,10 @@ responses:
   - text: In order to show your purchases, please tell me your email address
   utter_success_put_in_cart:
   - text: Congrats, the product is in your cart now!
+  utter_abilities:
+  - text: I am able to visualize and order products, manage your account and see your purchases. I can also manage and visualize your cart.
+  utter_no_purchases:
+  - text: You don't have any purchases yet, do you want to buy something?
 actions:
 - db_retrieve_product
 - db_info_colors
@@ -339,3 +345,4 @@ actions:
 - set_quantity_slot
 - action_userGaveAddress
 - action_userAskedPurchases
+- action_visualize_purchases

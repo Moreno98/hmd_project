@@ -202,7 +202,7 @@ class Retrieve_product(Action):
 
         cur = self.conn.cursor()
 
-        query = "SELECT * FROM product WHERE category=?"
+        query = "SELECT * FROM product JOIN brand ON product.Brand = brand.ID WHERE category=?"
 
         params = (category,)
 
@@ -238,10 +238,11 @@ class Retrieve_product(Action):
             4: "fourth",
             5: "fifth"
         }
-        response = []
+        # response = []
         for i, product in enumerate(rows):
-            if(i == 5):
+            if(i == 6):
                 break
+            # if the color is not none, use the image of the first color
             if(product[5] != None):
                 color_p = product[5].replace(" ", "").split(";")
                 image_name = product[8].replace("*", color_p[0])
@@ -256,53 +257,61 @@ class Retrieve_product(Action):
             color_p = product[5]
             description = product[6]
             category = product[7]
+            brand = product[11]
 
-            subtitle = "Sizes: " + str(size_p) + "\n Colors: " + str(color_p) + "\n Price: " + "$" + str(price_p)
+            subtitle = "Brand: " + str(brand) + "\n"
+
+            if(size_p != None):
+                subtitle += "Size: " + str(size_p) + "\n "
+            if(color_p != None):
+                subtitle += "Color: " + str(color_p) + "\n "
+            if(price_p != None):
+                subtitle += "Price: " + str(price_p) + "\n "
 
             payload = "The " + ordinal_num[i + 1] + " one"
 
-            # products.append(
-            #     {
-            #         "title": title,
-            #         "subtitle": subtitle,
-            #         "image_url": image,
-            #         "buttons": [ {
-            #                 "title": "Buy",
-            #                 "type": "postback",
-            #                 "payload": payload
-            #             }
-            #         ]
-            #     }
-            # )
-            response.append(
+            products.append(
                 {
-                    "name": product[1],
-                    "gender": product[2],
-                    "price": product[3],
-                    "size": product[4],
-                    "color": product[5],
-                    "description": product[6],
-                    "category": product[7],
-                    "image": image
+                    "title": title,
+                    "subtitle": subtitle,
+                    "image_url": image,
+                    "buttons": [ {
+                            "title": "Buy",
+                            "type": "postback",
+                            "payload": payload
+                        }
+                    ]
                 }
             )
+            # response.append(
+            #     {
+            #         "name": product[1],
+            #         "gender": product[2],
+            #         "price": product[3],
+            #         "size": product[4],
+            #         "color": product[5],
+            #         "description": product[6],
+            #         "category": product[7],
+            #         "image": image
+            #     }
+            # )
         
-        # carousel = {
-        #     "type": "template",
-        #     "payload": {
-        #         "template_type": "generic",
-        #         "elements": products
-        #     }
-        # }
+        carousel = {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": products
+            }
+        }
         
         if(len(rows) != 0):
-            dispatcher.utter_message(
-                response = "utter_visualize_product",
-                products = response
-            )
             # dispatcher.utter_message(
-            #     attachment=carousel
+            #     response = "utter_visualize_product",
+            #     products = response
             # )
+            dispatcher.utter_message(
+                attachment=carousel
+            )
             dispatcher.utter_message(
                 response = "utter_buy_something"
             )
@@ -640,7 +649,7 @@ class Visualize_cart(Action):
         result = cur.fetchone()
 
         if not result:
-            resultDisplayed = "There aren't account with this email address"
+            resultDisplayed = "There is no account with this email address"
             dispatcher.utter_message(text=resultDisplayed)
         else:
             ID = result[0]
@@ -648,7 +657,8 @@ class Visualize_cart(Action):
             cur.execute(query, (ID, ))
             rows = cur.fetchall()
             cart = []
-    
+
+            products = []
 
             if len(rows) == 0:
                     dispatcher.utter_message(
@@ -656,7 +666,22 @@ class Visualize_cart(Action):
                     )
             else:
                 response = []
-                for product in rows:
+                ordinal_num = {
+                    1: "first",
+                    2: "second",
+                    3: "third",
+                    4: "fourth",
+                    5: "fifth"
+                }
+                for i, product in enumerate(rows):
+                    if(i == 6):
+                        break
+                    if(product[3] != None):
+                        color_p = product[3]
+                        image_name = product[14].replace("*", color_p)
+                        image = os.path.join("db", "images", image_name) # could be the image + color does not exist -> to check
+                    else:
+                        image = os.path.join("db", "images", product[14])
                     quantity = product[1]
                     size = product[2]
                     color = product[3]
@@ -664,24 +689,56 @@ class Visualize_cart(Action):
                     gender = product[8]
                     price = product[9]
                     brand = product[17]
-                    image = product[14]
-                    
-                response.append(
-                    {
-                        "name": product_name,
-                        "gender": gender,
-                        "price": price,
-                        "quantity": quantity,
-                        "size": size,
-                        "color": color,
-                        "brand": brand,
-                        "image": image
-                    }
-                )
 
+                    subtitle = "Brand: " + str(brand) + "\n"
+
+                    if(size != None):
+                        subtitle += "Size: " + str(size) + "\n "
+                    if(color != None):
+                        subtitle += "Color: " + str(color) + "\n "
+                    if(price != None):
+                        subtitle += "Price: " + str(price) + "\n "
+
+                    payload = "The " + ordinal_num[i + 1] + " one"
+
+                    products.append(
+                        {
+                            "title": product_name,
+                            "subtitle": subtitle,
+                            "image_url": image,
+                            "buttons": [ {
+                                    "title": "Delete",
+                                    "type": "postback",
+                                    "payload": payload
+                                }
+                            ]
+                        }
+                    )
+                # response.append(
+                #     {
+                #         "name": product_name,
+                #         "gender": gender,
+                #         "price": price,
+                #         "quantity": quantity,
+                #         "size": size,
+                #         "color": color,
+                #         "brand": brand,
+                #         "image": image
+                #     }
+                # )
+                carousel = {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": products
+                    }
+                }
+                # dispatcher.utter_message(
+                #     response = "utter_cart_visualize",
+                #     products = response
+                # )
                 dispatcher.utter_message(
-                    response = "utter_cart_visualize",
-                    products = response
+                    attachment=carousel
                 )
                 dispatcher.utter_message(
                     response = "utter_change_cart"
@@ -1265,7 +1322,7 @@ class action_userAskedPurchases(Action):
             result = cur.fetchone()
             
             if not result:
-                resultDisplayed = "There aren't account with this email address"
+                resultDisplayed = "There is no account with this email address"
                 dispatcher.utter_message(text=resultDisplayed)
             else:
                 ID = result[0]
@@ -1276,7 +1333,7 @@ class action_userAskedPurchases(Action):
                 response = []
 
                 if len(rows) == 0:
-                    resultDisplayed = "There aren't purchases for this account"
+                    resultDisplayed = "There is no purchase for this account"
                     dispatcher.utter_message(text=resultDisplayed)
                 else:
                     for i, purchase in enumerate(rows):
@@ -1400,3 +1457,99 @@ class put_in_cart(Action):
                 SlotSet("product_exist", None),
                 SlotSet("user_logged", True)
             ]
+
+class Visualize_purchases(Action):
+    def __init__(self) -> None:
+        super(Visualize_purchases, self).__init__()
+        self.conn = Connection().conn
+    
+    def name(self) -> Text:
+        return "action_visualize_purchases"
+    
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
+        domain: "DomainDict") -> List[Dict[Text, Any]]:
+        
+        slot_emailAddress = tracker.get_slot("email")
+        cur = self.conn.cursor()
+        stmt = "SELECT ID FROM account WHERE Email = ?"
+        cur.execute(stmt, (slot_emailAddress, ))
+        result = cur.fetchone()
+
+        if not result:
+            resultDisplayed = "There is no account with this email address"
+            dispatcher.utter_message(text=resultDisplayed)
+        else:
+            ID = result[0]
+            query = "SELECT * FROM purchase JOIN product ON purchase.Product_ID = product.ID JOIN brand ON product.Brand = brand.ID WHERE Account_ID = ?"
+            cur.execute(query, (ID, ))
+            rows = cur.fetchall()
+
+            products = []
+
+            if len(rows) == 0:
+                    dispatcher.utter_message(
+                        response = "utter_no_purchases"
+                    )
+            else:
+                for i, product in enumerate(rows):
+                    if(product[3] != None):
+                        color_p = product[3]
+                        image_name = product[16].replace("*", color_p)
+                        image = os.path.join("db", "images", image_name) # could be the image + color does not exist -> to check
+                    else:
+                        image = os.path.join("db", "images", product[16])
+                    quantity = product[1]
+                    size = product[2]
+                    color = product[3]
+                    product_name = product[9]
+                    price = product[11]
+                    brand = product[19]
+                    date = product[5]
+
+                    subtitle = "Brand: " + str(brand) + "\n" + "Quantity: " + str(quantity) + "\n" + "Date of purchase: " + str(date) + "\n"
+
+                    if(size != None):
+                        subtitle += "Size: " + str(size) + "\n "
+                    if(color != None):
+                        subtitle += "Color: " + str(color) + "\n "
+                    if(price != None):
+                        subtitle += "Price: " + str(price) + "\n "
+
+                    products.append(
+                        {
+                            "title": product_name,
+                            "subtitle": subtitle,
+                            "image_url": image,
+                            "buttons": []
+                        }
+                    )
+                # response.append(
+                #     {
+                #         "name": product_name,
+                #         "gender": gender,
+                #         "price": price,
+                #         "quantity": quantity,
+                #         "size": size,
+                #         "color": color,
+                #         "brand": brand,
+                #         "image": image
+                #     }
+                # )
+                carousel = {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": products
+                    }
+                }
+                # dispatcher.utter_message(
+                #     response = "utter_cart_visualize",
+                #     products = response
+                # )
+                dispatcher.utter_message(
+                    attachment=carousel
+                )
+                dispatcher.utter_message(
+                    response = "utter_anything_else"
+                )
+        return [SlotSet("user_logged", True)]      

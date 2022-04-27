@@ -9771,57 +9771,66 @@ stories:
   - slot_was_set:
     - user_logged: true
   - action: db_visualize_cart
-  ########
-  # - intent: affirm
-  # - action: utter_which_to_delete
-  # - intent: by_number
-    # entities:
-    # - number_on_the_list: first
-  # - action: db_delete_cart
-  # - action: utter_anything_else
-# - story: cart deny
-  # steps:
-  # - intent: visualize_cart
-  # - action: db_visualize_cart
-  # - intent: deny
-  # - action: utter_anything_else
-# - story: cart
-  # steps:
-  # - intent: visualize_cart
-  # - action: db_visualize_cart
-  # - intent: by_number
-    # entities:
-    # - number_on_the_list: first
-  # - action: db_delete_cart
-  # - action: utter_anything_else
-# - story: Story from Conversation ID bf10b66000914dd5b0ad06275ffd7e91
-  # steps:
-  # - intent: visualize_cart
-  # - action: db_visualize_cart
-  # - intent: affirm
-  # - action: utter_which_to_delete
-  # - intent: by_number
-    # entities:
-    # - number_on_the_list: first
-    # - number_on_the_list: first
-  # - action: db_delete_cart
-  # - action: utter_anything_else
-# - story: Story from Conversation ID dd2f2f1e9880454aad373bb004707f89
-  # steps:
-  # - intent: visualize_cart
-  # - action: db_visualize_cart
-  # - intent: deny
-  # - action: utter_anything_else
-# - story: Story from Conversation ID 5705d7d8f18f4037865ec637caee37d8
-  # steps:
-  # - intent: visualize_cart
-  # - action: db_visualize_cart
-  # - intent: by_number
-    # entities:
-    # - number_on_the_list: first
-    # - number_on_the_list: first
-  # - action: db_delete_cart
-  # - action: utter_anything_else
+  - intent: affirm
+  - action: utter_which_to_delete
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
+- story: cart deny
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: true
+  - action: db_visualize_cart
+  - intent: deny
+  - action: utter_anything_else
+- story: cart
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: true
+  - action: db_visualize_cart
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
+- story: Story from Conversation ID bf10b66000914dd5b0ad06275ffd7e91
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: true
+  - action: db_visualize_cart
+  - intent: affirm
+  - action: utter_which_to_delete
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
+- story: Story from Conversation ID dd2f2f1e9880454aad373bb004707f89
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: true
+  - action: db_visualize_cart
+  - intent: deny
+  - action: utter_anything_else
+- story: Story from Conversation ID 5705d7d8f18f4037865ec637caee37d8
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: true
+  - action: db_visualize_cart
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
 - story: Ask info about ecommerce
   steps:
   - intent: choice_askInfoAboutEcommerce
@@ -10631,3 +10640,28 @@ stories:
     - email: francesco@gmail.com
   - action: action_userAskedPurchases
   - action: utter_howCanIhelpYou
+
+- story: ask abilities
+  steps:
+  - intent: ask_bot_abilities
+  - action: utter_abilities
+
+- story: visualize_purhcases not logged user
+  steps:
+  - intent: ask_purchases
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_userWantsVisualizeCart
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_visualize_purchases
+
+- story: action visualize purchases logged user
+  steps:
+  - intent: ask_purchases
+  - slot_was_set:
+    - user_logged: true
+  - action: action_visualize_purchases
