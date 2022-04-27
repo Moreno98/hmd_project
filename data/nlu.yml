@@ -757,45 +757,6 @@ nlu:
     - What is your hobby?
     - what is your favourite activity?
     - what is your favourite hobby?
-- intent: ask_bot_abilities
-  examples: |
-    - What can you do?
-    - Please, explain what you can do
-    - What can I do
-    - What are you able to do?
-    - Are you able to do anything?
-    - Can I order something?
-    - please, explain to me what you can do
-    - What are your skills?
-    - What are your abilities?
-    - show me what you can do
-    - please, show me what you can do
-    - show me what you are able to do
-    - show me what are your abilities
-- intent: ask_purchases
-  examples: |
-    - Can I see my purchases?
-    - May I see my purchases?
-    - Can I visualize my purchases?
-    - My purchases?
-    - Please, show me my purchases
-    - show me my purchases
-    - show me what I have ordered in the past
-    - show me what I have ordered
-    - show me the past purchases
-    - show me all the purchases
-    - Can I see all my purchases?
-    - Can I see my past purchases?
-    - Can I see my past orders?
-    - May I see my past purchases?
-    - May I see my past orders?
-    - Show me the history of my purchases
-    - Show me the history of my orders
-    - Can I see the history of my purchases?
-    - Can I see the history of my orders?
-    - What did I order until now?
-    - What did I order?
-    - What did I order in the past?
 - synonym: t-shirt
   examples: |
     - tshirt
@@ -1052,3 +1013,45 @@ nlu:
     - 3
     - 4
     - 5
+- intent: ask_bot_abilities
+  examples: |
+    - What can you do?
+    - Please, explain what you can do
+    - What can I do
+    - What are you able to do?
+    - Are you able to do anything?
+    - Can I order something?
+    - please, explain to me what you can do
+    - What are your skills?
+    - What are your abilities?
+    - show me what you can do
+    - please, show me what you can do
+    - show me what you are able to do
+    - show me what are your abilities
+- intent: ask_purchases
+  examples: |
+    - Can I see my purchases?
+    - May I see my purchases?
+    - Can I visualize my purchases?
+    - My purchases?
+    - Please, show me my purchases
+    - show me my purchases
+    - show me what I have ordered in the past
+    - show me what I have ordered
+    - show me the past purchases
+    - show me all the purchases
+    - Can I see all my purchases?
+    - Can I see my past purchases?
+    - Can I see my past orders?
+    - May I see my past purchases?
+    - May I see my past orders?
+    - Show me the history of my purchases
+    - Show me the history of my orders
+    - Can I see the history of my purchases?
+    - Can I see the history of my orders?
+    - What did I order until now?
+    - What did I order?
+    - What did I order in the past?
+  
+  
+
