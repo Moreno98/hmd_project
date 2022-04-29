@@ -32,6 +32,7 @@ intents:
 - goodbye
 - greet
 - nlu_fallback
+- product_info
 - put_in_cart
 - quantity_to_buy_intent
 - say_address
@@ -313,6 +314,10 @@ responses:
   - text: I am able to visualize and order products, manage your account and see your purchases. I can also manage and visualize your cart.
   utter_no_purchases:
   - text: You don't have any purchases yet, do you want to buy something?
+  utter_fail_product_info:
+  - text: Please, you first have to search for a product, then you can ask some details.
+  utter_buy_it:
+  - text: Do you want to buy it?
 actions:
 - db_retrieve_product
 - db_info_colors
@@ -344,5 +349,5 @@ actions:
 - action_SetSlot_askAccountInfo
 - set_quantity_slot
 - action_userGaveAddress
-- action_userAskedPurchases
 - action_visualize_purchases
+- action_visualize_product_info

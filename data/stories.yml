@@ -1,12 +1,5 @@
 version: "2.0"
 stories:
-# - story: simply_give_surname
-#   steps:
-#   - intent: give_surname
-#     entities:
-#     - surname_PERSON: ferrini
-#   - slot_was_set:
-#     - surname_PERSON: ferrini
 - story: buy_product_1_fail
   steps:
   - intent: greet
@@ -108,8 +101,8 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
-  - action: utter_pleaseLogin 
+    - user_logged: false
+  - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
     - email: francesco@gmail.com
@@ -118,7 +111,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_0_0_0_1_fine
@@ -170,11 +163,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_0_0_1_0_fine
@@ -226,7 +219,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -236,7 +229,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_0_0_1_1_fine
@@ -288,11 +281,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_0_1_0_0_fine
@@ -345,7 +338,7 @@ stories:
   - action: set_quantity_slot
   - slot_was_set:
     - user_logged: false
-  - action: utter_pleaseLogin #####
+  - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
     - email: francesco@gmail.com
@@ -362,12 +355,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -384,12 +371,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_0_1_0_1_fine
@@ -441,7 +432,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -453,12 +444,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -475,12 +460,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_0_1_1_0_fine
@@ -532,7 +521,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -550,12 +539,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -572,12 +555,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_0_1_1_1_fine
@@ -629,7 +616,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -641,12 +628,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -663,12 +644,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_1_0_0_0_fine
@@ -713,7 +698,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -723,7 +708,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_1_0_0_1_fine
@@ -768,11 +753,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_1_0_1_0_fine
@@ -817,7 +802,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -827,7 +812,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_1_0_1_1_fine
@@ -872,11 +857,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_1_1_0_0_fine
@@ -920,7 +905,7 @@ stories:
     entities:
     - quantity: 1
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -938,12 +923,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -960,12 +939,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_1_1_0_1_fine
@@ -1009,7 +992,7 @@ stories:
     entities:
     - quantity: 1
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1021,12 +1004,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -1043,12 +1020,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_1_1_1_0_fine
@@ -1092,7 +1073,7 @@ stories:
     entities:
     - quantity: 1
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1110,12 +1091,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -1132,12 +1107,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_1_1_1_1_fine
@@ -1181,7 +1160,7 @@ stories:
     entities:
     - quantity: 1
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1193,12 +1172,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -1215,12 +1188,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_1_1_deny
@@ -1265,7 +1242,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1322,7 +1299,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1373,7 +1350,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1383,7 +1360,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_2_0_0_1_fine
@@ -1428,11 +1405,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_2_0_1_0_fine
@@ -1477,7 +1454,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1487,7 +1464,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_2_0_1_1_fine
@@ -1532,11 +1509,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_2_1_0_0_fine
@@ -1581,7 +1558,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1599,12 +1576,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -1621,12 +1592,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_2_1_0_1_fine
@@ -1671,7 +1646,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1683,12 +1658,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -1705,12 +1674,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_2_1_1_0_fine
@@ -1755,7 +1728,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1773,12 +1746,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -1795,12 +1762,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_2_1_1_1_fine
@@ -1845,7 +1816,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -1857,12 +1828,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -1879,12 +1844,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_2_1_0_deny
@@ -1929,7 +1898,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -1986,7 +1955,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -2030,7 +1999,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2040,7 +2009,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_3_0_0_1_fine
@@ -2078,11 +2047,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_3_0_1_0_fine
@@ -2120,7 +2089,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2130,7 +2099,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_3_0_1_1_fine
@@ -2168,11 +2137,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_3_1_0_0_fine
@@ -2210,7 +2179,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2228,12 +2197,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -2250,12 +2213,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_3_1_0_1_fine
@@ -2293,7 +2260,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -2305,12 +2272,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -2327,12 +2288,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_1_3_1_1_0_fine
@@ -2370,7 +2335,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2388,12 +2353,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -2410,12 +2369,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_3_1_1_1_fine
@@ -2453,7 +2416,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -2465,12 +2428,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -2487,12 +2444,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_1_3_1_0_deny
@@ -2530,7 +2491,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2580,7 +2541,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -2630,7 +2591,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2640,7 +2601,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_2_0_0_0_1_fine
@@ -2684,11 +2645,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_2_0_0_1_0_fine
@@ -2732,7 +2693,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2742,7 +2703,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_2_0_0_1_1_fine
@@ -2786,11 +2747,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_2_0_1_0_0_fine
@@ -2834,7 +2795,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -2852,12 +2813,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -2874,12 +2829,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_2_0_1_0_1_fine
@@ -2923,7 +2882,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -2935,12 +2894,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -2957,12 +2910,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_2_0_1_1_0_fine
@@ -3006,7 +2963,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3024,12 +2981,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -3046,12 +2997,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_2_0_1_1_1_fine
@@ -3095,7 +3050,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -3107,12 +3062,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -3129,12 +3078,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_2_0_1_0_deny
@@ -3178,7 +3131,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3234,7 +3187,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -3277,7 +3230,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3287,7 +3240,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_2_1_0_0_1_fine
@@ -3324,11 +3277,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_2_1_0_0_fine
@@ -3365,7 +3318,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3375,7 +3328,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_2_1_0_1_fine
@@ -3412,11 +3365,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_2_1_1_0_0_fine
@@ -3453,7 +3406,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3471,12 +3424,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -3493,12 +3440,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_2_1_1_0_1_fine
@@ -3535,7 +3486,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -3547,12 +3498,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -3569,12 +3514,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_2_1_1_1_fine
@@ -3611,7 +3560,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3629,12 +3578,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -3651,12 +3594,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_2_1_1_1_1_fine
@@ -3693,7 +3640,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -3705,12 +3652,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -3727,12 +3668,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_2_1_1_0_deny
@@ -3769,7 +3714,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3818,7 +3763,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -3868,7 +3813,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3878,7 +3823,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_3_0_0_0_1_fine
@@ -3922,11 +3867,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_3_0_0_1_0_fine
@@ -3970,7 +3915,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -3980,7 +3925,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_3_0_0_1_1_fine
@@ -4024,11 +3969,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_3_0_1_0_0_fine
@@ -4072,7 +4017,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -4090,12 +4035,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -4112,12 +4051,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_3_0_1_0_1_fine
@@ -4161,7 +4104,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -4173,12 +4116,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -4195,12 +4132,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_3_0_1_1_0_fine
@@ -4244,7 +4185,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -4262,12 +4203,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -4284,12 +4219,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_3_0_1_1_1_fine
@@ -4333,7 +4272,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: True ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -4345,12 +4284,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -4367,12 +4300,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_3_0_1_0_deny
@@ -4416,7 +4353,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -4472,7 +4409,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -4515,7 +4452,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -4525,7 +4462,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_3_1_0_0_1_fine
@@ -4562,11 +4499,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_3_1_0_1_0_fine
@@ -4603,7 +4540,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -4613,7 +4550,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_3_1_0_1_1_fine
@@ -4650,11 +4587,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_3_1_1_0_0_fine
@@ -4691,7 +4628,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -4709,12 +4646,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -4731,12 +4662,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_3_1_1_0_1_fine
@@ -4773,7 +4708,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -4785,12 +4720,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -4807,12 +4736,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_3_1_1_1_0_fine
@@ -4849,7 +4782,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -4867,12 +4800,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -4889,12 +4816,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_3_1_1_1_1_fine
@@ -4931,7 +4862,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -4943,12 +4874,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -4965,12 +4890,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_3_1_1_0_deny
@@ -5007,7 +4936,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -5056,7 +4985,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -5098,7 +5027,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -5108,7 +5037,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_4_0_0_0_1_fine
@@ -5144,11 +5073,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_4_0_0_1_0_fine
@@ -5184,7 +5113,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -5194,7 +5123,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_4_0_0_1_1_fine
@@ -5230,11 +5159,11 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_4_0_1_0_0_fine
@@ -5270,7 +5199,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -5288,12 +5217,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -5310,12 +5233,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_4_0_1_0_1_fine
@@ -5351,7 +5278,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -5363,12 +5290,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -5385,12 +5306,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
 - story: buy_product_4_0_1_1_0_fine
@@ -5426,7 +5351,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -5444,12 +5369,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -5466,12 +5385,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_4_0_1_1_1_fine
@@ -5507,7 +5430,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -5519,12 +5442,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -5541,12 +5458,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
 - story: buy_product_4_0_1_0_deny
@@ -5582,7 +5503,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -5630,7 +5551,7 @@ stories:
     - quantity: 1
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: false
@@ -5731,7 +5652,7 @@ stories:
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -5741,7 +5662,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -5868,11 +5789,11 @@ stories:
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -5999,7 +5920,7 @@ stories:
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -6009,7 +5930,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -6136,12 +6057,13 @@ stories:
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
+  - slot_was_set:
     - email: francesco@gmail.com
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -6267,7 +6189,7 @@ stories:
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: false #####
+    - user_logged: false
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
@@ -6277,7 +6199,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -6440,11 +6362,11 @@ stories:
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
-    - user_logged: true ######
+    - user_logged: true
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -6617,7 +6539,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -6980,7 +6902,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -7136,7 +7058,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -7326,7 +7248,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -7492,7 +7414,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -7650,7 +7572,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -7773,7 +7695,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -7892,7 +7814,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -8048,7 +7970,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -8238,7 +8160,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -8404,7 +8326,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -8562,7 +8484,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -8685,7 +8607,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -8816,7 +8738,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -8945,7 +8867,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -9142,7 +9064,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -9386,7 +9308,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -9563,7 +9485,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -9718,7 +9640,7 @@ stories:
   - action: action_checkIfUserIsRegistered
   - slot_was_set:
     - userIsRegistered: true
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -9855,12 +9777,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -9877,9 +9793,13 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: action_createNewAccount
   - action: utter_howCanIhelpYou
@@ -9934,12 +9854,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -9956,9 +9870,13 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
   - action: utter_askAdditionalHelp
@@ -9984,28 +9902,6 @@ stories:
     - PERSON: Federico
   - action: action_updateUserFirstName
   - action: utter_askAdditionalHelp
-# - story: Registered user wants change surname
-#   steps:
-#   - intent: choice_changeAccountInfo
-#   - action: utter_askEmail
-#   - intent: give_emailAddress
-#     entities:
-#     - email: abcd@hotmail.it
-#   - slot_was_set:
-#     - email: abcd@hotmail.it
-#   - action: action_checkIfUserIsRegistered
-#   - slot_was_set:
-#     - userIsRegistered: true
-#   - action: utter_askAccountInformationToChange
-#   - intent: say_surname
-#   - action: utter_sayNewInfoYouWant
-#   - intent: give_surname
-#     entities:
-#     - surname_PERSON: Orso
-#   - slot_was_set:
-#     - surname_PERSON: Orso
-#   - action: action_updateUserSurname
-#   - action: utter_askAdditionalHelp
 - story: Registered user wants change birth date
   steps:
   - intent: choice_changeAccountInfo
@@ -10052,9 +9948,13 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: action_updateUserAddress
   - action: utter_askAdditionalHelp
@@ -10096,12 +9996,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -10118,9 +10012,13 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: utter_userRegistered
   - action: utter_askAdditionalHelp
@@ -10359,7 +10257,7 @@ stories:
     - userIsRegistered: true
   - slot_was_set:
     - ID_logged: 19
-  - action: utter_directOrderOrPutInCart ###
+  - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
   - slot_was_set:
@@ -10510,7 +10408,7 @@ stories:
     - userIsRegistered: true
   - slot_was_set:
     - ID_logged: 19
-  - action: utter_directOrderOrPutInCart ####
+  - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
   - slot_was_set:
@@ -10564,12 +10462,6 @@ stories:
     - PERSON: Francesco
   - slot_was_set:
     - PERSON: Francesco
-  # - action: utter_askSurname
-  # - intent: give_surname
-  #   entities:
-  #   - surname_PERSON: Ferrini
-  # - slot_was_set:
-  #   - surname_PERSON: Ferrini
   - action: utter_askBirthDate
   - intent: give_birthDate
     entities:
@@ -10586,13 +10478,16 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: action_createNewAccount
   - action: utter_howCanIhelpYou
-
 - story: example story for addresses
   steps:
   - intent: choice_iwantsaymyaddress
@@ -10606,9 +10501,13 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 567 Zappia Drive
+  - slot_was_set:
     - ZIP_CODE: 234789
+  - slot_was_set:
     - CITY: New York
+  - slot_was_set:
     - STATE: Alaska
+  - slot_was_set:
     - COUNTRY: USA
   - action: action_userGaveAddress
 - story: example 2 story for addresses
@@ -10624,28 +10523,19 @@ stories:
     - COUNTRY: USA
   - slot_was_set:
     - STREET: 344 Gateway Road
+  - slot_was_set:
     - ZIP_CODE: 97232
+  - slot_was_set:
     - CITY: Portland
+  - slot_was_set:
     - STATE: Oregon
+  - slot_was_set:
     - COUNTRY: USA
   - action: action_userGaveAddress
-- story: user wants see purchases
-  steps:
-  - intent: choice_askToSeePurchases
-  - action: utter_askToSeePurchases
-  - intent: give_emailAddress
-    entities:
-    - email: framcesco@gmail.com
-  - slot_was_set:
-    - email: francesco@gmail.com
-  - action: action_userAskedPurchases
-  - action: utter_howCanIhelpYou
-
 - story: ask abilities
   steps:
   - intent: ask_bot_abilities
   - action: utter_abilities
-
 - story: visualize_purhcases not logged user
   steps:
   - intent: ask_purchases
@@ -10658,10 +10548,1395 @@ stories:
   - slot_was_set:
     - email: francesco@gmail.com
   - action: action_visualize_purchases
-
 - story: action visualize purchases logged user
   steps:
   - intent: ask_purchases
   - slot_was_set:
     - user_logged: true
   - action: action_visualize_purchases
+- story: visualize product info 1
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: visualize product info 2
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: red
+    - color: red
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+  - slot_was_set:
+    - color_to_buy: null
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xs
+    - size: xs
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: visualize product info 3
+  steps:
+  - intent: buy_product
+    entities:
+    - product: jacket
+    - product: jacket
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: jacket
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: visualize product info 4
+  steps:
+  - intent: buy_product
+    entities:
+    - product: jacket
+    - product: jacket
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: jacket
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: put_in_cart
+  - action: db_put_in_cart
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - slot_was_set:
+    - user_logged: true
+- story: visualize product info 5
+  steps:
+  - intent: buy_product
+    entities:
+    - product: dress
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: dress
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: Sweetheart-neck leopard-print dress
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: 40, 42, 44, 46
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: Sweetheart-neck leopard-print dress
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: 40, 42, 44, 46
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: chitchat
+    entities:
+    - size: '40'
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: 40
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: visualize product info 6
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: red
+    - color: red
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+  - slot_was_set:
+    - color_to_buy: null
+  - intent: color_product
+    entities:
+    - color: beige
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: visualize_cart
+  - action: db_visualize_cart
+  - slot_was_set:
+    - user_logged: true
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: buy_product
+    entities:
+    - product: jacket
+    - product: jacket
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: jacket
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product
+    entities:
+    - product: dress
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: dress
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: Sweetheart-neck leopard-print dress
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: 40, 42, 44, 46
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: Sweetheart-neck leopard-print dress
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: 40, 42, 44, 46
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xs
+    - size: xs
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: give_birthDate
+    entities:
+    - size: '40'
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: 40
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: visualize product info deny
+  steps:
+  - intent: buy_product
+    entities:
+    - product: jacket
+    - product: jacket
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: jacket
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - slot_was_set:
+    - time: '2022-05-01T00:00:00.000+02:00'
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: action_visualize_product_info
+  - intent: deny
+  - action: utter_anything_else

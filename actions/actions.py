@@ -40,7 +40,6 @@ def get_product_info(tracker):
             color = ent['value']
         if entity == 'size':
             size = ent['value']
-    
     return category, brand, price, gender, color, size
 
 class Connection(Action):
@@ -256,10 +255,10 @@ class Retrieve_product(Action):
             size_p = product[4]
             color_p = product[5]
             description = product[6]
-            category = product[7]
-            brand = product[11]
+            category_p = product[7]
+            brand_p = product[11]
 
-            subtitle = "Brand: " + str(brand) + "\n"
+            subtitle = "Brand: " + str(brand_p) + "\n"
 
             if(size_p != None):
                 subtitle += "Size: " + str(size_p) + "\n "
@@ -269,6 +268,7 @@ class Retrieve_product(Action):
                 subtitle += "Price: " + str(price_p) + "\n "
 
             payload = "The " + ordinal_num[i + 1] + " one"
+            more_details = "More details for the " + ordinal_num[i + 1] + " one"
 
             products.append(
                 {
@@ -279,6 +279,11 @@ class Retrieve_product(Action):
                             "title": "Buy",
                             "type": "postback",
                             "payload": payload
+                        },
+                        {
+                            "title": "Details",
+                            "type": "postback",
+                            "payload": more_details
                         }
                     ]
                 }
@@ -556,7 +561,7 @@ class Buy_product(Action):
         quantity = tracker.get_slot("quantity_to_buy")
         color = tracker.get_slot("color_to_buy")
         size = tracker.get_slot("size_to_buy")
-        if(size != None):
+        if(size != None and not str(size).isnumeric()):
             size = size.upper()
         name = tracker.get_slot("product_to_buy_name")
 
@@ -576,7 +581,6 @@ class Buy_product(Action):
             ID = tracker.get_slot("ID_logged")
 
             if(ID == None):
-                print("ID is None")
                 dispatcher.utter_message(
                     response = "utter_pleaseLogin"
                 )
@@ -588,7 +592,7 @@ class Buy_product(Action):
             rows = cur.fetchall()
             address = rows[0][0]
 
-            query = "INSERT INTO purchase (quantity, size, color, 'shipping address', date, 'product ID', 'account_ID') VALUES (?, ?, ?, ?, ?, ?, ?)"
+            query = "INSERT INTO purchase (quantity, size, color, 'shipping address', date, 'product_ID', 'account_ID') VALUES (?, ?, ?, ?, ?, ?, ?)"
 
             today = str(datetime.date.today())
 
@@ -786,7 +790,6 @@ class Delete_cart(Action):
                 response = "utter_cart_empty"
             )
         else:
-            print(cart_objects[n_delete-1])
             id_to_delete = cart_objects[n_delete-1][0]
 
             query = "DELETE FROM cart WHERE ID = ?"
@@ -977,16 +980,11 @@ class CheckIfUserIsRegistered(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
         
         slot_emailAddress = tracker.get_slot("email")
         stmt = "SELECT ID, email FROM account WHERE email = ?" 
         cur.execute(stmt, (slot_emailAddress, ))
         result = cur.fetchone()
-        print("action_checkifuserisregistered")
-        #print(result)
-        #print(slot_emailAddress)
 
         if result != None:
             ID = result[0]
@@ -1052,7 +1050,6 @@ class CreatenNewAccount(Action):
 
         stmt1 = "INSERT INTO account VALUES (?, ?, ?, ?, ?)" 
         cur.execute(stmt1, (id, slot_firstName, birth_date, slot_emailAddress, slot_address, ))
-        print("action_createNewAccount")
 
         resultDisplayed = "User correctly registered"
         dispatcher.utter_message(text=resultDisplayed)
@@ -1095,8 +1092,6 @@ class RetrieveFirstName(Action):
         resultDisplayed = "The first name for your account is: " + result[0]
 
         dispatcher.utter_message(text=resultDisplayed)
-        
-        print("action_retrieveFirstName")
 
         return [SlotSet("user_logged", True)]
 
@@ -1267,8 +1262,6 @@ class action_whichInfoAsked_true(Action):
 
             return [SlotSet("accountInfoAsked", True)]
 
-
-
 class action_userGaveAddress(Action):
 
     def __init__(self) -> None:
@@ -1295,84 +1288,6 @@ class action_userGaveAddress(Action):
             slot_state = tracker.get_slot("STATE")
 
             print(slot_street, slot_zipCode, slot_city, slot_country, slot_state)
-
-            
-  
-
-class action_userAskedPurchases(Action):
-
-    def __init__(self) -> None:
-        super(action_userAskedPurchases, self).__init__()
-        self.conn = Connection().conn
-
-    def name(self) -> Text:
-        return "action_userAskedPurchases"
-    
-    def run(self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-            print("action_userAskedPurchases")
-
-            slot_emailAddress = tracker.get_slot("email")
-            cur = self.conn.cursor()
-            stmt = "SELECT ID FROM account WHERE Email = ?"
-            cur.execute(stmt, (slot_emailAddress, ))
-            result = cur.fetchone()
-            
-            if not result:
-                resultDisplayed = "There is no account with this email address"
-                dispatcher.utter_message(text=resultDisplayed)
-            else:
-                ID = result[0]
-                query = "SELECT * FROM purchase WHERE Account_ID = ?"
-                cur.execute(query, (ID, ))
-                rows = cur.fetchall()
-                purchases = []
-                response = []
-
-                if len(rows) == 0:
-                    resultDisplayed = "There is no purchase for this account"
-                    dispatcher.utter_message(text=resultDisplayed)
-                else:
-                    for i, purchase in enumerate(rows):
-                        purchase_id = purchase[6] # retrieve the id of the purchase
-                        query = "SELECT Name, Price, Information FROM product WHERE ID = ?"
-                        cur.execute(query, (purchase_id, ))
-                        product = cur.fetchall()
-                        
-                        product_name = product[0][0]
-                        product_price = product[0][1]
-                        product_info = product[0][2]
-                        #print(product_name)
-                        response.append(
-                            {
-                                "name": product_name,
-                                "price": product_price,
-                                "info": product_info,
-                                "quantity": purchase[1],
-                                "size": purchase[2],
-                                "color": purchase[3],
-                                "delivery address": purchase[4],
-                                "delivery date": purchase[5]
-                            }
-                        )
-                        
-                if(len(rows) != 0):
-                    dispatcher.utter_message(
-                        response = "utter_visualize_purchases",
-                        purchases = response
-                    )
-            
-
-
-
-                
-            
-            # if len(rows) == 0:
-            #     resultDisplayed = "There aren't purchases for this account"
-            #     dispatcher.utter_message(text=resultDisplayed)
 
 class put_in_cart(Action):
 
@@ -1553,3 +1468,126 @@ class Visualize_purchases(Action):
                     response = "utter_anything_else"
                 )
         return [SlotSet("user_logged", True)]      
+
+class Visualize_product_info(Action):
+    def __init__(self) -> None:
+        super(Visualize_product_info, self).__init__()
+        self.conn = Connection().conn
+    
+    def name(self) -> Text:
+        return "action_visualize_product_info"
+    
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
+        domain: "DomainDict") -> List[Dict[Text, Any]]:
+        
+        product_name = tracker.get_slot("product_to_buy_name")
+        query = "SELECT * FROM product JOIN brand ON product.Brand = brand.ID WHERE product.Name = ?"
+
+        cur = self.conn.cursor()
+
+        cur.execute(query, (product_name, ))
+        
+        print(query, product_name)
+
+        product = cur.fetchall()[0]
+        name = product[1]
+        gender = product[2]
+        price = product[3]
+        sizes = product[4]
+        colors = product[5]
+        description = product[6]
+        image_path = product[8]
+        brand = product[11]
+
+        subtitle = "Brand: " + str(brand) + "\n"
+
+        if(sizes != None):
+            subtitle += "Size: " + str(sizes) + "\n "
+        if(price != None):
+            subtitle += "Price: " + str(price) + "\n "
+
+        products = []
+        # response = []
+
+        if(colors != None):
+            colors = colors.replace(" ", "").split(";")
+            ordinal_num = {
+                1: "first",
+                2: "second",
+                3: "third",
+                4: "fourth",
+                5: "fifth"
+            }
+            for i, color in enumerate(colors):
+                image_name = image_path.replace("*", color)
+                image = os.path.join("db", "images", image_name) # could be the image + color does not exist -> to check
+                payload = "The " + ordinal_num[i + 1] + " one"
+                products.append(
+                    {
+                        "title": name,
+                        "subtitle": subtitle + "Color: " + str(color) + "\n",
+                        "image_url": image,
+                        "buttons": [ {
+                                "title": "Buy",
+                                "type": "postback",
+                                "payload": payload
+                            }
+                        ]
+                    }
+                )
+                # response.append(
+                #     {
+                #         "name": product_name,
+                #         "gender": gender,
+                #         "price": price,
+                #         "color": color,
+                #         "brand": brand,
+                #         "image": image
+                #     }
+                # )
+        else:
+            image = os.path.join("db", "images", image_path)
+            payload = "The first one" # if just one color is available there will be just one choice
+            products.append(
+                {
+                    "title": name,
+                    "subtitle": subtitle,
+                    "image_url": image,
+                    "buttons": [ {
+                            "title": "Buy",
+                            "type": "postback",
+                            "payload": payload
+                        }
+                    ]
+                }
+            )
+            # response.append(
+            #     {
+            #         "name": product_name,
+            #         "gender": gender,
+            #         "price": price,
+            #         "brand": brand,
+            #         "image": image
+            #     }
+            # )
+        
+        carousel = {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": products
+            }
+        }
+        
+        dispatcher.utter_message(
+            attachment=carousel
+        )
+        # dispatcher.utter_message(
+        #     response = "utter_visualize_product",
+        #     products = response
+        # )
+        dispatcher.utter_message(text="This is a description of the product: " + str(description))
+        dispatcher.utter_message(
+            response = "utter_buy_it"
+        )
+        return []
