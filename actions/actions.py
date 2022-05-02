@@ -368,9 +368,11 @@ class Set_product_info(Action):
         for ent in entities:
             if ent['entity'] == 'number_on_the_list':
                 product_number_list = ent['value']
+                product_number_list = self.ordinals()[product_number_list] - 1
                 break
-
-        product_number_list = self.ordinals()[product_number_list]
+        
+        if(product_number_list == None):
+            product_number_list = tracker.get_slot("number_to_buy")
 
         category = tracker.get_slot("product_to_buy")
         brand = tracker.get_slot("brand_to_buy")
@@ -408,17 +410,17 @@ class Set_product_info(Action):
         cur.execute(query, params)
         rows = cur.fetchall()
         try:
-            product_name = rows[product_number_list-1][1]
-            if(rows[product_number_list-1][5] != None):
-                colors = rows[product_number_list-1][5]
+            product_name = rows[product_number_list][1]
+            if(rows[product_number_list][5] != None):
+                colors = rows[product_number_list][5]
                 colors = colors.replace(" ", "").split(";")
                 colors = ", ".join(colors)
                 color_available = True
             else: 
                 colors = None
                 color_available = False
-            if(rows[product_number_list-1][4] != None):
-                sizes = rows[product_number_list-1][4]
+            if(rows[product_number_list][4] != None):
+                sizes = rows[product_number_list][4]
                 sizes = sizes.replace(" ", "").split(";")
                 sizes = ", ".join(sizes)
                 size_available = True
@@ -427,6 +429,7 @@ class Set_product_info(Action):
                 size_available = False
             return [
                 SlotSet("product_to_buy_name", product_name),
+                SlotSet("number_to_buy", product_number_list),
                 SlotSet("out_range", False),
                 SlotSet("color_available_slot", colors),
                 SlotSet("size_available_slot", sizes),
@@ -439,6 +442,7 @@ class Set_product_info(Action):
             )
             return [
                 SlotSet("product_to_buy_name", None),
+                SlotSet("number_to_buy", None),
                 SlotSet("out_range", True),
                 SlotSet("color_available_slot", None),
                 SlotSet("size_available_slot", None),
@@ -1450,11 +1454,12 @@ class Visualize_purchases(Action):
                 #         "image": image
                 #     }
                 # )
+                products.reverse() # reverse the list to display the last purchases first
                 carousel = {
                     "type": "template",
                     "payload": {
                         "template_type": "generic",
-                        "elements": products
+                        "elements": products 
                     }
                 }
                 # dispatcher.utter_message(
@@ -1499,12 +1504,12 @@ class Visualize_product_info(Action):
         image_path = product[8]
         brand = product[11]
 
-        subtitle = "Brand: " + str(brand) + "\n"
+        subtitle = "Brand: " + str(brand) + "\n\n"
 
         if(sizes != None):
-            subtitle += "Size: " + str(sizes) + "\n "
+            subtitle += "Size: " + str(sizes) + "\n\n "
         if(price != None):
-            subtitle += "Price: " + str(price) + "\n "
+            subtitle += "Price: " + str(price) + "\n\n "
 
         products = []
         # response = []
@@ -1525,14 +1530,9 @@ class Visualize_product_info(Action):
                 products.append(
                     {
                         "title": name,
-                        "subtitle": subtitle + "Color: " + str(color) + "\n",
+                        "subtitle": subtitle + "Color: " + str(color) + "\n\n",
                         "image_url": image,
-                        "buttons": [ {
-                                "title": "Buy",
-                                "type": "postback",
-                                "payload": payload
-                            }
-                        ]
+                        "buttons": []
                     }
                 )
                 # response.append(
@@ -1553,12 +1553,7 @@ class Visualize_product_info(Action):
                     "title": name,
                     "subtitle": subtitle,
                     "image_url": image,
-                    "buttons": [ {
-                            "title": "Buy",
-                            "type": "postback",
-                            "payload": payload
-                        }
-                    ]
+                    "buttons": []
                 }
             )
             # response.append(
@@ -1579,6 +1574,7 @@ class Visualize_product_info(Action):
             }
         }
         
+        dispatcher.utter_message(text="Available colors:")
         dispatcher.utter_message(
             attachment=carousel
         )

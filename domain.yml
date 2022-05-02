@@ -189,7 +189,7 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_color_to_buy:
-  - text: do you have a color in mind?
+  - text: which color do you want?
   utter_size_to_buy:
   - text: please, specify the size you want
   utter_quantity_to_buy:

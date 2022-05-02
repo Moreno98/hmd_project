@@ -810,6 +810,7 @@ nlu:
     - Can you share more information about the [first](number_on_the_list) product?
     - Details [first](number_on_the_list)
     - Info [first](number_on_the_list)
+    - I would like to visualize the details of the [second](number_on_the_list) one
 - intent: ask_purchases
   examples: |
     - Can I see my purchases?
@@ -841,6 +842,205 @@ nlu:
     - shirts
     - tshirts
     - t-shirts
+    - t-shirt
+    - thsirt
+    - pullover
+- synonym: jacket
+  examples: |
+    - jacket
+    - jackets
+    - jack
+    - jaket
+    - fur
+    - parka
+    - sheath
+    - tunic
+    - casing
+- synonym: shoes
+  examples: |
+    - shoes
+    - shoe
+    - sandals
+    - sandal
+    - sneakers
+    - slippers
+    - slipper
+    - sneakers
+    - clog
+    - boots
+    - boot
+    - loafers
+- synonym: bag
+  examples: |
+    - bag
+    - bags
+    - bagg
+    - case
+    - cases
+    - box
+    - boxes
+    - carryall
+    - sack
+    - attaché
+    - attachè
+    - attachées
+    - attachés
+    - attachès
+    - attache
+    - attachee
+    - attachees
+- synonym: bra
+  examples: |
+    - corset
+    - bra
+    - bras
+    - brasier
+    - girdle
+    - shapewear
+    - brassiere
+    - bandeau
+- synonym: coat
+  examples: |
+    - felt
+    - coat
+    - coats
+    - fur
+    - fleece
+    - shell
+- synonym: cologne
+  examples: |
+    - cologne
+    - colognes
+    - toilette water
+- synonym: dress
+  examples: |
+    - dress
+    - dresses
+    - blouse
+    - blouses
+    - robe
+    - robes
+    - gown
+    - apparel
+    - clothing
+- synonym: fragrance
+  examples: |
+    - perfume
+    - fragrances
+    - aroma
+    - balm
+    - aura
+    - bouquet
+- synonym: handbag
+  examples: |
+    - leather
+    - handbag
+    - handbags
+    - purse
+    - purses
+    - clutch
+    - clutch bag
+    - clutch bags
+    - clutch bagg
+    - hide
+    - hider
+    - hiders
+    - hider bag
+    - hider bags
+    - hider bagg
+- synonym: hat
+  examples: | 
+    - hat
+    - hats
+    - cap
+    - caps
+    - headdress
+    - cap hat
+    - cap hats
+    - fedora hat
+    - fedora hats
+    - fedora
+    - fedoras
+    - tam
+    - tam hat
+    - tam hats
+    - chapeau
+    - chapeaus
+    - sombrero
+    - sombreros
+    - sombre
+    - bucket hat
+    - bucket hats
+    - bucket
+- synonym: jeans
+  examples: |
+    - jeans
+    - trousers
+    - chaps jeans
+    - chaps
+    - blue jeans
+    - shorts jeans
+- synonym: pant
+  examples: |
+    - pant
+    - pants
+    - shorts
+    - shorts pants
+    - chinos
+- synonym: skirt
+  examples: |
+    - fringe skirt
+    - skirt
+    - skirts
+    - fringed skirt
+    - fringed skirts
+    - fringed
+    - fringe
+- synonym: suit
+  examples: |
+    - tuxedo
+    - suit
+    - suits
+    - suit jacket
+    - suit jackets
+    - uniform
+    - uniform jacket
+    - uniform jackets
+    - outfit
+- synonym: watch
+  examples: |
+    - timepiece
+    - watch
+    - wristwatch
+    - ticker
+    - timer
+    - stopwatch
+    - chronometer
+    - pocket watch
+    - pocket watches
+    - analog watch
+    - analog watches
+    - digital watch
+    - digital watches
+- synonym: wedding dress
+  examples: |
+    - wedding dress
+    - wedding dresses
+    - wedding
+    - wedding gown
+    - wedding gowns
+    - wedding gown
+    - wedding gowns
+    - bridal gown
+    - bridal gowns
+    - bridal dress
+    - bridal outfit
+    - bridal outfits
+    - trousseau
+    - trousseau dress
+    - wedding clothes
+    - wedding clothes dress
+    - wedding clothes dresses
 - synonym: fexample@mail.com
   examples: |
     - example@mail.com
