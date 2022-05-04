@@ -9802,7 +9802,6 @@ stories:
   - slot_was_set:
     - COUNTRY: USA
   - action: action_createNewAccount
-  - action: utter_howCanIhelpYou
   - action: utter_askAdditionalHelp
 - story: Create new account user already registered
   steps:
@@ -10488,50 +10487,6 @@ stories:
     - COUNTRY: USA
   - action: action_createNewAccount
   - action: utter_howCanIhelpYou
-- story: example story for addresses
-  steps:
-  - intent: choice_iwantsaymyaddress
-  - action: utter_askAddress
-  - intent: give_address
-    entities:
-    - STREET: 567 Zappia Drive
-    - ZIP_CODE: 234789
-    - CITY: New York
-    - STATE: Alaska
-    - COUNTRY: USA
-  - slot_was_set:
-    - STREET: 567 Zappia Drive
-  - slot_was_set:
-    - ZIP_CODE: 234789
-  - slot_was_set:
-    - CITY: New York
-  - slot_was_set:
-    - STATE: Alaska
-  - slot_was_set:
-    - COUNTRY: USA
-  - action: action_userGaveAddress
-- story: example 2 story for addresses
-  steps:
-  - intent: choice_iwantsaymyaddress
-  - action: utter_askAddress
-  - intent: give_address
-    entities:
-    - STREET: 344 Gateway Road
-    - ZIP_CODE: 97232
-    - CITY: Portland
-    - STATE: Oregion
-    - COUNTRY: USA
-  - slot_was_set:
-    - STREET: 344 Gateway Road
-  - slot_was_set:
-    - ZIP_CODE: 97232
-  - slot_was_set:
-    - CITY: Portland
-  - slot_was_set:
-    - STATE: Oregon
-  - slot_was_set:
-    - COUNTRY: USA
-  - action: action_userGaveAddress
 - story: ask abilities
   steps:
   - intent: ask_bot_abilities
@@ -12089,3 +12044,106 @@ stories:
     - size_check: null
   - slot_was_set:
     - product_exist: null
+- story: order everything in cart after visualizing not logged user
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_userWantsVisualizeCart
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: db_visualize_cart
+  - intent: buy_all_cart
+  - action: db_buy_all_cart
+- story: order everything in cart after visualizing logged user
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: true
+  - action: db_visualize_cart
+  - intent: buy_all_cart
+  - action: db_buy_all_cart
+- story: Story from Conversation ID d54cafe3ab4a4dde872f1296e4e430e1
+  steps:
+  - intent: choice_createNewAccount
+  - action: utter_startRegistration
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 19
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_userIsAlreadyRegistered
+  - action: utter_howCanIhelpYou
+  - intent: choice_createNewAccount
+  - action: utter_startRegistration
+  - action: utter_askEmail
+  - intent: give_emailAddress
+    entities:
+    - email: g@gmail.com
+    - email: g@gmail.com
+  - slot_was_set:
+    - email: g@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: false
+  - slot_was_set:
+    - ID_logged: null
+  - action: utter_askFirstName
+  - intent: give_firstName
+    entities:
+    - PERSON: Giovanni
+  - slot_was_set:
+    - PERSON: Giovanni
+  - action: utter_askBirthDate
+  - intent: give_birthDate
+    entities:
+    - time: '1982-10-27T00:00:00.000+01:00'
+  - slot_was_set:
+    - time: '1982-10-27T00:00:00.000+01:00'
+  - action: utter_askAddress
+  - intent: give_address
+    entities:
+    - STATE: Oregon
+    - STREET: 344 Gateway Road
+    - ZIP_CODE: '24567'
+    - CITY: Portland
+    - STATE: Oregon
+  - slot_was_set:
+    - STREET: 344 Gateway Road
+  - slot_was_set:
+    - ZIP_CODE: '24567'
+  - slot_was_set:
+    - CITY: Portland
+  - slot_was_set:
+    - STATE: Oregon
+  - action: utter_userRegistered
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: g@gmail.com
+  - slot_was_set:
+    - PERSON: Giovanni
+  - slot_was_set:
+    - time: '1982-10-27T00:00:00.000+01:00'
+  - slot_was_set:
+    - STREET: 344 Gateway Road
+  - slot_was_set:
+    - ZIP_CODE: '24567'
+  - slot_was_set:
+    - CITY: Portland
+  - slot_was_set:
+    - STATE: Oregon
+  - action: action_createNewAccount
+  - action: utter_askAdditionalHelp

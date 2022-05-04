@@ -293,6 +293,14 @@ nlu:
     - The quantity [1](quantity) suffices for me
     - [1](quantity) is good
     - just [1](quantity)
+- intent: buy_all_cart
+  examples: |
+    - buy everything in there
+    - buy all
+    - buy everything in the cart
+    - order all
+    - send me everything
+    - order everything in there
 - intent: put_in_cart
   examples: |
     - Put in cart
@@ -460,7 +468,7 @@ nlu:
     - create a new account
     - I want to create an account
     - I want to create a new account
-    - Create [aj](PERSON) account
+    - Create a account
     - Create an account
 - intent: choice_askInfoAboutEcommerce
   examples: |
