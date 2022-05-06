@@ -470,6 +470,7 @@ nlu:
     - I want to create a new account
     - Create a account
     - Create an account
+    - CREATE NEW ACCOUNT
 - intent: choice_askInfoAboutEcommerce
   examples: |
     - tell me something about the shop
@@ -568,6 +569,7 @@ nlu:
     - Yes of course, the address is [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
     - address: [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
     - [344 Robinson Court](STREET) [37024](ZIP_CODE) [portland](CITY) [oregon](STATE)
+    - [344 Gateway Road](STREET) [24567](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
 - intent: say_firstName
   examples: |
     - name
@@ -610,6 +612,7 @@ nlu:
     - The date I was born
     - my birthdate
     - My birth date please
+    - birthdate
 - intent: say_address
   examples: |
     - My address
@@ -654,6 +657,8 @@ nlu:
     - account info
     - i want to ask an information on my account
     - i want to ask an info on my account
+    - I want to ask an information about my account
+    - i want to ask an information about my account
 - intent: give_birthDate
   examples: |
     - My birthdate is the first of november 2001
@@ -663,6 +668,29 @@ nlu:
     - 21 december 1987
     - 26 december 1965
     - 19 march 1998
+    - 19 mar 1997
+- intent: choice_which_products_present
+  examples: |
+    - Which products are preent?
+    - What can I buy?
+    - Products available
+    - Which products are available?
+    - What product there are
+    - Which products are there?
+    - Products are there
+    - Which products do you sell?
+    - What you sell
+    - wHAT product you sell?
+- intent: all_products_listed
+  examples: |
+    - there are more?
+    - there are more products?
+    - are all products listed?
+    - all products are listed?
+    - all products listed?
+    - mmm there are more [tshirt](product)?
+    - are there more [tshirt] like these?
+    - Are all products here?
 - intent: choice_additionalHelp
   examples: |
     - i need more help
@@ -780,6 +808,7 @@ nlu:
     - please, show me what you can do
     - show me what you are able to do
     - show me what are your abilities
+    - what can you do?
 - intent: product_info
   examples: |
     - What is the price of the [first](number_on_the_list) product?
@@ -843,6 +872,9 @@ nlu:
     - What did I order until now?
     - What did I order?
     - What did I order in the past?
+- intent: chitchat
+  examples: |
+    - how is the wheather?
 - synonym: t-shirt
   examples: |
     - tshirt
@@ -1167,6 +1199,7 @@ nlu:
     - Smartphone
     - Camera
     - Smartwatch
+    - Watch
     - Mobile phones
     - Entertainment equipment, such as an Xbox or PlayStation
     - Cameras

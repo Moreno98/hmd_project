@@ -550,6 +550,45 @@ class Set_quantity_slot(Action):
 
         return [SlotSet("quantity_to_buy", quantity)]
 
+class Show_all_products(Action):
+
+    def __init__(self) -> None:
+        super(Show_all_products, self).__init__()
+        self.conn = Connection().conn
+    
+    def name(self) -> Text:
+        return "db_show_all_products"
+    
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
+        domain: "DomainDict") -> List[Dict[Text, Any]]:
+
+        cur = self.conn.cursor()
+        query = "SELECT category FROM product"
+        products = []
+        try:
+            cur.execute(query)
+            rows = cur.fetchall()
+            self.conn.commit()
+
+            string = '\n'
+            for i, product in enumerate(rows):
+                if product[0] not in products:
+                    products.append(product[0])
+                    string += '- ' + product[0] + '\n'
+            dispatcher.utter_message(
+                text = "The type of products you can buy are: " + string
+            )
+
+            dispatcher.utter_message(
+                response = "utter_anything_else"
+            )
+        except Exception as e:
+            print(e)
+            dispatcher.utter_message(
+                response = "utter_fail_show_all_products"
+            )
+
+
 class Buy_product(Action):
 
     def __init__(self) -> None:
@@ -709,6 +748,7 @@ class Buy_all_cart(Action):
             dispatcher.utter_message(
                     response = "utter_cart_ordered_everything"
                 ) 
+
 class Visualize_cart(Action):
     def __init__(self) -> None:
         super(Visualize_cart, self).__init__()

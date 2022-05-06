@@ -4,6 +4,7 @@ session_config:
   carry_over_slots_to_new_session: true
 intents:
 - affirm
+- all_products_listed
 - ask_bot_abilities
 - ask_purchases
 - bot_challenge
@@ -23,6 +24,7 @@ intents:
 - choice_createNewAccount
 - choice_iwantsaymyaddress
 - choice_noMoreHelp
+- choice_which_products_present
 - color_product
 - deny
 - direct_buy
@@ -283,6 +285,10 @@ responses:
   - text: It seems the email you gave, does not belong to any account. Do you want to create one?
   utter_userRegistered:
   - text: User correctly registered
+  utter_fail_show_all_products:
+  - text: I'm sorry, an internal error occured, please formulate again your request.
+  utter_all_products_are_listed:
+  - text: All the products of this type are listed above
   utter_userIsAlreadyRegistered:
   - text: The email you are using now is alreay registered in our database. Choose another one or perform a different operation
   utter_startRegistration:
@@ -333,6 +339,7 @@ actions:
 - db_delete_cart
 - db_put_in_cart
 - db_buy_all_cart
+- db_show_all_products
 - set_product_info
 - check_color
 - check_size
@@ -342,14 +349,12 @@ actions:
 - reset_info_product_no_color_no_size
 - query_registeredAccounts
 - action_updateUserFirstName
-- action_updateUserEmailAddress
 - action_updateUserSurname
 - action_updateUserBirthDate
 - action_updateUserAddress
 - action_checkIfUserIsRegistered
 - action_createNewAccount
 - action_retrieveFirstName
-- action_retrieveSurname
 - action_retrieveBirthDate
 - action_retrieveAddress
 - action_emptySlots
