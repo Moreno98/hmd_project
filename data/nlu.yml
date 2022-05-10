@@ -203,6 +203,9 @@ nlu:
     - Can I buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
     - Can  I buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
     - can i buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
+    - can i buy a watch?
+    - can i buy some [pant](product)?
+    - can i buy a smartwatch?
 - intent: buy_product_with_color
   examples: |
     - can I buy a [blue](color) [t-shirt](product)?
@@ -280,6 +283,7 @@ nlu:
     - My favorite is the [first](number_on_the_list) one
     - [first](number_on_the_list) one
     - the [first](number_on_the_list) one
+    - so the [first](number_on_the_list) one
 - intent: quantity_to_buy_intent
   examples: |
     - I would like to buy [1](quantity)
@@ -681,6 +685,7 @@ nlu:
     - Which products do you sell?
     - What you sell
     - wHAT product you sell?
+    - what can i buy?
 - intent: all_products_listed
   examples: |
     - there are more?
