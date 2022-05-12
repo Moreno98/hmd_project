@@ -553,6 +553,45 @@ class Set_quantity_slot(Action):
 
         return [SlotSet("quantity_to_buy", quantity)]
 
+class Show_all_products(Action):
+
+    def __init__(self) -> None:
+        super(Show_all_products, self).__init__()
+        self.conn = Connection().conn
+    
+    def name(self) -> Text:
+        return "db_show_all_products"
+    
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
+        domain: "DomainDict") -> List[Dict[Text, Any]]:
+
+        cur = self.conn.cursor()
+        query = "SELECT category FROM product"
+        products = []
+        try:
+            cur.execute(query)
+            rows = cur.fetchall()
+            self.conn.commit()
+
+            string = '\n'
+            for i, product in enumerate(rows):
+                if product[0] not in products:
+                    products.append(product[0])
+                    string += '- ' + product[0] + '\n'
+            dispatcher.utter_message(
+                text = "The type of products you can buy are: " + string
+            )
+
+            dispatcher.utter_message(
+                response = "utter_anything_else"
+            )
+        except Exception as e:
+            print(e)
+            dispatcher.utter_message(
+                response = "utter_fail_show_all_products"
+            )
+
+
 class Buy_product(Action):
 
     def __init__(self) -> None:
@@ -603,7 +642,6 @@ class Buy_product(Action):
 
             today = str(datetime.date.today())
 
-
             params = (int(quantity), size, color, address, today, product_id, ID)
             
             try:
@@ -641,6 +679,78 @@ class Buy_product(Action):
                 SlotSet("size_check", None),
                 SlotSet("product_exist", None)
             ]
+
+class Buy_all_cart(Action):
+    def __init__(self) -> None:
+        super(Buy_all_cart, self).__init__()
+        self.conn = Connection().conn
+    
+    def name(self) -> Text:
+        return "db_buy_all_cart"
+    
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
+        domain: "DomainDict") -> List[Dict[Text, Any]]:
+
+        slot_emailAddress = tracker.get_slot("email")
+        cur = self.conn.cursor()
+        stmt = "SELECT ID, Address FROM account WHERE Email = ?"
+        cur.execute(stmt, (slot_emailAddress, ))
+        result = cur.fetchall()
+
+        if not result:
+            resultDisplayed = "There is no account with this email address"
+            dispatcher.utter_message(text=resultDisplayed)
+        else:
+            account_id = result[0][0]
+            address = result[0][1]
+            today = str(datetime.date.today())
+            query = "SELECT * FROM cart JOIN product ON cart.Product_id = product.ID JOIN brand ON product.Brand = brand.ID WHERE Account_ID = ?"
+            cur.execute(query, (account_id, ))
+            rows = cur.fetchall()
+            cart = []
+
+            products = []
+
+            if len(rows) == 0:
+                    dispatcher.utter_message(
+                        response = "utter_cart_empty"
+                    )
+            else:
+                for i, product in enumerate(rows):
+                    ID = product[0]
+                    quantity = product[1]
+                    size = product[2]
+                    color = product[3]
+                    product_id = product[5]
+                    
+                    query = "INSERT INTO purchase (quantity, size, color, 'shipping address', date, product_ID, account_ID) VALUES (?, ?, ?, ?, ?, ?, ?)"
+                    params = (int(quantity), size, color, address, today, product_id, account_id)
+
+                    try:
+                        cur.execute(query, params)
+                        rows = cur.fetchall()
+                        self.conn.commit()
+                    except Exception as e:
+                        print(e)
+                        dispatcher.utter_message(
+                            response = "utter_fail_buy"
+                        )
+
+                    query = "DELETE FROM cart WHERE ID = ?"
+                    params = (ID, )
+
+                    try:
+                        cur.execute(query, params)
+                        rows = cur.fetchone()
+                        self.conn.commit()
+                    except Exception as e:
+                        print(e)
+                        dispatcher.utter_message(
+                            response = "utter_fail_buy"
+                        )
+            dispatcher.utter_message(
+                    response = "utter_cart_ordered_everything"
+                ) 
 
 class Visualize_cart(Action):
     def __init__(self) -> None:
@@ -846,40 +956,6 @@ class UpdateUserFirstName(Action):
 
         return [SlotSet("PERSON", None), SlotSet("user_logged", True)]
 
-
-# class UpdateUserSurname(Action):
-
-#     def __init__(self) -> None:
-#         super(UpdateUserSurname, self).__init__()
-#         self.conn = Connection().conn
-
-#     def name (self) -> Text:
-#         return "action_updateUserSurname"
-    
-#     def run(self,
-#             dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-#         cur = self.conn.cursor()
-#         #link = sqlite3.connect("database.db")
-#         #linkCursor = link.cursor()
-        
-#         slot_Surname = tracker.get_slot("surname_PERSON")
-#         slot_emailAddress = tracker.get_slot("email")
-        
-#         stmt = "UPDATE account SET Surname = ? WHERE Email = ?" 
-#         print(stmt, (slot_Surname, slot_emailAddress))
-#         cur.execute(stmt)
-
-        # print("action_updateUserSurname")
-        
-        # resultDisplayed = "Surname changed"
-
-        # dispatcher.utter_message(text=resultDisplayed)
-
-        # return [SlotSet("surname_PERSON", None)]
-
 class UpdateUserBirthDate(Action):
 
     def __init__(self) -> None:
@@ -971,7 +1047,6 @@ class UpdateUserAddress(Action):
                 SlotSet("STATE", None),
                 SlotSet("user_logged", True)]
 
-
 class CheckIfUserIsRegistered(Action):
 
     def __init__(self) -> None:
@@ -1049,17 +1124,32 @@ class CreatenNewAccount(Action):
             slot_address = slot_address + slot_country
         
         # need to know the number of rows in order to add the next ID in the table
-        stmt = "SELECT email FROM account"
-        cur.execute(stmt)
-        result = cur.fetchall()
-        id = len(result) + 1
+        # stmt = "SELECT email FROM account"
+        # cur.execute(stmt)
+        # result = cur.fetchall()
+        # id = len(result) + 1
 
 
-        stmt1 = "INSERT INTO account VALUES (?, ?, ?, ?, ?)" 
-        cur.execute(stmt1, (id, slot_firstName, birth_date, slot_emailAddress, slot_address, ))
+        stmt1 = "INSERT INTO account (name, birthdate, email, address) VALUES (?, ?, ?, ?)" 
+        
+        try:
+            cur.execute(stmt1, (slot_firstName, birth_date, slot_emailAddress, slot_address, ))
+            rows = cur.fetchall()
+            self.conn.commit()
+            dispatcher.utter_message(
+                response = "utter_success_account_creation"
+            )
 
-        resultDisplayed = "User correctly registered"
-        dispatcher.utter_message(text=resultDisplayed)
+                # dispatcher.utter_message(
+                #     response = "utter_anything_else"
+                # )
+        except Exception as e:
+            print(e)
+            dispatcher.utter_message(
+                response = "utter_fail_account_creation"
+            )
+
+        
             
         return [SlotSet("PERSON", None), 
                 #SlotSet("surname_PERSON", None), 
@@ -1101,37 +1191,6 @@ class RetrieveFirstName(Action):
         dispatcher.utter_message(text=resultDisplayed)
 
         return [SlotSet("user_logged", True)]
-
-# class RetrieveSurname(Action):
-
-#     def __init__(self) -> None:
-#         super(RetrieveSurname, self).__init__()
-#         self.conn = Connection().conn
-
-#     def name(self) -> Text:
-#         return "action_retrieveSurname"
-    
-#     def run(self,
-#             dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-#         cur = self.conn.cursor()
-#         #link = sqlite3.connect("database.db")
-#         #linkCursor = link.cursor()
-        
-#         slot_emailAddress = tracker.get_slot("email")
-
-#         # need to know the number of rows in order to add the next ID in the table
-#         stmt = "SELECT Surname FROM account WHERE Email = ?"
-#         cur.execute(stmt, (slot_emailAddress, ))
-#         result = cur.fetchone()
-
-#         resultDisplayed = "The surname for your account is: " + result[0]
-
-#         dispatcher.utter_message(text=resultDisplayed)
-        
-#         print("action_retrieveSurname")
 
 class RetrieveBirthDate(Action):
 
@@ -1198,38 +1257,7 @@ class RetrieveAddress(Action):
         print("action_retrieveAddress")
 
         return [SlotSet("user_logged", True)]
-
-# class EmptySlots(Action):
-
-#     def __init__(self) -> None:
-#         super(EmptySlots, self).__init__()
-#         self.conn = Connection().conn
-
-#     def name(self) -> Text:
-#         return "action_emptySlots"
-    
-#     def run(self,
-#             dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-            
-#             slot_emailAddress = tracker.get_slot("email")
-#             slot_firstName = tracker.get_slot("PERSON")
-#             slot_surname = tracker.get_slot("surname")
-#             slot_birthDate = tracker.get_slot("time")
-
-#             print(slot_emailAddress)
-#             print(slot_firstName)
-#             print(slot_surname)
-#             print(slot_birthDate)
-
-#             print("action_emptySlots")
-
-#             resultDisplayed = "User correctly registered"
-#             dispatcher.utter_message(text=resultDisplayed)
-            
-#             return [SlotSet("email", None)], [SlotSet("PERSON", None)], [SlotSet("surname", None)], [SlotSet("time", None)]
-
+ 
 class SetSlot_askAccountInfo(Action):
 
     def __init__(self) -> None:

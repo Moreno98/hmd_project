@@ -4,9 +4,11 @@ session_config:
   carry_over_slots_to_new_session: true
 intents:
 - affirm
+- all_products_listed
 - ask_bot_abilities
 - ask_purchases
 - bot_challenge
+- buy_all_cart
 - buy_product
 - buy_product_with_color
 - buy_product_with_color_size
@@ -17,11 +19,11 @@ intents:
 - choice_askInfoAboutAccount
 - choice_askInfoAboutEcommerce
 - choice_askInfoAboutProduct
-- choice_askToSeePurchases
 - choice_changeAccountInfo
 - choice_createNewAccount
 - choice_iwantsaymyaddress
 - choice_noMoreHelp
+- choice_which_products_present
 - color_product
 - deny
 - direct_buy
@@ -236,17 +238,23 @@ responses:
       products: '{products}'
       text: 'Here is your cart:'
   utter_userWantsVisualizeCart:
-  - text: In order to show your cart I need your email address
+  - text: In order to show your cart I need your email address, please
   utter_directOrderOrPutInCart:
-  - text: Do you prefer directly order the item or do you want me to put it in your cart?
+  - text: Do you prefer directly buy the item or do you want me to put it in your cart?
   utter_change_cart:
-  - text: do you want to delete something?
+  - text: do you want to delete something or order everythingn in the cart?
+  utter_cart_ordered_everything:
+  - text: Congratulations! All products in your cart have been sent to your address.Thanks for your order.
   utter_which_to_delete:
   - text: Which one do you want to delete?
   utter_cart_deleted:
   - text: The product has been deleted from your cart.
   utter_fail_delete:
   - text: I'm sorry, an error occured during the deletion process, please try again later.
+  utter_success_account_creation:
+  - text: Congratulation, your account has been created!
+  utter_fail_account_creation:
+  - text: I'm sorry, an error occurred during the creation of your account.
   utter_howCanIhelpYou:
   - text: Hey there, how can I help you?
   utter_askRegisteredEmail:
@@ -276,6 +284,10 @@ responses:
   - text: It seems the email you gave, does not belong to any account. Do you want to create one?
   utter_userRegistered:
   - text: User correctly registered
+  utter_fail_show_all_products:
+  - text: I'm sorry, an internal error occured, please formulate again your request.
+  utter_all_products_are_listed:
+  - text: All the products of this type are listed above
   utter_userIsAlreadyRegistered:
   - text: The email you are using now is alreay registered in our database. Choose another one or perform a different operation
   utter_startRegistration:
@@ -325,6 +337,8 @@ actions:
 - db_visualize_cart
 - db_delete_cart
 - db_put_in_cart
+- db_buy_all_cart
+- db_show_all_products
 - set_product_info
 - check_color
 - check_size
@@ -334,14 +348,12 @@ actions:
 - reset_info_product_no_color_no_size
 - query_registeredAccounts
 - action_updateUserFirstName
-- action_updateUserEmailAddress
 - action_updateUserSurname
 - action_updateUserBirthDate
 - action_updateUserAddress
 - action_checkIfUserIsRegistered
 - action_createNewAccount
 - action_retrieveFirstName
-- action_retrieveSurname
 - action_retrieveBirthDate
 - action_retrieveAddress
 - action_emptySlots

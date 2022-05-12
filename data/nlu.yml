@@ -1,5 +1,135 @@
 version: "2.0"
 nlu:
+- intent: ask_purchases
+  examples: |
+    - Can I see my purchases?
+    - May I see my purchases?
+    - Can I visualize my purchases?
+    - My purchases?
+    - Please, show me my purchases
+    - show me my purchases
+    - show me what I have ordered in the past
+    - show me what I have ordered
+    - show me the past purchases
+    - show me all the purchases
+    - Can I see all my purchases?
+    - Can I see my past purchases?
+    - Can I see my past orders?
+    - May I see my past purchases?
+    - May I see my past orders?
+    - Show me the history of my purchases
+    - Show me the history of my orders
+    - Can I see the history of my purchases?
+    - Can I see the history of my orders?
+    - What did I order until now?
+    - What did I order?
+    - What did I order in the past?
+- intent: buy_all_cart
+  examples: |
+    - buy everything in there
+    - buy all in the cart
+    - buy everything in the cart
+    - order all in the cart
+    - send me everything
+    - order everything in there
+    - order everything in my cart
+    - Send me eall in my cart
+    - Send me everything in my cart
+    - Order all in my cart
+    - I want order everything in my cart
+    - I want all present in my cart
+    - I want everything in there
+    - I want you send me all in my cart
+    - I want you send me all
+    - I want you send me everything
+    - order everything in it
+    - SEND me everything
+- intent: put_in_cart
+  examples: |
+    - Put in cart
+    - put in my cart
+    - in my cart
+    - put items in my cart
+    - put items in cart
+    - move items in cart
+    - move in cart
+    - move it in the cart
+    - put on my cart
+    - put in cart
+    - You can put it in the cart
+    - In the cart is fine
+    - I would like it to be in the cart
+    - Yeah you can put it in the cart
+    - Please put it in the cart
+- intent: direct_buy
+  examples: |
+    - buy it
+    - directly
+    - directly buy it
+    - i want to buy it
+    - order it
+    - i want order it
+    - directly order
+    - direct order
+    - I would like to buy it
+    - I would like to order it
+    - I want to buy it
+    - Buy it please
+    - Please buy it
+    - You can buy it
+    - Order everything on it
+- intent: choice_which_products_present
+  examples: |
+    - Which products are preent?
+    - What can I buy?
+    - Products available
+    - Which products are available?
+    - What product there are
+    - Which products are there?
+    - Products are there
+    - Which products do you sell?
+    - What you sell
+    - wHAT product you sell?
+    - what can i buy?
+    - what can i buy
+    - What can i buy?
+    - What can i BUY?
+    - What do you sell?
+    - What can i BUY IN YOUR SHOP?
+    - Which products can i buy in your shop?
+- intent: all_products_listed
+  examples: |
+    - there are more?
+    - there are more products?
+    - are all products listed?
+    - all products are listed?
+    - all products listed?
+    - mmm there are more [tshirt](product)?
+    - are there more [tshirt] like these?
+    - Are all products here?
+    - There are more?
+    - Can i see more products?
+    - Could you show me more [tshirt](product)?
+    - Can i see more [tshirt](product)?
+    - Show me more [tshirt](product)
+    - I wanna see more [tshirt](product)
+    - I want to see more [tshirt](product)
+    - I'd like to see more [tshirt](product)
+    - Can i see more [tshirt](product) please?
+    - Show me more [tshirt](product) please
+    - I wanna see more [tshirt](product) please
+    - I want to see more [tshirt](product) please
+    - I'd like to see more [tshirt](product) please
+- intent: choice_askInfoAboutEcommerce
+  examples: |
+    - tell me something about the shop
+    - tell me somethig about the ecommerce
+    - Give me information about the online shop
+    - give me info about the ecommerce
+    - info about ecommerce
+    - info about shop
+    - Tell me something about the ecommerce
+    - Tell me somthing about the ecommerce
 - intent: greet
   examples: |
     - hey
@@ -203,6 +333,11 @@ nlu:
     - Can I buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
     - Can  I buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
     - can i buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
+    - can i buy a watch?
+    - can i buy some [pant](product)?
+    - can i buy a smartwatch?
+    - I want to buy a [tshirt]{"entity": "product", "value": "t-shirt"}
+    - i want to buy a [tshirt]{"entity": "product", "value": "t-shirt"}
 - intent: buy_product_with_color
   examples: |
     - can I buy a [blue](color) [t-shirt](product)?
@@ -219,6 +354,9 @@ nlu:
     - I want to see a [t-shirt](product) which is [blue](color)
     - Can I buy a [beige](color) [tshirt]{"entity": "product", "value": "t-shirt"}?
     - Can I buy a [red](color) [tshirt]{"entity": "product", "value": "t-shirt"}?
+    - I want to buy a [beige](color) [tshirt]{"entity": "product", "value": "t-shirt"}
+    - i want a [beige](color) [tshirt]{"entity": "product", "value": "t-shirt"}
+    - i want to buy [black](color) shoes
 - intent: buy_product_with_color_size
   examples: |
     - can I buy a [blue](color) [t-shirt](product) with size [xl](size)?
@@ -280,6 +418,9 @@ nlu:
     - My favorite is the [first](number_on_the_list) one
     - [first](number_on_the_list) one
     - the [first](number_on_the_list) one
+    - so the [first](number_on_the_list) one
+    - So the [first](number_on_the_list) one
+    - so i want the [first](number_on_the_list) one
 - intent: quantity_to_buy_intent
   examples: |
     - I would like to buy [1](quantity)
@@ -293,42 +434,7 @@ nlu:
     - The quantity [1](quantity) suffices for me
     - [1](quantity) is good
     - just [1](quantity)
-- intent: put_in_cart
-  examples: |
-    - Put in cart
-    - put in my cart
-    - in my cart
-    - put items in my cart
-    - put items in cart
-    - move items in cart
-    - move in cart
-    - move it in the cart
-    - put on my cart
-    - put in cart
-    - You can put it in the cart
-    - In the cart is fine
-    - I would like it to be in the cart
-    - Yeah you can put it in the cart
-    - Please put it in the cart
-- intent: direct_buy
-  examples: |
-    - buy it
-    - directly
-    - directly buy it
-    - i want to buy it
-    - order it
-    - i want order it
-    - directly order
-    - direct order
-    - I would like to buy it
-    - I would like to order it
-    - I want to buy it
-    - Buy it please
-    - Please buy it
-    - You can buy it directly
-    - You can order it directly
-    - You can order it
-    - You can buy it
+    - 2
 - intent: visualize_cart
   examples: |
     - I would like to visualize my cart
@@ -374,6 +480,11 @@ nlu:
     - Update my shopping cart
     - Can I see the cart?
     - Can I update the cart?
+    - i want to see my cart
+    - i want see my cart
+    - can i see my cart?
+    - CAN I SEE MY CART?
+    - can i see my cart
 - intent: choice_changeAccountInfo
   examples: |
     - change my account info
@@ -460,28 +571,13 @@ nlu:
     - create a new account
     - I want to create an account
     - I want to create a new account
-    - Create [aj](PERSON) account
+    - Create a account
     - Create an account
-- intent: choice_askInfoAboutEcommerce
-  examples: |
-    - tell me something about the shop
-    - tell me somethig about the ecommerce
-    - Give me information about the online shop
-    - give me info about the ecommerce
-    - info about ecommerce
-    - info about shop
-    - Tell me something about the ecommerce
-    - Tell me somthing about the ecommerce
-- intent: choice_askToSeePurchases
-  examples: |
-    - can i see my purchases?
-    - i want to see my purchases
-    - see purchases
-    - watch purchases
-    - purchase
-    - Let me see my purchases
-    - I wanna see purchases
-    - I want see purchases
+    - CREATE NEW ACCOUNT
+    - i wantto create an account
+    - i want create an account pls
+    - create an account please
+    - can i create an account
 - intent: give_firstName
   examples: |
     - my first name is [Amine](PERSON)
@@ -522,6 +618,7 @@ nlu:
     - [Stefania](PERSON)
     - [Giovanni](PERSON)
     - [francesco](PERSON)
+    - [federico](PERSON)
 - intent: give_emailAddress
   examples: |
     - It's [francesco@gmail.com](email)
@@ -549,6 +646,9 @@ nlu:
     - [Francesco321@gmail.com](email)
     - [fed1234@gmail.com](email)
     - [fede123@gmail.com](email)
+    - [g@gmail.com](email)
+    - [fedepicco@gmail.com](email)
+    - [fedepiccoli@gmail.com](email)
 - intent: give_address
   examples: |
     - It's [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE) [USA](COUNTRY)
@@ -560,6 +660,7 @@ nlu:
     - Yes of course, the address is [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
     - address: [344 Gateway Road](STREET) [97232](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
     - [344 Robinson Court](STREET) [37024](ZIP_CODE) [portland](CITY) [oregon](STATE)
+    - [344 Gateway Road](STREET) [24567](ZIP_CODE) [Portland](CITY) [Oregon](STATE)
 - intent: say_firstName
   examples: |
     - name
@@ -582,15 +683,6 @@ nlu:
     - the email
     - the e-mail
     - the email address
-    - the e-mail address
-    - the email adress
-    - the e-mail adress
-    - my email
-    - my e-mail
-    - my email address
-    - my e-mail address
-    - my email adress
-    - my e-mail adress
 - intent: say_birthDate
   examples: |
     - My birthdate
@@ -602,6 +694,7 @@ nlu:
     - The date I was born
     - my birthdate
     - My birth date please
+    - birthdate
 - intent: say_address
   examples: |
     - My address
@@ -611,13 +704,6 @@ nlu:
     - My address please
     - address
     - my address
-- intent: choice_iwantsaymyaddress
-  examples: |
-    - i wannnt tell you my address
-    - i wanna say my address
-    - please save my address
-    - record my address
-    - record my  address
 - intent: choice_askInfoAboutAccount
   examples: |
     - I want to ask information about my account
@@ -646,6 +732,11 @@ nlu:
     - account info
     - i want to ask an information on my account
     - i want to ask an info on my account
+    - I want to ask an information about my account
+    - i want to ask an information about my account
+    - i want to ask info about my account
+    - i want ask an information about my account
+    - i want to know an info about my account
 - intent: give_birthDate
   examples: |
     - My birthdate is the first of november 2001
@@ -655,6 +746,10 @@ nlu:
     - 21 december 1987
     - 26 december 1965
     - 19 march 1998
+    - 19 mar 1997
+    - 27 oct 1982
+    - 19 feb 1989
+    - 19 feb 1982
 - intent: choice_additionalHelp
   examples: |
     - i need more help
@@ -772,6 +867,7 @@ nlu:
     - please, show me what you can do
     - show me what you are able to do
     - show me what are your abilities
+    - what can you do?
 - intent: product_info
   examples: |
     - What is the price of the [first](number_on_the_list) product?
@@ -811,30 +907,9 @@ nlu:
     - Details [first](number_on_the_list)
     - Info [first](number_on_the_list)
     - I would like to visualize the details of the [second](number_on_the_list) one
-- intent: ask_purchases
+- intent: chitchat
   examples: |
-    - Can I see my purchases?
-    - May I see my purchases?
-    - Can I visualize my purchases?
-    - My purchases?
-    - Please, show me my purchases
-    - show me my purchases
-    - show me what I have ordered in the past
-    - show me what I have ordered
-    - show me the past purchases
-    - show me all the purchases
-    - Can I see all my purchases?
-    - Can I see my past purchases?
-    - Can I see my past orders?
-    - May I see my past purchases?
-    - May I see my past orders?
-    - Show me the history of my purchases
-    - Show me the history of my orders
-    - Can I see the history of my purchases?
-    - Can I see the history of my orders?
-    - What did I order until now?
-    - What did I order?
-    - What did I order in the past?
+    - how is the wheather?
 - synonym: t-shirt
   examples: |
     - tshirt
@@ -1159,6 +1234,7 @@ nlu:
     - Smartphone
     - Camera
     - Smartwatch
+    - Watch
     - Mobile phones
     - Entertainment equipment, such as an Xbox or PlayStation
     - Cameras
