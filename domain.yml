@@ -19,7 +19,6 @@ intents:
 - choice_askInfoAboutAccount
 - choice_askInfoAboutEcommerce
 - choice_askInfoAboutProduct
-- choice_askToSeePurchases
 - choice_changeAccountInfo
 - choice_createNewAccount
 - choice_iwantsaymyaddress
@@ -239,9 +238,9 @@ responses:
       products: '{products}'
       text: 'Here is your cart:'
   utter_userWantsVisualizeCart:
-  - text: In order to show your cart I need your email address
+  - text: In order to show your cart I need your email address, please
   utter_directOrderOrPutInCart:
-  - text: Do you prefer directly order the item or do you want me to put it in your cart?
+  - text: Do you prefer directly buy the item or do you want me to put it in your cart?
   utter_change_cart:
   - text: do you want to delete something or order everythingn in the cart?
   utter_cart_ordered_everything:
