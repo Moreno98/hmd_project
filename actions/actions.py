@@ -225,6 +225,8 @@ class Retrieve_product(Action):
             query += " AND colors LIKE ?"
             params += ("%" + color + "%",)
 
+        print(params)
+
         cur.execute(query, params)
         
         rows = cur.fetchall()
@@ -237,6 +239,7 @@ class Retrieve_product(Action):
             4: "fourth",
             5: "fifth"
         }
+        print(rows)
         # response = []
         for i, product in enumerate(rows):
             if(i == 6):
