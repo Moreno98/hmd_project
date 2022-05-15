@@ -32,6 +32,7 @@ nlu:
     - order all in the cart
     - send me everything
     - order everything in there
+    - order everything
     - order everything in my cart
     - Send me eall in my cart
     - Send me everything in my cart
@@ -1339,6 +1340,13 @@ nlu:
     - fifth
     - sixth
     - seventh
+    - 1st
+    - 2nd
+    - 3rd
+    - 4th
+    - 5th
+    - 6th
+    - 7th
 - lookup: quantity
   examples: |
     - 1
@@ -1346,3 +1354,8 @@ nlu:
     - 3
     - 4
     - 5
+    - one
+    - two
+    - three
+    - four
+    - five

@@ -3,6 +3,8 @@ import json
 from sanic import Blueprint, response
 from sanic.request import Request
 from typing import Text, Optional, List, Dict, Any
+import random
+from random import randrange
 
 from rasa.core.channels.channel import UserMessage, OutputChannel
 from rasa.core.channels.channel import InputChannel
@@ -46,11 +48,41 @@ class AlexaConnector(InputChannel):
 
             print("intenttype: ", intenttype)
 
+            if(intenttype == "SessionEndedRequest"):
+                return response.json({"status": "ok"})
+
             # if the user is starting the skill, let them
             # know it worked & what to do next
             if intenttype == "LaunchRequest":
                 message = "Hello! Welcome to the e-commerce assistant. Please ask me something."
                 session = "false"
+                r = {
+                    "version": "1.0",
+                    "response": {
+                        "outputSpeech": {
+                            "type": "PlainText",
+                            "text": message
+                        },
+                        "reprompt": {
+                            "outputSpeech": {
+                                "type": "PlainText",
+                                "text": message,
+                                "playBehavior": "REPLACE_ENQUEUED",
+                            }
+                        },
+                        "card": {
+                            "type": "Standard",
+                            "title": "Hello! Welcome to the e-commerce assistant.",
+                            "text": "Please ask me something.",
+                            "image": {
+                                "smallImageUrl": "https://acquire.io/wp-content/uploads/2022/01/79546_Acquire_BlogImages-01_SS.jpg",
+                                "largeImageUrl": "https://acquire.io/wp-content/uploads/2022/01/79546_Acquire_BlogImages-01_SS.jpg"
+                            }
+                        },
+                        "shouldEndSession": "false"
+                    }
+                }
+                return response.json(r)
             else:
                 # get the Alexa-detected intent
                 intent = payload["request"].get("intent", {}).get("name", "")
@@ -72,25 +104,37 @@ class AlexaConnector(InputChannel):
                     # wait for the response
                     await on_new_message(UserMessage(text, out,sender_id=sender_id))
                     # extract the text from Rasa's response
-                    # if(out.attachments != None):
-                    #     elements = out.attachments['payload']['elements']
-                    #     message = out.
                     print("MESSAGE:", out.messages)
                     print("FIRST:", out.messages[0])
                     if("attachment" in out.messages[0]):
                         products = out.messages[0]["attachment"]['payload']['elements']
+                        mode = out.messages[0]["attachment"]['payload']['mode']
+                        if(mode == "details"):
+                            title = "These are the details"
+                            hint_text = "Do you want to buy it?"
+                        elif(mode == "retrieve_product"):
+                            title = "These are the products I found"
+                            hint_text = "You can select a product by saying 'the first'"
+                        elif(mode == "visualize_cart"):
+                            title = "These are the products in your cart"
+                            hint_text = "You can delete a product by saying 'delete the first'"
+                        elif(mode == "visualize_purchases"):
+                            title = "These are your purchases" 
+                            hint_text = ""
                         message = out.messages[1]['text']
-                        cards = []
+                        list_item_to_show = []
                         for element in products:
-                            cards.append(
+                            random_rating = random.uniform(0, 5)
+                            ratings = randrange(500)
+                            list_item_to_show.append(
                                 {
-                                    "type": "Standard",
-                                    "title": element["title"],
-                                    "text": element["subtitle"],
-                                    "image": {
-                                        "smallImageUrl": element["image_url"],
-                                        "largeImageUrl": element["image_url"]
-                                    }
+                                    "primaryText": element["title"],
+                                    "secondaryText": element["subtitle"],
+                                    "imageSource": element["image_url"],
+                                    "imageShowProgressBar": True,
+                                    "ratingSlotMode": "multiple",
+                                    "ratingNumber": random_rating,
+                                    "ratingText": f"({ratings} ratings)"
                                 }
                             )
                         r = {
@@ -98,16 +142,38 @@ class AlexaConnector(InputChannel):
                             "response": {
                                 "outputSpeech": {
                                     "type": "PlainText",
-                                    "text": message
+                                    "text": message,
+                                    "playBehavior": "REPLACE_ENQUEUED",
                                 },
-                                "reprompt": {
-                                    "outputSpeech": {
-                                        "type": "PlainText",
-                                        "text": message,
-                                        "playBehavior": "REPLACE_ENQUEUED",
+                                "directives": 
+                                [
+                                    {
+                                        "type": "Alexa.Presentation.APL.RenderDocument",
+                                        "token": "product_listToken",
+                                        "document": {
+                                            "src": "doc://alexa/apl/documents/product_list",
+                                            "type": "Link"
+                                        },
+                                        "datasources": {
+                                            "imageListData": {
+                                                "type": "object",
+                                                "objectId": "imageListSample",
+                                                "backgroundImage": {
+                                                    "sources": [
+                                                        {
+                                                            "url": "https://www.whoson.com/wp-content/uploads/2020/02/what-is-an-intent-based-chatbot-1024x576.png",
+                                                            "size": "large"
+                                                        }
+                                                    ]
+                                                },
+                                                "title": title,
+                                                "listItems": list_item_to_show,
+                                                "logoUrl": "https://media.istockphoto.com/vectors/chat-bot-ai-and-customer-service-support-concept-vector-flat-person-vector-id1221348467?k=20&m=1221348467&s=612x612&w=0&h=hp8h8MuGL7Ay-mxkmIKUsk3RY4O69MuiWjznS_7cCBw=",
+                                                "hintText": hint_text
+                                            }
+                                        }
                                     }
-                                },
-                                "card": cards[0],
+                                ],
                                 "shouldEndSession": "false"
                             }
                         }

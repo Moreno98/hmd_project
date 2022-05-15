@@ -271,7 +271,6 @@ responses:
   - text: Please tell me your email address
   utter_askFirstName:
   - text: Please tell me your first name
-  - text: And your first name please
   utter_askBirthDate:
   - text: What is your birthdate?
   utter_askAddress:
@@ -330,6 +329,8 @@ responses:
   - text: Please, you first have to search for a product, then you can ask some details.
   utter_buy_it:
   - text: Do you want to buy it?
+  utter_available_colors:
+  - text: 'Available colors:'
 actions:
 - db_retrieve_product
 - db_info_colors

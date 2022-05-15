@@ -29,7 +29,7 @@ def get_product_info(tracker):
     for ent in ents:
         entity = ent['entity']
         if entity == 'product':
-            category = ent['value']
+            category = ent['value'].lower()
         if entity == 'brand':
             brand = ent['value']
         if entity == 'price':
@@ -203,7 +203,7 @@ class Retrieve_product(Action):
 
         query = "SELECT * FROM product JOIN brand ON product.Brand = brand.ID WHERE category=?"
 
-        params = (category,)
+        params = (str(category).lower(),)
 
         if(brand != None):
             query += " AND brand LIKE ?"
@@ -225,7 +225,7 @@ class Retrieve_product(Action):
             query += " AND colors LIKE ?"
             params += ("%" + color + "%",)
 
-        print(params)
+        print("RETRIEVE PRODUCT", params)
 
         cur.execute(query, params)
         
@@ -239,7 +239,6 @@ class Retrieve_product(Action):
             4: "fourth",
             5: "fifth"
         }
-        print(rows)
         # response = []
         for i, product in enumerate(rows):
             if(i == 6):
@@ -247,10 +246,9 @@ class Retrieve_product(Action):
             # if the color is not none, use the image of the first color
             if(product[5] != None):
                 color_p = product[5].replace(" ", "").split(";")
-                image_name = product[8].replace("*", color_p[0])
-                image = os.path.join("db", "images", image_name) # could be the image + color does not exist -> to check
+                image = product[8].replace("*", color_p[0])
             else:
-                image = os.path.join("db", "images", product[8])
+                image = product[8]
             
             title = product[1]
             gender_p = product[2]
@@ -308,6 +306,7 @@ class Retrieve_product(Action):
             "type": "template",
             "payload": {
                 "template_type": "generic",
+                "mode": "retrieve_product",
                 "elements": products
             }
         }
@@ -359,7 +358,15 @@ class Set_product_info(Action):
             "fifth": 5,
             "sixth": 6,
             "seventh": 7,
-            "eighth": 8
+            "eighth": 8,
+            "1st": 1,
+            "2nd": 2,
+            "3rd": 3,
+            "4th": 4,
+            "5th": 5,
+            "6th": 6,
+            "7th": 7,
+            "8th": 8
         }
     
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
@@ -377,7 +384,7 @@ class Set_product_info(Action):
         if(product_number_list == None):
             product_number_list = tracker.get_slot("number_to_buy")
 
-        category = tracker.get_slot("product_to_buy")
+        category = tracker.get_slot("product_to_buy").lower()
         brand = tracker.get_slot("brand_to_buy")
         price = tracker.get_slot("price_to_buy")
         gender = tracker.get_slot("gender_to_buy")
@@ -411,9 +418,12 @@ class Set_product_info(Action):
             params += ("%" + color + "%",)
 
         cur.execute(query, params)
+        print(query, params)
         rows = cur.fetchall()
         try:
+            print(rows)
             product_name = rows[product_number_list][1]
+            print("PRODUCT NAME SET PRODUCT INFO:", product_name)
             if(rows[product_number_list][5] != None):
                 colors = rows[product_number_list][5]
                 colors = colors.replace(" ", "").split(";")
@@ -546,6 +556,7 @@ class Set_quantity_slot(Action):
         
         quantity = None
         entities = tracker.latest_message['entities']
+        print("MESSAGE: ", tracker.latest_message)
         for ent in entities:
             if ent['entity'] == 'quantity':
                 quantity = ent['value']
@@ -603,6 +614,8 @@ class Buy_product(Action):
     
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
         domain: "DomainDict") -> List[Dict[Text, Any]]:
+
+        print("MESSAGE", tracker.latest_message)
         
         quantity = tracker.get_slot("quantity_to_buy")
         color = tracker.get_slot("color_to_buy")
@@ -691,7 +704,7 @@ class Buy_all_cart(Action):
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
         domain: "DomainDict") -> List[Dict[Text, Any]]:
 
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
         cur = self.conn.cursor()
         stmt = "SELECT ID, Address FROM account WHERE Email = ?"
         cur.execute(stmt, (slot_emailAddress, ))
@@ -716,6 +729,7 @@ class Buy_all_cart(Action):
                         response = "utter_cart_empty"
                     )
             else:
+                print("Buy all cart", rows)
                 for i, product in enumerate(rows):
                     ID = product[0]
                     quantity = product[1]
@@ -749,8 +763,8 @@ class Buy_all_cart(Action):
                             response = "utter_fail_buy"
                         )
             dispatcher.utter_message(
-                    response = "utter_cart_ordered_everything"
-                ) 
+                response = "utter_cart_ordered_everything"
+            ) 
 
 class Visualize_cart(Action):
     def __init__(self) -> None:
@@ -763,7 +777,7 @@ class Visualize_cart(Action):
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
         domain: "DomainDict") -> List[Dict[Text, Any]]:
         
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
         cur = self.conn.cursor()
         stmt = "SELECT ID FROM account WHERE Email = ?"
         cur.execute(stmt, (slot_emailAddress, ))
@@ -799,10 +813,9 @@ class Visualize_cart(Action):
                         break
                     if(product[3] != None):
                         color_p = product[3]
-                        image_name = product[14].replace("*", color_p)
-                        image = os.path.join("db", "images", image_name) # could be the image + color does not exist -> to check
+                        image = product[14].replace("*", color_p)
                     else:
-                        image = os.path.join("db", "images", product[14])
+                        image = product[14]
                     quantity = product[1]
                     size = product[2]
                     color = product[3]
@@ -851,6 +864,7 @@ class Visualize_cart(Action):
                     "type": "template",
                     "payload": {
                         "template_type": "generic",
+                        "mode": "visualize_cart",
                         "elements": products
                     }
                 }
@@ -883,7 +897,15 @@ class Delete_cart(Action):
             "fifth": 5,
             "sixth": 6,
             "seventh": 7,
-            "eighth": 8
+            "eighth": 8,
+            "1st": 1,
+            "2nd": 2,
+            "3rd": 3,
+            "4th": 4,
+            "5th": 5,
+            "6th": 6,
+            "7th": 7,
+            "8th": 8
         }
     
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
@@ -944,7 +966,7 @@ class UpdateUserFirstName(Action):
         #linkCursor = link.cursor()
         
         slot_firstName = tracker.get_slot("PERSON")
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
         
         stmt = "UPDATE account SET Name = ? WHERE Email = ?"
         cur.execute(stmt, (slot_firstName, slot_emailAddress, ))
@@ -975,7 +997,7 @@ class UpdateUserBirthDate(Action):
         #linkCursor = link.cursor()
         
         slot_BirthDate = tracker.get_slot("time")
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
         stmt = "UPDATE account SET Birthdate = ? WHERE Email = ?"
         cur.execute(stmt, (slot_BirthDate[:10], slot_emailAddress, ))
         self.conn.commit()
@@ -1004,7 +1026,7 @@ class UpdateUserAddress(Action):
         #link = sqlite3.connect("database.db")
         #linkCursor = link.cursor()
         
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
         slot_street = tracker.get_slot("STREET")
         slot_zipCode = tracker.get_slot("ZIP_CODE")
         slot_city = tracker.get_slot("CITY")
@@ -1063,7 +1085,7 @@ class CheckIfUserIsRegistered(Action):
 
         cur = self.conn.cursor()
         
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = str(tracker.get_slot("email")).lower()
         stmt = "SELECT ID, email FROM account WHERE email = ?" 
         cur.execute(stmt, (slot_emailAddress, ))
         result = cur.fetchone()
@@ -1092,7 +1114,7 @@ class CreatenNewAccount(Action):
         #link = sqlite3.connect("database.db")
         #linkCursor = link.cursor()
         
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
         slot_firstName = tracker.get_slot("PERSON")
         # slot_surname = tracker.get_slot("surname_PERSON")
         slot_birthDate = tracker.get_slot("time")
@@ -1180,7 +1202,7 @@ class RetrieveFirstName(Action):
         #link = sqlite3.connect("database.db")
         #linkCursor = link.cursor()
         
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
         # need to know the number of rows in order to add the next ID in the table
         stmt = "SELECT Name FROM account WHERE Email = ?"
         cur.execute(stmt, (slot_emailAddress, ))
@@ -1210,7 +1232,7 @@ class RetrieveBirthDate(Action):
         #link = sqlite3.connect("database.db")
         #linkCursor = link.cursor()
         
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
 
         # need to know the number of rows in order to add the next ID in the table
         stmt = "SELECT Birthdate FROM account WHERE Email = ?"
@@ -1243,7 +1265,7 @@ class RetrieveAddress(Action):
         #link = sqlite3.connect("database.db")
         #linkCursor = link.cursor()
         
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
 
         # need to know the number of rows in order to add the next ID in the table
         stmt = "SELECT Address FROM account WHERE Email = ?"
@@ -1352,7 +1374,8 @@ class put_in_cart(Action):
         else:
             cur = self.conn.cursor()
 
-            slot_emailAddress = tracker.get_slot("email")
+            slot_emailAddress = tracker.get_slot("email").lower()
+            print(slot_emailAddress)
             
             #retrieve account id
             stmt = "SELECT ID FROM account WHERE Email = ?"
@@ -1419,7 +1442,7 @@ class Visualize_purchases(Action):
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
         domain: "DomainDict") -> List[Dict[Text, Any]]:
         
-        slot_emailAddress = tracker.get_slot("email")
+        slot_emailAddress = tracker.get_slot("email").lower()
         cur = self.conn.cursor()
         stmt = "SELECT ID FROM account WHERE Email = ?"
         cur.execute(stmt, (slot_emailAddress, ))
@@ -1444,10 +1467,9 @@ class Visualize_purchases(Action):
                 for i, product in enumerate(rows):
                     if(product[3] != None):
                         color_p = product[3]
-                        image_name = product[16].replace("*", color_p)
-                        image = os.path.join("db", "images", image_name) # could be the image + color does not exist -> to check
+                        image = product[16].replace("*", color_p)
                     else:
-                        image = os.path.join("db", "images", product[16])
+                        image = product[16]
                     quantity = product[1]
                     size = product[2]
                     color = product[3]
@@ -1490,6 +1512,7 @@ class Visualize_purchases(Action):
                     "type": "template",
                     "payload": {
                         "template_type": "generic",
+                        "mode": "visualize_purchases",
                         "elements": products 
                     }
                 }
@@ -1518,6 +1541,8 @@ class Visualize_product_info(Action):
         
         product_name = tracker.get_slot("product_to_buy_name")
         query = "SELECT * FROM product JOIN brand ON product.Brand = brand.ID WHERE product.Name = ?"
+
+        print("PRODUCT NAME INFO PRODUCT: ", product_name)
 
         cur = self.conn.cursor()
 
@@ -1555,8 +1580,7 @@ class Visualize_product_info(Action):
                 5: "fifth"
             }
             for i, color in enumerate(colors):
-                image_name = image_path.replace("*", color)
-                image = os.path.join("db", "images", image_name) # could be the image + color does not exist -> to check
+                image = image_path.replace("*", color)
                 payload = "The " + ordinal_num[i + 1] + " one"
                 products.append(
                     {
@@ -1577,13 +1601,12 @@ class Visualize_product_info(Action):
                 #     }
                 # )
         else:
-            image = os.path.join("db", "images", image_path)
             payload = "The first one" # if just one color is available there will be just one choice
             products.append(
                 {
                     "title": name,
                     "subtitle": subtitle,
-                    "image_url": image,
+                    "image_url": image_path,
                     "buttons": []
                 }
             )
@@ -1601,11 +1624,11 @@ class Visualize_product_info(Action):
             "type": "template",
             "payload": {
                 "template_type": "generic",
+                "mode": "details",
                 "elements": products
             }
         }
         
-        dispatcher.utter_message(text="Available colors:")
         dispatcher.utter_message(
             attachment=carousel
         )
@@ -1613,6 +1636,7 @@ class Visualize_product_info(Action):
         #     response = "utter_visualize_product",
         #     products = response
         # )
+        dispatcher.utter_message(response = "utter_available_colors")
         dispatcher.utter_message(text="This is a description of the product: " + str(description))
         dispatcher.utter_message(
             response = "utter_buy_it"
