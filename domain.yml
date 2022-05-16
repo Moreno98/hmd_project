@@ -331,6 +331,14 @@ responses:
   - text: Do you want to buy it?
   utter_available_colors:
   - text: 'Available colors:'
+  utter_color_confirmation:
+  - text: '{color} good choice'
+  - text: Ok {color}
+  - text: '{color} is great'
+  utter_size_confirmation:
+  - text: '{size} good choice'
+  - text: Ok {size}
+  - text: '{size} is great'
 actions:
 - db_retrieve_product
 - db_info_colors

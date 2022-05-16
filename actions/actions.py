@@ -490,6 +490,10 @@ class Check_size(Action):
             )
             return []
         if(str(size_selected) in size_available.split(", ")):
+            dispatcher.utter_message(
+                response = "utter_size_confirmation",
+                size = size_selected
+            )
             return [
                 SlotSet("size_to_buy", size_selected),
                 SlotSet("size_check", True)
@@ -528,6 +532,10 @@ class Check_color(Action):
             )
             return []
         if(color_selected in color_available.split(", ")):
+            dispatcher.utter_message(
+                response = "utter_color_confirmation",
+                color = color_selected
+            )
             return [
                 SlotSet("color_to_buy", color_selected),
                 SlotSet("color_check", True)
