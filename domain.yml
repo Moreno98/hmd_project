@@ -23,7 +23,7 @@ intents:
 - choice_createNewAccount
 - choice_iwantsaymyaddress
 - choice_noMoreHelp
-- choice_which_products_present
+- available_products
 - color_product
 - deny
 - direct_buy

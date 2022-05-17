@@ -10172,7 +10172,7 @@ stories:
     - color_to_buy: null
   - slot_was_set:
     - size_to_buy: null
-  - intent: chitchat
+  - intent: by_number
     entities:
     - number_on_the_list: first
     - time: '2022-05-01T00:00:00.000+02:00'
@@ -10323,7 +10323,7 @@ stories:
     - color_to_buy: null
   - slot_was_set:
     - size_to_buy: null
-  - intent: chitchat
+  - intent: by_number
     entities:
     - number_on_the_list: first
     - time: '2022-05-01T00:00:00.000+02:00'
@@ -11208,7 +11208,7 @@ stories:
     - size_check: false
   - slot_was_set:
     - size_to_buy: null
-  - intent: chitchat
+  - intent: size_product
     entities:
     - size: '40'
   - action: check_size
@@ -11950,7 +11950,7 @@ stories:
   - action: action_visualize_product_info
   - intent: affirm
   - action: utter_color_to_buy
-  - intent: nlu_fallback
+  - intent: color_product
     entities:
     - color: pearl
   - action: check_color
@@ -12130,7 +12130,7 @@ stories:
   - action: utter_askAdditionalHelp
 - story: user asks all products
   steps:
-  - intent: choice_which_products_present
+  - intent: available_products
   - action: db_show_all_products
 - story: all products listed
   steps:
@@ -12138,7 +12138,7 @@ stories:
   - action: utter_all_products_are_listed
 # - story: Story from Conversation ID a22ade8f89d84714b948434fc4f82600
 #   steps:
-#   - intent: choice_which_products_present
+#   - intent: available_products
 #   - action: db_show_all_products
 #   - intent: buy_product
 #     entities:

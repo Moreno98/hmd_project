@@ -79,7 +79,7 @@ nlu:
     - Please buy it
     - You can buy it
     - Order everything on it
-- intent: choice_which_products_present
+- intent: available_products
   examples: |
     - Which products are preent?
     - What can I buy?
@@ -624,7 +624,7 @@ nlu:
   examples: |
     - It's [francesco@gmail.com](email)
     - it's [federico@mail.com](email)
-    - my email address is [example@mail.com]{"entity": "email", "value": "fexample@mail.com"}
+    - my email address is [example@mail.com](email)
     - my mail address is [example@domain.com](email)
     - my mail is [e.xample@mail.com](email)
     - my e-mail address is [example@mail.fr](email)
@@ -908,9 +908,6 @@ nlu:
     - Details [first](number_on_the_list)
     - Info [first](number_on_the_list)
     - I would like to visualize the details of the [second](number_on_the_list) one
-- intent: chitchat
-  examples: |
-    - how is the wheather?
 - synonym: t-shirt
   examples: |
     - tshirt
@@ -920,9 +917,6 @@ nlu:
     - t-shirts
     - thsirt
     - pullover
-- synonym: fexample@mail.com
-  examples: |
-    - example@mail.com
 - synonym: jacket
   examples: |
     - jackets
