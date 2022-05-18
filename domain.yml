@@ -192,8 +192,12 @@ responses:
   - text: I am a bot, powered by Rasa.
   utter_color_to_buy:
   - text: which color do you want?
+  - text: whcih color would you like?
+  - text: please tell me the color
   utter_size_to_buy:
   - text: please, specify the size you want
+  - text: which size do you want?
+  - text: which size would you like?
   utter_quantity_to_buy:
   - text: how many do you need?
   utter_success_buy:
@@ -243,6 +247,7 @@ responses:
   - text: Do you prefer directly buy the item or do you want me to put it in your cart?
   utter_change_cart:
   - text: do you want to delete something or order everythingn in the cart?
+  - text: you can delete something by saying "Delete the first one" or you can order everything.
   utter_cart_ordered_everything:
   - text: Congratulations! All products in your cart have been sent to your address.Thanks for your order.
   utter_which_to_delete:
@@ -296,9 +301,8 @@ responses:
   utter_checkingRegistration:
   - text: I'm checking your registration
   utter_chitchat/askHowAreYou:
-  - text: I'm good mate
-  - text: Not bad thanks
-  - text: I can't complain, thank you
+  - text: I'm good mate, thanks, and you?
+  - text: I can't complain, thank you. And you?
   utter_chitchat/askJoke:
   - text: Not implemented yet
   utter_chitchat/askLoveMe:
@@ -308,6 +312,14 @@ responses:
   - text: I'm not a wedding kind of bot
   utter_chitchat/askHobby:
   - text: My favourite activity is to help people in ordering on this ecommerce
+  utter_chitchat/userFine:
+  - text: Great, carry on
+  - text: Cool, carry on then
+  - text: I am proud of you
+  - text: I am happy for you!
+  utter_chitchat/userBad:
+  - text: I am sorry to hear that, would you like to buy something to cheer you up?
+  - text: I am sorry.
   utter_informAboutEcommerce:
   - text: E AI is a new type of ecommerce where a user can do everything using his own voice.
   - text: Welcome on E AI, a cutting edge ecommerce that is able to satisfy everyone

@@ -22,6 +22,9 @@ pipeline:
     locale: "en_EN"
     timezone: "Europe/Rome"
     timeout : 3
+  - name: ResponseSelector
+    epochs: 100
+    retrieval_intent: chitchat
 policies:
   - name: "MemoizationPolicy"
     max_history: 5

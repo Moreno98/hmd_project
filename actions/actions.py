@@ -1637,6 +1637,7 @@ class Visualize_product_info(Action):
             }
         }
         
+        dispatcher.utter_message(response = "utter_available_colors")
         dispatcher.utter_message(
             attachment=carousel
         )
@@ -1644,7 +1645,6 @@ class Visualize_product_info(Action):
         #     response = "utter_visualize_product",
         #     products = response
         # )
-        dispatcher.utter_message(response = "utter_available_colors")
         dispatcher.utter_message(text="This is a description of the product: " + str(description))
         dispatcher.utter_message(
             response = "utter_buy_it"

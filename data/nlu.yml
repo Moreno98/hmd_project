@@ -843,6 +843,43 @@ nlu:
     - I want you to marry me
     - Wedding between us
     - Prepare our wedding
+- intent: chitchat/userFine
+  examples: |
+    - I'm fine thanks
+    - I am great thanks
+    - I'm great
+    - I am good
+    - Fine thank you
+    - good thanks
+    - I am doing good thanks
+    - I'm doing great
+    - Everything good thanks
+    - Everything great
+    - It's all fine here
+    - doing great
+    - doing good
+    - not bad
+    - It is not bad thanks
+    - could not be better
+    - I am doing well
+    - I feel well
+- intent: chitchat/userBad
+  examples: |
+    - could be better
+    - not good
+    - not great
+    - I don't feel well
+    - I am sick
+    - I am unwell
+    - I am very tired
+    - unwell
+    - tired
+    - sick
+    - I am not good
+    - I am not great
+    - I am not doing well
+    - I am not doing ggod
+    - I am bad
 - intent: chitchat/askHobby
   examples: |
     - Do you have an hobby?

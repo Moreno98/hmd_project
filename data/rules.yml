@@ -5,3 +5,8 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: utter_please_rephrase
+
+- rule: Answer to chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
