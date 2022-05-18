@@ -1650,3 +1650,21 @@ class Visualize_product_info(Action):
             response = "utter_buy_it"
         )
         return []
+
+class birthdate_confirmation(Action):
+    def __init__(self) -> None:
+        super(birthdate_confirmation, self).__init__()
+        self.conn = Connection().conn
+    
+    def name(self) -> Text:
+        return "action_birthdate_confirmation" 
+    
+    def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
+        domain: "DomainDict") -> List[Dict[Text, Any]]:
+
+        slot_BirthDate = tracker.get_slot("time")
+        birthdate = slot_BirthDate[:10]
+
+        dispatcher.utter_message(
+                    text = "Perfect! The birth date you choose is " + birthdate
+                )

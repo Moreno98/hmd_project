@@ -361,6 +361,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -379,7 +380,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -450,6 +451,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -468,7 +470,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -545,6 +547,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -563,7 +566,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -634,6 +637,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -652,7 +656,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -929,6 +933,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -947,7 +952,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -1010,6 +1015,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -1028,7 +1034,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -1097,6 +1103,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -1115,7 +1122,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -1178,6 +1185,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -1196,7 +1204,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -1582,6 +1590,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -1600,7 +1609,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -1664,6 +1673,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -1682,7 +1692,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -1752,6 +1762,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -1770,7 +1781,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -1834,6 +1845,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -1852,7 +1864,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -2203,6 +2215,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -2221,7 +2234,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -2278,6 +2291,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -2296,7 +2310,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -2359,6 +2373,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -2377,7 +2392,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -2434,6 +2449,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -2452,7 +2468,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -2819,6 +2835,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -2837,7 +2854,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -2900,6 +2917,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -2918,7 +2936,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -2987,6 +3005,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -3005,7 +3024,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -3068,6 +3087,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -3086,7 +3106,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -3430,6 +3450,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -3448,7 +3469,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -3504,6 +3525,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -3522,7 +3544,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -3584,6 +3606,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -3602,7 +3625,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -3658,6 +3681,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -3676,7 +3700,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -4041,6 +4065,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -4059,7 +4084,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -4122,6 +4147,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -4140,7 +4166,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -4209,6 +4235,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -4227,7 +4254,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -4290,6 +4317,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -4308,7 +4336,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -4652,6 +4680,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -4670,7 +4699,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -4726,6 +4755,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -4744,7 +4774,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -4806,6 +4836,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -4824,7 +4855,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -4880,6 +4911,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -4898,7 +4930,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -5223,6 +5255,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -5241,7 +5274,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -5296,6 +5329,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -5314,7 +5348,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: direct_buy
   - action: db_buy_product
@@ -5375,6 +5409,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -5393,7 +5428,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -5448,6 +5483,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -5466,7 +5502,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_directOrderOrPutInCart
   - intent: put_in_cart
   - action: db_put_in_cart
@@ -9783,6 +9819,7 @@ stories:
     - time: '1998-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1998-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -9801,6 +9838,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
+  - action: action_createNewAccount
   - action: action_createNewAccount
   - action: utter_askAdditionalHelp
 - story: Create new account user already registered
@@ -9859,6 +9897,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -9877,7 +9916,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_askAdditionalHelp
 - story: Registered user wants change first name
   steps:
@@ -10001,6 +10040,7 @@ stories:
     - time: '1997-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1997-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -10019,7 +10059,7 @@ stories:
     - STATE: Alaska
   - slot_was_set:
     - COUNTRY: USA
-  - action: utter_userRegistered
+  - action: action_createNewAccount
   - action: utter_askAdditionalHelp
 - story: User ask info about account (first name)
   steps:
@@ -10448,6 +10488,7 @@ stories:
     - time: '1998-03-19T00:00:00.000-08:00'
   - slot_was_set:
     - time: '1998-03-19T00:00:00.000-08:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -12093,6 +12134,7 @@ stories:
     - time: '1982-10-27T00:00:00.000+01:00'
   - slot_was_set:
     - time: '1982-10-27T00:00:00.000+01:00'
+  - action: action_birthdate_confirmation
   - action: utter_askAddress
   - intent: give_address
     entities:
@@ -12109,7 +12151,6 @@ stories:
     - CITY: Portland
   - slot_was_set:
     - STATE: Oregon
-  - action: utter_userRegistered
   - slot_was_set:
     - email: francesco@gmail.com
   - slot_was_set:

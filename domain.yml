@@ -7,6 +7,7 @@ intents:
 - all_products_listed
 - ask_bot_abilities
 - ask_purchases
+- available_products
 - bot_challenge
 - buy_all_cart
 - buy_product
@@ -23,7 +24,6 @@ intents:
 - choice_createNewAccount
 - choice_iwantsaymyaddress
 - choice_noMoreHelp
-- available_products
 - color_product
 - deny
 - direct_buy
@@ -252,7 +252,7 @@ responses:
   utter_fail_delete:
   - text: I'm sorry, an error occured during the deletion process, please try again later.
   utter_success_account_creation:
-  - text: Congratulation, your account has been created!
+  - text: The address you set is {STREET} {ZIP_CODE} {CITY} {STATE}. Congratulation, now our account has been created!
   utter_fail_account_creation:
   - text: I'm sorry, an error occurred during the creation of your account.
   utter_howCanIhelpYou:
@@ -272,11 +272,9 @@ responses:
   utter_askFirstName:
   - text: Please tell me your first name
   utter_askBirthDate:
-  - text: What is your birthdate?
+  - text: Hi {PERSON}, what is your birthdate?
   utter_askAddress:
   - text: Please tell me your address
-  utter_answerBirthDate:
-  - text: 'Your birthdate is: {birth_date}'
   utter_askAdditionalHelp:
   - text: Do you need additional help?
   utter_askCreateNewAccount:
@@ -372,3 +370,4 @@ actions:
 - action_userGaveAddress
 - action_visualize_purchases
 - action_visualize_product_info
+- action_birthdate_confirmation
