@@ -78,7 +78,6 @@ class Reset_info_product(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         return [
-            # SlotSet("product_to_buy", None), cannot reset this slot
             SlotSet("brand_to_buy", None),
             SlotSet("price_to_buy", None),
             SlotSet("gender_to_buy", None),
@@ -109,7 +108,6 @@ class Reset_info_product_no_color(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         return [
-            # SlotSet("product_to_buy", None), cannot reset this slot
             SlotSet("brand_to_buy", None),
             SlotSet("price_to_buy", None),
             SlotSet("gender_to_buy", None),
@@ -139,7 +137,6 @@ class Reset_info_product_no_size(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         return [
-            # SlotSet("product_to_buy", None), cannot reset this slot
             SlotSet("brand_to_buy", None),
             SlotSet("price_to_buy", None),
             SlotSet("gender_to_buy", None),
@@ -169,7 +166,6 @@ class Reset_info_product_no_color_no_size(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         return [
-            # SlotSet("product_to_buy", None), cannot reset this slot
             SlotSet("brand_to_buy", None),
             SlotSet("price_to_buy", None),
             SlotSet("gender_to_buy", None),
@@ -225,8 +221,6 @@ class Retrieve_product(Action):
             query += " AND colors LIKE ?"
             params += ("%" + color + "%",)
 
-        print("RETRIEVE PRODUCT", params)
-
         cur.execute(query, params)
         
         rows = cur.fetchall()
@@ -239,7 +233,6 @@ class Retrieve_product(Action):
             4: "fourth",
             5: "fifth"
         }
-        # response = []
         for i, product in enumerate(rows):
             if(i == 6):
                 break
@@ -289,18 +282,6 @@ class Retrieve_product(Action):
                     ]
                 }
             )
-            # response.append(
-            #     {
-            #         "name": product[1],
-            #         "gender": product[2],
-            #         "price": product[3],
-            #         "size": product[4],
-            #         "color": product[5],
-            #         "description": product[6],
-            #         "category": product[7],
-            #         "image": image
-            #     }
-            # )
         
         carousel = {
             "type": "template",
@@ -312,10 +293,6 @@ class Retrieve_product(Action):
         }
         
         if(len(rows) != 0):
-            # dispatcher.utter_message(
-            #     response = "utter_visualize_product",
-            #     products = response
-            # )
             dispatcher.utter_message(
                 attachment=carousel
             )
@@ -418,12 +395,9 @@ class Set_product_info(Action):
             params += ("%" + color + "%",)
 
         cur.execute(query, params)
-        print(query, params)
         rows = cur.fetchall()
         try:
-            print(rows)
             product_name = rows[product_number_list][1]
-            print("PRODUCT NAME SET PRODUCT INFO:", product_name)
             if(rows[product_number_list][5] != None):
                 colors = rows[product_number_list][5]
                 colors = colors.replace(" ", "").split(";")
@@ -564,7 +538,6 @@ class Set_quantity_slot(Action):
         
         quantity = None
         entities = tracker.latest_message['entities']
-        print("MESSAGE: ", tracker.latest_message)
         for ent in entities:
             if ent['entity'] == 'quantity':
                 quantity = ent['value']
@@ -622,8 +595,6 @@ class Buy_product(Action):
     
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
         domain: "DomainDict") -> List[Dict[Text, Any]]:
-
-        print("MESSAGE", tracker.latest_message)
         
         quantity = tracker.get_slot("quantity_to_buy")
         color = tracker.get_slot("color_to_buy")
@@ -737,7 +708,6 @@ class Buy_all_cart(Action):
                         response = "utter_cart_empty"
                     )
             else:
-                print("Buy all cart", rows)
                 for i, product in enumerate(rows):
                     ID = product[0]
                     quantity = product[1]
@@ -856,18 +826,6 @@ class Visualize_cart(Action):
                             ]
                         }
                     )
-                # response.append(
-                #     {
-                #         "name": product_name,
-                #         "gender": gender,
-                #         "price": price,
-                #         "quantity": quantity,
-                #         "size": size,
-                #         "color": color,
-                #         "brand": brand,
-                #         "image": image
-                #     }
-                # )
                 carousel = {
                     "type": "template",
                     "payload": {
@@ -876,10 +834,6 @@ class Visualize_cart(Action):
                         "elements": products
                     }
                 }
-                # dispatcher.utter_message(
-                #     response = "utter_cart_visualize",
-                #     products = response
-                # )
                 dispatcher.utter_message(
                     attachment=carousel
                 )
@@ -970,8 +924,6 @@ class UpdateUserFirstName(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
         
         slot_firstName = tracker.get_slot("PERSON")
         slot_emailAddress = tracker.get_slot("email").lower()
@@ -1001,8 +953,6 @@ class UpdateUserBirthDate(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
         
         slot_BirthDate = tracker.get_slot("time")
         slot_emailAddress = tracker.get_slot("email").lower()
@@ -1031,8 +981,6 @@ class UpdateUserAddress(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
         
         slot_emailAddress = tracker.get_slot("email").lower()
         slot_street = tracker.get_slot("STREET")
@@ -1119,12 +1067,9 @@ class CreatenNewAccount(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
         
         slot_emailAddress = tracker.get_slot("email").lower()
         slot_firstName = tracker.get_slot("PERSON")
-        # slot_surname = tracker.get_slot("surname_PERSON")
         slot_birthDate = tracker.get_slot("time")
         birth_date = slot_birthDate[:10]
         slot_street = tracker.get_slot("STREET")
@@ -1152,13 +1097,6 @@ class CreatenNewAccount(Action):
             slot_address = slot_address + ' ' + slot_country
         elif slot_country != None and slot_address == '':
             slot_address = slot_address + slot_country
-        
-        # need to know the number of rows in order to add the next ID in the table
-        # stmt = "SELECT email FROM account"
-        # cur.execute(stmt)
-        # result = cur.fetchall()
-        # id = len(result) + 1
-
 
         stmt1 = "INSERT INTO account (name, birthdate, email, address) VALUES (?, ?, ?, ?)" 
         
@@ -1169,20 +1107,13 @@ class CreatenNewAccount(Action):
             dispatcher.utter_message(
                 response = "utter_success_account_creation"
             )
-
-                # dispatcher.utter_message(
-                #     response = "utter_anything_else"
-                # )
         except Exception as e:
             print(e)
             dispatcher.utter_message(
                 response = "utter_fail_account_creation"
             )
 
-        
-            
         return [SlotSet("PERSON", None), 
-                #SlotSet("surname_PERSON", None), 
                 SlotSet("time", None),
                 SlotSet("address", None),
                 SlotSet("STREET", None), 
@@ -1207,8 +1138,6 @@ class RetrieveFirstName(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
         
         slot_emailAddress = tracker.get_slot("email").lower()
         # need to know the number of rows in order to add the next ID in the table
@@ -1237,8 +1166,6 @@ class RetrieveBirthDate(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
         
         slot_emailAddress = tracker.get_slot("email").lower()
 
@@ -1250,9 +1177,6 @@ class RetrieveBirthDate(Action):
         resultDisplayed = "The birth date for your account is: " + result[0]
 
         dispatcher.utter_message(text=resultDisplayed)
-        
-        print("action_retrieveBirthDate")
-
         return [SlotSet("user_logged", True)]
 
 class RetrieveAddress(Action):
@@ -1270,8 +1194,6 @@ class RetrieveAddress(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         cur = self.conn.cursor()
-        #link = sqlite3.connect("database.db")
-        #linkCursor = link.cursor()
         
         slot_emailAddress = tracker.get_slot("email").lower()
 
@@ -1283,9 +1205,6 @@ class RetrieveAddress(Action):
         resultDisplayed = "The address for your account is: " + result[0]
 
         dispatcher.utter_message(text=resultDisplayed)
-        
-        print("action_retrieveAddress")
-
         return [SlotSet("user_logged", True)]
  
 class SetSlot_askAccountInfo(Action):
@@ -1301,9 +1220,6 @@ class SetSlot_askAccountInfo(Action):
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-        print("action_SetSlot_askAccountInfo")
-
         return [SlotSet("askAccountInfo", "askAccountInfo_path")]
 
 class action_whichInfoAsked_true(Action):
@@ -1319,9 +1235,6 @@ class action_whichInfoAsked_true(Action):
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-            print("action_whichInfoAsked")
-
             resultDisplayed = "Which info do you want to know?"
             dispatcher.utter_message(text=resultDisplayed)
 
@@ -1340,12 +1253,7 @@ class action_userGaveAddress(Action):
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-            print("action_userGaveAddress")
-
             cur = self.conn.cursor()
-        
-        
             slot_street = tracker.get_slot("STREET")
             slot_zipCode = tracker.get_slot("ZIP_CODE")
             slot_city = tracker.get_slot("CITY")
@@ -1383,7 +1291,6 @@ class put_in_cart(Action):
             cur = self.conn.cursor()
 
             slot_emailAddress = tracker.get_slot("email").lower()
-            print(slot_emailAddress)
             
             #retrieve account id
             stmt = "SELECT ID FROM account WHERE Email = ?"
@@ -1503,18 +1410,6 @@ class Visualize_purchases(Action):
                             "buttons": []
                         }
                     )
-                # response.append(
-                #     {
-                #         "name": product_name,
-                #         "gender": gender,
-                #         "price": price,
-                #         "quantity": quantity,
-                #         "size": size,
-                #         "color": color,
-                #         "brand": brand,
-                #         "image": image
-                #     }
-                # )
                 products.reverse() # reverse the list to display the last purchases first
                 carousel = {
                     "type": "template",
@@ -1524,10 +1419,6 @@ class Visualize_purchases(Action):
                         "elements": products 
                     }
                 }
-                # dispatcher.utter_message(
-                #     response = "utter_cart_visualize",
-                #     products = response
-                # )
                 dispatcher.utter_message(
                     attachment=carousel
                 )
@@ -1550,13 +1441,8 @@ class Visualize_product_info(Action):
         product_name = tracker.get_slot("product_to_buy_name")
         query = "SELECT * FROM product JOIN brand ON product.Brand = brand.ID WHERE product.Name = ?"
 
-        print("PRODUCT NAME INFO PRODUCT: ", product_name)
-
         cur = self.conn.cursor()
-
         cur.execute(query, (product_name, ))
-        
-        print(query, product_name)
 
         product = cur.fetchall()[0]
         name = product[1]
@@ -1576,7 +1462,6 @@ class Visualize_product_info(Action):
             subtitle += "Price: " + str(price) + "\n\n "
 
         products = []
-        # response = []
 
         if(colors != None):
             colors = colors.replace(" ", "").split(";")
@@ -1598,16 +1483,6 @@ class Visualize_product_info(Action):
                         "buttons": []
                     }
                 )
-                # response.append(
-                #     {
-                #         "name": product_name,
-                #         "gender": gender,
-                #         "price": price,
-                #         "color": color,
-                #         "brand": brand,
-                #         "image": image
-                #     }
-                # )
         else:
             payload = "The first one" # if just one color is available there will be just one choice
             products.append(
@@ -1617,17 +1492,7 @@ class Visualize_product_info(Action):
                     "image_url": image_path,
                     "buttons": []
                 }
-            )
-            # response.append(
-            #     {
-            #         "name": product_name,
-            #         "gender": gender,
-            #         "price": price,
-            #         "brand": brand,
-            #         "image": image
-            #     }
-            # )
-        
+            )        
         carousel = {
             "type": "template",
             "payload": {
@@ -1641,10 +1506,6 @@ class Visualize_product_info(Action):
         dispatcher.utter_message(
             attachment=carousel
         )
-        # dispatcher.utter_message(
-        #     response = "utter_visualize_product",
-        #     products = response
-        # )
         dispatcher.utter_message(text="This is a description of the product: " + str(description))
         dispatcher.utter_message(
             response = "utter_buy_it"
