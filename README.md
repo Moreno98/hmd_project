@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE) [![Generic badge](https://img.shields.io/badge/python-3.8%20-blue.svg)](https://www.python.org/) [![Generic badge](https://img.shields.io/badge/version-v1.0-cc.svg)](https://github.com/Moreno98/hmd_project)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE) [![Generic badge](https://img.shields.io/badge/python-3.8%20-blue.svg)](https://www.python.org/) [![Generic badge](https://img.shields.io/badge/Rasa-2.8.25-red.svg)](https://rasa.com/docs/rasa/2.x/installation#upgrading-versions) [![Generic badge](https://img.shields.io/badge/version-v1.0-cc.svg)](https://github.com/Moreno98/hmd_project)
 
 # Human Machine Dialogue Project
 This is the repository for the final human machine dialogue project at the University of Trento (Italy).  
@@ -28,30 +28,40 @@ This repo leverages the [Rasa](https://rasa.com/) framework.
 
 ---
 ## Installation
-This project is based on Rasa so make sure to have it installed in the current python environment.  
-You may install Rasa by following [the official installation guide](https://rasa.com/docs/rasa/installation/#quick-installation).
+This project is based on ```Rasa 2.8.25``` so make sure to have it installed in the current python environment.  
+You may install Rasa by following [the official installation guide](https://rasa.com/docs/rasa/2.x/installation#upgrading-versions) or following the commands below.
+```
+python3 -m venv ./venv
+source venv/bin/activate
+pip3 install rasa==2.8.25 --use-deprecated=legacy-resolver
+pip3 install -U spacy
+python -m spacy download en_core_web_md
+```
 
 ## Usage
-This repository contains the final model of the project, there is no need of training. 
+Clone the repository:
 ```
     git clone https://github.com/Moreno98/hmd_project.git
     cd hmd_project
 ```
+**_NOTE:_** Make sure to activate the environment where Rasa is installed.  
+You will need to train the model (which takes 10-20 minutes) in order to be able to use it. In the main folder of the project launch ```rasa train```.
+
 ### GUI
 The interaction between the user and the model can be tested using the GUI.  
 This can be achieved by running the following commands using different terminals:
 ```
-    rasa run
+    rasa run -m models --enable-api --cors "*"
     rasa run actions
     sudo docker run -p 8000:8000 rasa/duckling
 ```
-You may now access the GUI opening the ```GUI.html``` file, you can enter the chat by clicking the popup on the bottom left corner.
+You may now access the GUI opening the ```GUI.html``` file using a browser, you can enter the chat by clicking the popup on the bottom left corner.
 ### Amazon Alexa Skill
 If you want to try the amazon alexa skill you may follow the notebook presented during the lectures: [notebook](https://tinyurl.com/rasa-alexa).
 #### APL
-This project needs the Alexa Presentation Language (APL), in order to activate it go to the dashboard of your Amazon Alexa project, under ```Build > Interfaces``` check the Alexa Presentation Language option. Save and rebuild your model.  
+This project needs the Alexa Presentation Language (APL), in order to activate it go to the dashboard of your Amazon Alexa project, under ```Build -> Interfaces``` check the Alexa Presentation Language option. Save and rebuild your model.  
 #### APL Document
-At this point we need to create a document which is able to interpret the ```alexa_connector``` response for displaying the products, to do so we can create a new document by going to ```Build > Multimodal Responses > Visual > Create with authoring tool``` and create a blank document. You may copy and past the document from ```apl_document.json``` in ```APL > Code view```. You can save and build the model. Now you are able to visualize the products using the APL.  
+At this point we need to create a document which is able to interpret the ```alexa_connector``` response for displaying the products, to do so we can create a new document by going to ```Build -> Multimodal Responses -> Visual -> Create with authoring tool``` and create a blank document. You may copy and past the document from ```apl_document.json``` in ```APL -> Code view```. You can save and build the model. Now you are able to visualize the products using the APL.  
 **_NOTE:_**  Make sure the APL document is saved with the following name: product_list.  
 #### Run
 The model can be launched running the following commands on different terminals:
@@ -61,7 +71,7 @@ The model can be launched running the following commands on different terminals:
     sudo docker run -p 8000:8000 rasa/duckling
     ngrok http 5005
 ```
-**_NOTE:_**  Make sure the endpoint url saved under ```Build > Endpoint``` is the same used by ```ngrok```, otherwise update it, save and rebuild the model. Below a possible example:
+**_NOTE:_**  Make sure the endpoint url saved under ```Build -> Endpoint``` is the same used by ```ngrok```, otherwise update it, save and rebuild the model. Below a possible example:
 ```
 https://1f3c-138-37-176-24.eu.ngrok.io/webhooks/alexa_assistant/webhook
 ```
