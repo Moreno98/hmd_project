@@ -28,8 +28,8 @@ This repo leverages the [Rasa](https://rasa.com/) framework.
 
 ---
 ## Installation
-This project is based on Rasa so make sure to have it installed in the current python environment. 
-<--- install rasa --->
+This project is based on Rasa so make sure to have it installed in the current python environment.  
+You may install Rasa by following [the official installation guide](https://rasa.com/docs/rasa/installation/#quick-installation).
 
 ## Usage
 This repository contains the final model of the project, there is no need of training. 
@@ -47,7 +47,7 @@ This can be achieved by running the following commands using different terminals
 ```
 You may now access the GUI opening the ```GUI.html``` file, you can enter the chat by clicking the popup on the bottom left corner.
 ### Amazon Alexa Skill
-If you want to try the amazon alexa skill you may follow the notebook presented during the lectures: [notebook](https://tinyurl.com/rasa-alexa)
+If you want to try the amazon alexa skill you may follow the notebook presented during the lectures: [notebook](https://tinyurl.com/rasa-alexa).
 #### APL
 This project needs the Alexa Presentation Language (APL), in order to activate it go to the dashboard of your Amazon Alexa project, under ```Build > Interfaces``` check the Alexa Presentation Language option. Save and rebuild your model.  
 #### APL Document
