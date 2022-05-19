@@ -19,6 +19,7 @@ This repo leverages the [Rasa](https://rasa.com/) framework.
     |    └── test_stories.yml         [yaml file containing the test stories for evaluation]
     |
     ├── alexa_connector.py            [python file for connecting Rasa to the custom Alexa skill]
+    ├── apl_document.json             [this is an APL document which is used by Alexa to interpret the response from alexa_connector, see below for further details]
     ├── config.yml                    [yaml file containing the configuration of Rasa]
     ├── credentials.yml               [yaml file describes the credentials for Rasa x usage]
     ├── domain.yml                    [yaml file containing the domain information for Rasa]
