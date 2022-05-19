@@ -304,7 +304,10 @@ responses:
   - text: I'm good mate, thanks, and you?
   - text: I can't complain, thank you. And you?
   utter_chitchat/askJoke:
-  - text: Not implemented yet
+  - text: What is the best thing about Switzerland? I don't know but the flag is a big plus.
+  - text: Helvetica and Times New Roman walk into a bar. "Get out of here!" shouts the bartender. "We do not serve your type."
+  - text: Did you hear about the claustrophobic astronaut? He just needed a little space.
+  - text: How does the ocean say hi? It waves!
   utter_chitchat/askLoveMe:
   - text: You know I admire you a lot
   - text: You know I respect you a lot

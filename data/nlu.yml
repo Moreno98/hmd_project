@@ -258,26 +258,26 @@ nlu:
     - I dont want that
 - intent: size_product
   examples: |
-    - The size [xl](size) is nice
-    - The size [xl](size) is good
-    - The size [xl](size) is perfect
-    - The size [xl](size) is awesome
-    - The size [xl](size) is fantastic
-    - The size [xl](size) is great
-    - [xl](size) is the best
-    - [xl](size) is nice
-    - [xl](size) is amazing
-    - [xl](size) is perfect
-    - [xl](size) is a good one
-    - [xl](size) is a perfect one
-    - [xl](size) is a great one
-    - [xl](size) is a fantastic one
-    - [xl](size) size
-    - [xl](size) size is nice
-    - [xl](size) size is good
-    - [xl](size) size is perfect
-    - [xl](size) size is awesome
-    - [xl](size) size is fantastic
+    - The size [m](size) is nice
+    - The size [m](size) is good
+    - The size [m](size) is perfect
+    - The size [m](size) is awesome
+    - The size [m](size) is fantastic
+    - The size [m](size) is great
+    - [m](size) is the best
+    - [m](size) is nice
+    - [s](size) is amazing
+    - [s](size) is perfect
+    - [s](size) is a good one
+    - [s](size) is a perfect one
+    - [s](size) is a great one
+    - [s](size) is a fantastic one
+    - [s](size) size
+    - [s](size) size is nice
+    - [s](size) size is good
+    - [s](size) size is perfect
+    - [s](size) size is awesome
+    - [s](size) size is fantastic
     - [xl](size) size is great
     - [xl](size) size is the best
     - Uh, sorry, then [xl](size)
@@ -285,8 +285,8 @@ nlu:
     - ok, [xl](size) is fine
     - ok, [xl](size) is good
     - [xl](size)
-    - [XL](size)
-    - [XS](size)
+    - [m](size)
+    - [s](size)
     - [xxs](size)
     - [xs](size)
 - intent: color_product

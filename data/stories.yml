@@ -1348,7 +1348,7 @@ stories:
   - action: utter_size_to_buy
   - intent: size_product
     entities:
-    - size: xl
+    - size: M
   - action: check_size
   - slot_was_set:
     - size_check: true
@@ -1403,7 +1403,7 @@ stories:
   - action: utter_size_to_buy
   - intent: size_product
     entities:
-    - size: xl
+    - size: M
   - action: check_size
   - slot_was_set:
     - size_check: true
@@ -1507,7 +1507,7 @@ stories:
   - action: utter_size_to_buy
   - intent: size_product
     entities:
-    - size: xl
+    - size: M
   - action: check_size
   - slot_was_set:
     - size_check: true
@@ -1556,7 +1556,7 @@ stories:
   - action: utter_size_to_buy
   - intent: size_product
     entities:
-    - size: xl
+    - size: S
   - action: check_size
   - slot_was_set:
     - size_check: true
@@ -1645,7 +1645,7 @@ stories:
   - action: utter_size_to_buy
   - intent: size_product
     entities:
-    - size: xl
+    - size: S
   - action: check_size
   - slot_was_set:
     - size_check: true
@@ -1728,7 +1728,7 @@ stories:
   - action: utter_size_to_buy
   - intent: size_product
     entities:
-    - size: xl
+    - size: S
   - action: check_size
   - slot_was_set:
     - size_check: true
@@ -1900,7 +1900,7 @@ stories:
   - action: utter_size_to_buy
   - intent: size_product
     entities:
-    - size: xl
+    - size: S
   - action: check_size
   - slot_was_set:
     - size_check: true
