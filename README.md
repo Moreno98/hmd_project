@@ -27,25 +27,15 @@ This repo leverages the [Rasa](https://rasa.com/) framework.
     └── GUI.html                      [this file launches the GUI]
 
 ---
-## Installation
-This project is based on ```Rasa 2.8.25``` so make sure to have it installed in the current python environment.  
-You may install Rasa by following [the official installation guide](https://rasa.com/docs/rasa/2.x/installation#upgrading-versions) or following the commands below.
-```
-python3 -m venv ./venv
-source venv/bin/activate
-pip3 install rasa==2.8.25 --use-deprecated=legacy-resolver
-pip3 install -U spacy
-python -m spacy download en_core_web_md
-```
 
 ## Usage
-Clone the repository:
+We make the final system available at: ....  
+Download and unzip the folder, the zip also contains the python environment so you just need to make sure you have the spacy model downloaded. You may run the following command to do so:
 ```
-    git clone https://github.com/Moreno98/hmd_project.git
-    cd hmd_project
+python -m spacy download en_core_web_md
 ```
-**_NOTE:_** Make sure to activate the environment where Rasa is installed.  
-You will need to train the model (which takes 10-20 minutes) in order to be able to use it. In the main folder of the project launch ```rasa train```.
+At this point you have the set up to run the code.
+**_NOTE:_** Make sure to activate the environment using ```source venv/bin/activate```
 
 ### GUI
 The interaction between the user and the model can be tested using the GUI.  
@@ -55,7 +45,7 @@ This can be achieved by running the following commands using different terminals
     rasa run actions
     sudo docker run -p 8000:8000 rasa/duckling
 ```
-You may now access the GUI opening the ```GUI.html``` file using a browser, you can enter the chat by clicking the popup on the bottom left corner.
+You may now access the GUI opening the ```GUI.html``` file using a browser, you can enter the chat by clicking the popup on the bottom right corner.
 ### Amazon Alexa Skill
 If you want to try the amazon alexa skill you may follow the notebook presented during the lectures: [notebook](https://tinyurl.com/rasa-alexa).
 #### APL
