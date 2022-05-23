@@ -7,6 +7,8 @@ pipeline:
   - name: "SpacyFeaturizer"
   - name: "SpacyEntityExtractor"
     dimensions: ["PERSON"]
+  - name: "RegexFeaturizer"
+  - name: "RegexEntityExtractor"
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true

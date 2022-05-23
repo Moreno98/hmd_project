@@ -331,14 +331,14 @@ nlu:
     - I would like to buy a [t-shirt](product), can I?
     - Buy me a [t-shirt](product)
     - I want to buy a [t-shirt](product)
-    - Can I buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
-    - Can  I buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
-    - can i buy a [tshirt]{"entity": "product", "value": "t-shirt"}?
+    - Can I buy a [tshirt](product)?
+    - Can  I buy a [tshirt](product)?
+    - can i buy a [tshirt](product)?
     - can i buy a watch?
     - can i buy some [pant](product)?
     - can i buy a smartwatch?
-    - I want to buy a [tshirt]{"entity": "product", "value": "t-shirt"}
-    - i want to buy a [tshirt]{"entity": "product", "value": "t-shirt"}
+    - I want to buy a [tshirt](product)
+    - i want to buy a [tshirt](product)
 - intent: buy_product_with_color
   examples: |
     - can I buy a [blue](color) [t-shirt](product)?
