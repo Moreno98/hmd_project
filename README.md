@@ -5,7 +5,9 @@ This is the repository for the final human machine dialogue project at the Unive
 This repo leverages the [Rasa](https://rasa.com/) framework.  
 
 ## Demo
-<img src="https://s8.gifyu.com/images/demo6d6b9f6af1fca883.gif" width="300" height="550" />
+<p align="center">
+<img src="https://s8.gifyu.com/images/demo6d6b9f6af1fca883.gif" width="370" height="628" />
+</p>
 
 ## Project structure:
 
