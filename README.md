@@ -6,7 +6,7 @@ This repo leverages the [Rasa](https://rasa.com/) framework.
 
 ## Demo
 <p align="center">
-<img src="https://s8.gifyu.com/images/demoda7c22a18774b982.gif" width="512" height="874" />
+<img src="https://s8.gifyu.com/images/demoda7c22a18774b982.gif" width="340" height="580" />
 </p>
 
 ## Project structure:
