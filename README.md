@@ -4,6 +4,11 @@
 This is the repository for the final human machine dialogue project at the University of Trento (Italy).  
 This repo leverages the [Rasa](https://rasa.com/) framework.  
 
+## Demo
+<p align="center">
+<img src="https://s8.gifyu.com/images/demoda7c22a18774b982.gif" width="340" height="580" />
+</p>
+
 ## Project structure:
 
     hmd_project
