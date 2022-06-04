@@ -104,11 +104,12 @@ class AlexaConnector(InputChannel):
                     # wait for the response
                     await on_new_message(UserMessage(text, out,sender_id=sender_id))
                     # extract the text from Rasa's response
-                    print("MESSAGE:", out.messages)
-                    print("FIRST:", out.messages[0])
-                    if("attachment" in out.messages[0]):
-                        products = out.messages[0]["attachment"]['payload']['elements']
-                        mode = out.messages[0]["attachment"]['payload']['mode']
+                    ith = 0
+                    if("text" in out.messages[0]):
+                        ith = 1
+                    if('amzn' in out.messages[0]['recipient_id'] and ("attachment" in out.messages[0] or ("text" in out.messages[0] and "Available colors:" in out.messages[0]['text']))):
+                        products = out.messages[ith]["attachment"]['payload']['elements']
+                        mode = out.messages[ith]["attachment"]['payload']['mode']
                         if(mode == "details"):
                             title = "These are the details"
                             hint_text = "Do you want to buy it?"
@@ -121,7 +122,7 @@ class AlexaConnector(InputChannel):
                         elif(mode == "visualize_purchases"):
                             title = "These are your purchases" 
                             hint_text = ""
-                        message = out.messages[1]['text']
+                        message = out.messages[int(not ith)]['text']
                         list_item_to_show = []
                         for element in products:
                             random_rating = random.uniform(0, 5)

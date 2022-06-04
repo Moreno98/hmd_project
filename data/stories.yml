@@ -9723,6 +9723,86 @@ stories:
   - slot_was_set:
     - email: francesco@gmail.com
   - action: db_visualize_cart
+- story: visualize cart not logged + delete
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_userWantsVisualizeCart
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: db_visualize_cart
+  - intent: affirm
+  - action: utter_which_to_delete
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
+- story: visualize cart not logged + deny
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: false
+  - action: utter_userWantsVisualizeCart
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: db_visualize_cart
+  - intent: deny
+  - action: utter_anything_else
+- story: visualize cart not logged user 2
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: null
+  - action: utter_userWantsVisualizeCart
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: db_visualize_cart
+- story: visualize cart not logged + delete 2
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: null
+  - action: utter_userWantsVisualizeCart
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: db_visualize_cart
+  - intent: affirm
+  - action: utter_which_to_delete
+  - intent: by_number
+    entities:
+    - number_on_the_list: first
+    - number_on_the_list: first
+  - action: db_delete_cart
+  - action: utter_anything_else
+- story: visualize cart not logged + deny 2
+  steps:
+  - intent: visualize_cart
+  - slot_was_set:
+    - user_logged: null
+  - action: utter_userWantsVisualizeCart
+  - intent: give_emailAddress
+    entities:
+    - email: francesco@gmail.com
+  - slot_was_set:
+    - email: francesco@gmail.com
+  - action: db_visualize_cart
+  - intent: deny
+  - action: utter_anything_else
 - story: visualize cart user logged
   steps:
   - intent: visualize_cart
@@ -10585,10 +10665,6 @@ stories:
   - intent: product_info
     entities:
     - number_on_the_list: first
-    - number_on_the_list: first
-    - time: '2022-05-01T00:00:00.000+02:00'
-  - slot_was_set:
-    - time: '2022-05-01T00:00:00.000+02:00'
   - action: set_product_info
   - slot_was_set:
     - product_to_buy_name: T-shirt with organic-cotton sleeves
@@ -10608,7 +10684,6 @@ stories:
   - intent: color_product
     entities:
     - color: beige
-    - color: beige
   - action: check_color
   - slot_was_set:
     - color_to_buy: beige
@@ -10618,7 +10693,6 @@ stories:
   - intent: size_product
     entities:
     - size: xl
-    - size: xl
   - action: check_size
   - slot_was_set:
     - size_to_buy: XL
@@ -10627,7 +10701,6 @@ stories:
   - action: utter_quantity_to_buy
   - intent: quantity_to_buy_intent
     entities:
-    - quantity: '1'
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
@@ -10686,7 +10759,6 @@ stories:
   - intent: buy_product
     entities:
     - product: t-shirt
-    - product: t-shirt
   - action: reset_info_product
   - slot_was_set:
     - brand_to_buy: null
@@ -10736,10 +10808,6 @@ stories:
   - intent: product_info
     entities:
     - number_on_the_list: first
-    - number_on_the_list: first
-    - time: '2022-05-01T00:00:00.000+02:00'
-  - slot_was_set:
-    - time: '2022-05-01T00:00:00.000+02:00'
   - action: set_product_info
   - slot_was_set:
     - product_to_buy_name: T-shirt with organic-cotton sleeves
@@ -10772,7 +10840,6 @@ stories:
   - intent: color_product
     entities:
     - color: red
-    - color: red
   - action: check_color
   - slot_was_set:
     - color_check: false
@@ -10780,7 +10847,6 @@ stories:
     - color_to_buy: null
   - intent: color_product
     entities:
-    - color: beige
     - color: beige
   - action: check_color
   - slot_was_set:
@@ -10791,7 +10857,6 @@ stories:
   - intent: size_product
     entities:
     - size: xs
-    - size: xs
   - action: check_size
   - slot_was_set:
     - size_check: false
@@ -10799,7 +10864,6 @@ stories:
     - size_to_buy: null
   - intent: size_product
     entities:
-    - size: xl
     - size: xl
   - action: check_size
   - slot_was_set:
@@ -10810,14 +10874,12 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
-    - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
-    - email: moreno@gmail.com
     - email: moreno@gmail.com
   - slot_was_set:
     - email: moreno@gmail.com
@@ -10868,7 +10930,6 @@ stories:
   - intent: buy_product
     entities:
     - product: jacket
-    - product: jacket
   - action: reset_info_product
   - slot_was_set:
     - brand_to_buy: null
@@ -10918,10 +10979,6 @@ stories:
   - intent: product_info
     entities:
     - number_on_the_list: first
-    - number_on_the_list: first
-    - time: '2022-05-01T00:00:00.000+02:00'
-  - slot_was_set:
-    - time: '2022-05-01T00:00:00.000+02:00'
   - action: set_product_info
   - slot_was_set:
     - product_to_buy_name: 30 montagne bar jacket
@@ -10954,14 +11011,12 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
-    - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
-    - email: moreno@gmail.com
     - email: moreno@gmail.com
   - slot_was_set:
     - email: moreno@gmail.com
@@ -11012,7 +11067,6 @@ stories:
   - intent: buy_product
     entities:
     - product: jacket
-    - product: jacket
   - action: reset_info_product
   - slot_was_set:
     - brand_to_buy: null
@@ -11062,10 +11116,6 @@ stories:
   - intent: product_info
     entities:
     - number_on_the_list: first
-    - number_on_the_list: first
-    - time: '2022-05-01T00:00:00.000+02:00'
-  - slot_was_set:
-    - time: '2022-05-01T00:00:00.000+02:00'
   - action: set_product_info
   - slot_was_set:
     - product_to_buy_name: 30 montagne bar jacket
@@ -11098,14 +11148,12 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
-    - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
-    - email: moreno@gmail.com
     - email: moreno@gmail.com
   - slot_was_set:
     - email: moreno@gmail.com
@@ -11207,10 +11255,6 @@ stories:
   - intent: product_info
     entities:
     - number_on_the_list: first
-    - number_on_the_list: first
-    - time: '2022-05-01T00:00:00.000+02:00'
-  - slot_was_set:
-    - time: '2022-05-01T00:00:00.000+02:00'
   - action: set_product_info
   - slot_was_set:
     - product_to_buy_name: Sweetheart-neck leopard-print dress
@@ -11243,7 +11287,6 @@ stories:
   - intent: size_product
     entities:
     - size: xl
-    - size: xl
   - action: check_size
   - slot_was_set:
     - size_check: false
@@ -11261,14 +11304,12 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
-    - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
-    - email: moreno@gmail.com
     - email: moreno@gmail.com
   - slot_was_set:
     - email: moreno@gmail.com
@@ -11319,7 +11360,6 @@ stories:
   - intent: buy_product
     entities:
     - product: t-shirt
-    - product: t-shirt
   - action: reset_info_product
   - slot_was_set:
     - brand_to_buy: null
@@ -11369,10 +11409,6 @@ stories:
   - intent: product_info
     entities:
     - number_on_the_list: first
-    - number_on_the_list: first
-    - time: '2022-05-01T00:00:00.000+02:00'
-  - slot_was_set:
-    - time: '2022-05-01T00:00:00.000+02:00'
   - action: set_product_info
   - slot_was_set:
     - product_to_buy_name: T-shirt with organic-cotton sleeves
@@ -11405,7 +11441,6 @@ stories:
   - intent: color_product
     entities:
     - color: red
-    - color: red
   - action: check_color
   - slot_was_set:
     - color_check: false
@@ -11413,7 +11448,6 @@ stories:
     - color_to_buy: null
   - intent: color_product
     entities:
-    - color: beige
     - color: beige
   - action: check_color
   - slot_was_set:
@@ -11424,7 +11458,6 @@ stories:
   - intent: size_product
     entities:
     - size: xl
-    - size: xl
   - action: check_size
   - slot_was_set:
     - size_to_buy: XL
@@ -11433,7 +11466,6 @@ stories:
   - action: utter_quantity_to_buy
   - intent: quantity_to_buy_intent
     entities:
-    - quantity: '1'
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
@@ -11494,7 +11526,6 @@ stories:
   - intent: buy_product
     entities:
     - product: t-shirt
-    - product: t-shirt
   - action: reset_info_product
   - slot_was_set:
     - brand_to_buy: null
@@ -11543,7 +11574,6 @@ stories:
     - size_to_buy: null
   - intent: buy_product
     entities:
-    - product: jacket
     - product: jacket
   - action: reset_info_product
   - slot_was_set:
@@ -11594,10 +11624,6 @@ stories:
   - intent: product_info
     entities:
     - number_on_the_list: first
-    - number_on_the_list: first
-    - time: '2022-05-01T00:00:00.000+02:00'
-  - slot_was_set:
-    - time: '2022-05-01T00:00:00.000+02:00'
   - action: set_product_info
   - slot_was_set:
     - product_to_buy_name: 30 montagne bar jacket
@@ -11629,7 +11655,6 @@ stories:
   - action: utter_quantity_to_buy
   - intent: quantity_to_buy_intent
     entities:
-    - quantity: '1'
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
@@ -11735,10 +11760,6 @@ stories:
   - intent: product_info
     entities:
     - number_on_the_list: first
-    - number_on_the_list: first
-    - time: '2022-05-01T00:00:00.000+02:00'
-  - slot_was_set:
-    - time: '2022-05-01T00:00:00.000+02:00'
   - action: set_product_info
   - slot_was_set:
     - product_to_buy_name: Sweetheart-neck leopard-print dress
@@ -11771,7 +11792,6 @@ stories:
   - intent: size_product
     entities:
     - size: xs
-    - size: xs
   - action: check_size
   - slot_was_set:
     - size_check: false
@@ -11789,14 +11809,12 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
-    - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:
     - quantity_to_buy: '1'
   - action: utter_pleaseLogin
   - intent: give_emailAddress
     entities:
-    - email: moreno@gmail.com
     - email: moreno@gmail.com
   - slot_was_set:
     - email: moreno@gmail.com
@@ -12177,7 +12195,7 @@ stories:
   steps:
   - intent: all_products_listed
   - action: utter_all_products_are_listed
-  
+
 - story: visualize product info 1 long
   steps:
   - intent: buy_product
@@ -12333,6 +12351,1503 @@ stories:
   - intent: quantity_to_buy_intent
     entities:
     - quantity: '1'
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+- story: visualize product info 7
+  steps:
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: red
+  - action: check_color
+  - slot_was_set:
+    - color_check: false
+  - slot_was_set:
+    - color_to_buy: null
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: visualize_cart
+  - action: db_visualize_cart
+  - slot_was_set:
+    - user_logged: true
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product
+    entities:
+    - product: t-shirt
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: t-shirt
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: buy_product
+    entities:
+    - product: jacket
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: jacket
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: 30 montagne bar jacket
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: false
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - intent: buy_product
+    entities:
+    - product: dress
+  - action: reset_info_product
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - slot_was_set:
+    - product_to_buy: dress
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: Sweetheart-neck leopard-print dress
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: 40, 42, 44, 46
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: Sweetheart-neck leopard-print dress
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: 40, 42, 44, 46
+  - slot_was_set:
+    - color_exist: false
+  - slot_was_set:
+    - size_exist: true
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xs
+  - action: check_size
+  - slot_was_set:
+    - size_check: false
+  - slot_was_set:
+    - size_to_buy: null
+  - intent: give_birthDate
+    entities:
+    - size: '40'
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: 40
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+
+- story: visualize product info 8 with color
+  steps:
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+
+- story: visualize product info 8 with color 2
+  steps:
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: pearl
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: pearl
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+
+- story: visualize product info 8 with color 3
+  steps:
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: navy_blue
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: navy_blue
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  
+- story: visualize product info 8 with color 4
+  steps:
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: blue
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: blue
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+
+- story: visualize product info 8 with color 5
+  steps:
+  - intent: buy_product_with_color
+    entities:
+    - product: t-shirt
+    - color: beige
+  - action: reset_info_product_no_color
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_exist: true
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_size_to_buy
+  - intent: size_product
+    entities:
+    - size: xl
+  - action: check_size
+  - slot_was_set:
+    - size_to_buy: XL
+  - slot_was_set:
+    - size_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+  
+- story: visualize product info 8 with size
+  steps:
+  - intent: buy_product_with_size
+    entities:
+    - product: t-shirt
+    - size: xl
+  - action: reset_info_product_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_exist: true
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_color_to_buy
+  - intent: color_product
+    entities:
+    - color: beige
+  - action: check_color
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - color_check: true
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+
+- story: visualize product info 8 with color size
+  steps:
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+
+- story: visualize product info with color size 2
+  steps:
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: pearl
+    - size: S
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: pearl
+  - slot_was_set:
+    - size_to_buy: S
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+
+- story: visualize product info with color size 3
+  steps:
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: navy_blue
+    - size: s
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: navy_blue
+  - slot_was_set:
+    - size_to_buy: s
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+
+- story: visualize product info with color size 4
+  steps:
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: navy_blue
+    - size: xl
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: navy_blue
+  - slot_was_set:
+    - size_to_buy: xl
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
+    - quantity: '1'
+  - action: set_quantity_slot
+  - slot_was_set:
+    - quantity_to_buy: '1'
+  - action: utter_pleaseLogin
+  - intent: give_emailAddress
+    entities:
+    - email: moreno@gmail.com
+    - email: moreno@gmail.com
+  - slot_was_set:
+    - email: moreno@gmail.com
+  - action: action_checkIfUserIsRegistered
+  - slot_was_set:
+    - userIsRegistered: true
+  - slot_was_set:
+    - ID_logged: 18
+  - slot_was_set:
+    - user_logged: true
+  - action: utter_directOrderOrPutInCart
+  - intent: direct_buy
+  - action: db_buy_product
+  - slot_was_set:
+    - product_to_buy: null
+  - slot_was_set:
+    - brand_to_buy: null
+  - slot_was_set:
+    - price_to_buy: null
+  - slot_was_set:
+    - gender_to_buy: null
+  - slot_was_set:
+    - color_to_buy: null
+  - slot_was_set:
+    - size_to_buy: null
+  - slot_was_set:
+    - number_to_buy: null
+  - slot_was_set:
+    - quantity_to_buy: null
+  - slot_was_set:
+    - product_to_buy_name: null
+  - slot_was_set:
+    - color_available_slot: null
+  - slot_was_set:
+    - size_available_slot: null
+  - slot_was_set:
+    - color_exist: null
+  - slot_was_set:
+    - size_exist: null
+  - slot_was_set:
+    - color_check: null
+  - slot_was_set:
+    - size_check: null
+  - slot_was_set:
+    - product_exist: null
+
+- story: visualize product info with color size 4
+  steps:
+  - intent: buy_product_with_color_size
+    entities:
+    - product: t-shirt
+    - color: beige
+    - size: xs
+  - action: reset_info_product_no_color_no_size
+  - action: db_retrieve_product
+  - slot_was_set:
+    - product_exist: true
+  - intent: product_info
+    entities:
+    - number_on_the_list: first
+  - action: set_product_info
+  - slot_was_set:
+    - product_to_buy_name: T-shirt with organic-cotton sleeves
+  - slot_was_set:
+    - out_range: false
+  - slot_was_set:
+    - color_available_slot: navy_blue, beige, pearl
+  - slot_was_set:
+    - size_available_slot: XL, L, M, S
+  - slot_was_set:
+    - color_to_buy: beige
+  - slot_was_set:
+    - size_to_buy: s
+  - action: action_visualize_product_info
+  - intent: affirm
+  - action: utter_quantity_to_buy
+  - intent: quantity_to_buy_intent
+    entities:
     - quantity: '1'
   - action: set_quantity_slot
   - slot_was_set:

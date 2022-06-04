@@ -754,7 +754,6 @@ class Visualize_cart(Action):
     
     def run(self, dispatcher: "CollectingDispatcher", tracker: Tracker,
         domain: "DomainDict") -> List[Dict[Text, Any]]:
-        
         slot_emailAddress = tracker.get_slot("email").lower()
         cur = self.conn.cursor()
         stmt = "SELECT ID FROM account WHERE Email = ?"
