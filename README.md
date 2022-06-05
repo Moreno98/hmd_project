@@ -13,23 +13,24 @@ This repo leverages the [Rasa](https://rasa.com/) framework.
 
     hmd_project
     ├── actions
-    |    └── actions.py               [custom action file]
+    |    └── actions.py                   [custom action file]
     ├── data
-    |    ├── nlu.yml                  [yaml file containg the nlu data]
-    |    ├── rules.yml                [yaml file containg the rules applied by the model]
-    |    └── stories.yml              [yaml file containg the training data about the conversations, namely stories]
+    |    ├── nlu.yml                      [yaml file containg the nlu data]
+    |    ├── rules.yml                    [yaml file containg the rules applied by the model]
+    |    └── stories.yml                  [yaml file containg the training data about the conversations, namely stories]
     ├── data
-    |    └── database.db              [SQLite database containing the domain data]
+    |    └── database.db                  [SQLite database containing the domain data]
     ├── test
-    |    └── test_stories.yml         [yaml file containing the test stories for evaluation]
+    |    └── test_stories.yml             [yaml file containing the test stories for evaluation]
     |
-    ├── alexa_connector.py            [python file for connecting Rasa to the custom Alexa skill]
-    ├── apl_document.json             [this is an APL document which is used by Alexa to interpret the response from alexa_connector, see below for further details]
-    ├── config.yml                    [yaml file containing the configuration of Rasa]
-    ├── credentials.yml               [yaml file describes the credentials for Rasa x usage]
-    ├── domain.yml                    [yaml file containing the domain information for Rasa]
-    ├── endpoints.yml                 [yaml file for the Rasa endpoint]
-    └── GUI.html                      [this file launches the GUI]
+    ├── alexa_connector.py                [python file for connecting Rasa to the custom Alexa skill]
+    ├── apl_document.json                 [this is an APL document which is used by Alexa to interpret the response from alexa_connector, see below for further details]
+    ├── config.yml                        [yaml file containing the configuration of Rasa]
+    ├── credentials.yml                   [yaml file describes the credentials for Rasa x usage]
+    ├── domain.yml                        [yaml file containing the domain information for Rasa]
+    ├── endpoints.yml                     [yaml file for the Rasa endpoint]
+    ├── Human_Machine_Dialogue_Report.pdf [report of the project]
+    └── GUI.html                          [this file launches the GUI]
 
 ---
 
