@@ -34,12 +34,12 @@ This repo leverages the [Rasa](https://rasa.com/) framework.
 ---
 
 ## Usage
-We make the final system available at: ....  
+We make the final system available at: [folder](https://drive.google.com/drive/folders/12EAHHa0yDwhjuGd-bkMOYlTW4f68q2LL?usp=sharing) (UniTn account is required).  
 Download and unzip the folder, the zip also contains the python environment so you just need to make sure you have the spacy model downloaded. You may run the following command to do so:
 ```
 python -m spacy download en_core_web_md
 ```
-At this point you have the set up to run the code.
+At this point you have the set up to run the code.  
 **_NOTE:_** Make sure to activate the environment using ```source venv/bin/activate```
 
 ### GUI
